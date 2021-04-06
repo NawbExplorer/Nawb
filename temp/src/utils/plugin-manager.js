@@ -1,0 +1,64 @@
+var { is } = require('./index');
+
+var runYarn = async function (args, cleanCache = false) {
+  if (cleanCache) {
+    delete require.cache[require.resolve('../../lib/yarn')];
+  }
+  var yarn = require('../../lib/yarn');
+  var doubleDashIndex = process.argv.findIndex((e) => e === '--');
+  await yarn.main({
+    startArgs: process.argv.slice(0, 2),
+    args: args,
+    endArgs: doubleDashIndex === -1 ? [] : process.argv.slice(doubleDashIndex),
+  });
+};
+
+exports.runYarn = runYarn;
+
+var handlePackageJson = function (pkg) {
+  var useful = {};
+  pkg = is.string(pkg) ? JSON.parse(pkg) : pkg;
+
+  if (pkg && pkg.miao) {
+    useful.author = pkg.author;
+    useful.packageName = pkg.name;
+    useful.version = pkg.version;
+
+    useful.logo = pkg.miao.logo;
+    useful.cover = pkg.miao.cover;
+    useful.description = pkg.miao.description;
+    useful.updateInfo = pkg.miao.updateInfo;
+    useful.pluginName = pkg.miao.pluginName;
+    useful.sourceSite = pkg.miao.sourceSite;
+    useful.authorAvatar = pkg.miao.authorAvatar;
+
+    return useful;
+  } else {
+    return false;
+  }
+};
+
+var checkPackageName = function (name) {
+  var keyword = 'miao-plugin';
+  if (!name) {
+    return false;
+  }
+
+  return name.startsWith(keyword) || name.includes(keyword);
+};
+
+exports.checkPackageName = checkPackageName;
+
+var installPackage = async function (name) {
+  if (!checkPackageName(name)) {
+    return false;
+  }
+  try {
+    await runYarn(['add', 'name']);
+    return true;
+  } catch (err) {
+    return false;
+  }
+};
+
+exports.installPackage = installPackage;

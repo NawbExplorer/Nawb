@@ -1,0 +1,38 @@
+{
+  "name": "miao-plugin-century-comic",
+  "version": "1.0.3",
+  "main": "index.js",
+  "scripts": {
+    "push": "adb push . /data/local/tmp/century-comic",
+    "demo": "node ./index.js"
+  },
+  "keywords": [
+    "miao-plugin"
+  ],
+  "author": "maxcalibur",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.5",
+    "expo-device": "^3.1.1",
+    "got": "^11.8.1",
+    "nanoid": "^3.1.20"
+  },
+  "miao": {
+    "logo": "https://s.gravatar.com/avatar/c87c2708e02af645afe70b5ac862d60a?size=496&default=retro",
+    "description": "百年漫画 多多喵插件实例",
+    "pluginName": "百年漫画",
+    "updateInfo": "",
+    "sourceSite": "",
+    "author": {
+      "name": "maxcalibur",
+      "avatar": "https://s.gravatar.com/avatar/c87c2708e02af645afe70b5ac862d60a?size=496&default=retro",
+      "email": "",
+      "qq": "",
+      "wechat": "",
+      "sponsorQr": ""
+    },
+    "cover": [
+      ""
+    ]
+  }
+}

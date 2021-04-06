@@ -1,0 +1,31 @@
+{
+  "name": "century-comic",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development node ./esbuild.config.js",
+    "release": "cross-env NODE_ENV=production rollup -c rollup.config.js",
+    "push": "adb push ./dist/. /data/local/tmp/century-comic"
+  },
+  "author": "maxcalibur",
+  "license": "GLP-3.0",
+  "devDependencies": {
+    "@types/node": "^14.14.31",
+    "@typescript-eslint/eslint-plugin": "^4.15.0",
+    "@typescript-eslint/parser": "^4.15.0",
+    "carla": "file:../../packages/carla",
+    "chalk": "^4.1.0",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.9.0",
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^7.2.0",
+    "fs-extra": "^9.1.0",
+    "prettier": "^2.2.1",
+    "tslib": "^2.1.0",
+    "typescript": "^4.1.4"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.5",
+    "got": "^11.8.2",
+    "nanoid": "^3.1.21"
+  }
+}

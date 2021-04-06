@@ -1,0 +1,103 @@
+import React, { FC, useEffect } from 'react';
+// import * as Sentry from '@sentry/react-native';
+import pkg from '../package.json';
+import { observer } from 'mobx-react-lite';
+import {
+  PluginContext,
+  pluginProvider,
+  ThemeContext,
+  themeProvider,
+} from './provider';
+import { SENTRY_DSN } from './constants/';
+import { RootNavigator } from './screen/RootNavigator';
+import {
+  Platform,
+  SafeAreaView,
+  StyleSheet,
+  StatusBar,
+  Linking,
+} from 'react-native';
+import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
+import nodejs from 'nodejs-mobile-react-native';
+
+import {
+  NavigationContainer,
+  NavigationContainerRef,
+} from '@react-navigation/native';
+import { sendDeviceInfoToNodejs } from './utils';
+import { handleMessage } from './core';
+
+const isProd = process.env.NODE_ENV === 'production';
+
+// const routingInstrumentation = new Sentry.ReactNavigationV5Instrumentation();
+
+// Sentry.init({
+//   dsn: SENTRY_DSN,
+//   environment: process.env.NODE_ENV,
+//   debug: !isProd,
+//   maxBreadcrumbs: 150,
+//   // integrations: [
+//   //   new Sentry.ReactNativeTracing({
+//   //     idleTimeout: 5000,
+//   //     routingInstrumentation: routingInstrumentation,
+//   //     tracingOrigins: ['localhost', /^\//, /^https:\/\/|^http:\/\//],
+//   //     // //@ts-ignore
+//   //     // beforeNavigate: (context: Sentry.ReactNavigationTransactionContext) => {
+//   //     //   if (context.data.route.name === 'ManualTracker') {
+//   //     //     console.log('========================', context.data.route.name);
+//   //     //     context.sampled = false;
+//   //     //   }
+//   //     //   return context;
+//   //     // },
+//   //   }),
+//   // ],
+//   autoSessionTracking: true,
+//   sessionTrackingIntervalMillis: isProd ? 30000 : 5000,
+//   tracesSampleRate: 1.0,
+//   release: `carla-${process.env.NODE_ENV}@${pkg.version}`,
+//   dist: `${pkg.version}.0`,
+// });
+
+export const App: FC = observer(() => {
+  const navigationRef = React.createRef<NavigationContainerRef>();
+
+  Linking.addEventListener('url', () => {});
+
+  useEffect(() => {
+    // routingInstrumentation.registerNavigationContainer(navigationRef as any);
+    if (isProd) {
+      nodejs.start('boot.js');
+    } else {
+      nodejs.startWithParams(['/data/local/tmp/nodejs-project/boot.js']);
+    }
+
+    sendDeviceInfoToNodejs();
+
+    nodejs.channel.addListener('global', handleMessage);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <ThemeContext.Provider value={themeProvider}>
+      <PluginContext.Provider value={pluginProvider}>
+        <ExpoStatusBar
+          animated={true}
+          translucent={true}
+          backgroundColor="#fff"
+        />
+        <SafeAreaView style={appStyles.androidSafeArea}>
+          <NavigationContainer>
+            <RootNavigator />
+          </NavigationContainer>
+        </SafeAreaView>
+      </PluginContext.Provider>
+    </ThemeContext.Provider>
+  );
+});
+
+const appStyles = StyleSheet.create({
+  androidSafeArea: {
+    flex: 1,
+    marginTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+  },
+});

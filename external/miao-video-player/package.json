@@ -1,0 +1,22 @@
+{
+  "name": "miao-video-player",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "peerDependencies": {
+    "react-native": "0.63.4"
+  },
+  "dependencies": {
+    "react-native-orientation-locker": "^1.2.0",
+    "react-native-system-setting": "^1.7.6",
+    "react-native-video": "^5.1.1"
+  },
+  "devDependencies": {
+    "@types/react-native-video": "^5.0.4"
+  }
+}

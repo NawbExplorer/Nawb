@@ -1,0 +1,58 @@
+// *为必填属性
+{
+  // * 插件包名
+  "name": "miao-plugin-century-comic",
+  // * 插件版本
+  "version": "1.0.3",
+  // * 插件入口文件
+  "main": "index.js",
+  "scripts": {
+    "push": "adb push . /data/local/tmp/century-comic",
+    "demo": "node ./index.js"
+  },
+  "keywords": [
+    "miao-plugin"
+  ],
+  // * 作者
+  "author": "maxcalibur",
+  "license": "MIT",
+  "dependencies": {},
+  "carla": {
+    // *插件logo
+    "logo": "https://s.gravatar.com/avatar/c87c2708e02af645afe70b5ac862d60a?size=496&default=retro",
+    // *插件提供搜索功能
+    "searchAble": true,
+    // *作者
+    "author": {
+      // *展示名
+      "displayName": "max咖喱棒",
+      //  头像
+      "avatar": "https://s.gravatar.com/avatar/c87c2708e02af645afe70b5ac862d60a?size=496&default=retro",
+      // 赞助二维链接
+      "sponsorQrUri": "https://gitee.com/sewerganger/picture/blob/master/pay.jpg",
+      // 跳转支付app scheme
+      "sponsorUri": "alipayqr://platformapi/startapp?saId=10000007&qrcode=https://qr.alipay.com/tsx12024wt2admr8ftunwe4",
+      // 邮箱
+      "email": "wanghan9423@outlook.com",
+      // 预留文案  随意填写
+      "reserveContent": "QQ: 942341345"
+    },
+    // 插件简单描述 用于市场列表展示
+    "simpleDescription": "百年漫画 多多喵插件实例",
+    // 插件详情描述
+    "description": [
+      "1. xxxx",
+      "2. xxxx"
+    ],
+    //* 插件展示名
+    "pluginName": "百年漫画",
+    //   更新信息
+    "changelog": "",
+    // 插件的原始站点
+    "sourceSite": "",
+    // 插件展示图
+    "cover": [
+      ""
+    ],
+  }
+}
