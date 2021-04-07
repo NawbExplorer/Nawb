@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { View, ViewStyle } from 'react-native';
 import { MiaoTreeEntity } from '../core/core-type';
-import { renderMiaoToReact } from '../core/renderer';
+import { renderCarlaToReact } from '../core/renderer';
 
 export interface ListTileProps {
   containerStyle?: ViewStyle;
@@ -27,19 +27,19 @@ export const MiaoListTile: FC<ListTileProps> = function (props) {
   let leading, title, subtitle, trailing;
 
   if (props.leading) {
-    leading = renderMiaoToReact(props.leading);
+    leading = renderCarlaToReact(props.leading);
   }
 
   if (props.title) {
-    title = renderMiaoToReact(props.title);
+    title = renderCarlaToReact(props.title);
   }
 
   if (props.subtitle) {
-    subtitle = renderMiaoToReact(props.subtitle);
+    subtitle = renderCarlaToReact(props.subtitle);
   }
 
   if (props.trailing) {
-    trailing = renderMiaoToReact(props.trailing);
+    trailing = renderCarlaToReact(props.trailing);
   }
 
   return (

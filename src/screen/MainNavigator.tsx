@@ -8,10 +8,13 @@ import { ScaleSimpleAnimation } from './components/ScaleSimpleAnimation';
 import { View } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import { AnimationBarIconWrapper, defaultTabBarOptions } from '../components';
+import { PluginContext, pluginProvider } from '../provider';
 
 const HomeBottomTab = createBottomTabNavigator();
 
 export const MainNavigator: FC<StackScreenProps<any>> = function (props) {
+  console.log('MainNavigator render =================================');
+
   return (
     <HomeBottomTab.Navigator
       tabBarOptions={defaultTabBarOptions}

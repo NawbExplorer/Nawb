@@ -1,5 +1,5 @@
 import { handlePluginSearch, handleRender } from './manager';
-import { is, installPackage, AM } from './utils';
+import { is, installPackage, AM, RnBridge } from './utils';
 const rnBridge = require('rn-bridge');
 
 //node的执行目录切换到nodejs-project否则安装会安装到根目录

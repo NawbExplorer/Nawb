@@ -151,7 +151,7 @@ export const App: FC = function () {
       //         console.log(
       //           '============================render===================',
       //         );
-      //         const entry = renderMiaoToReact(msg.data);
+      //         const entry = renderCarlaToReact(msg.data);
       //         setRenderMiao(entry);
       //         // switch (msg.action) {
       //         //   case AM.PLUGIN_RENDER:

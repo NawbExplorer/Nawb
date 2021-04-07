@@ -1,5 +1,6 @@
 import cheerio from 'cheerio';
 import got from 'got';
+import { TapZone, Zone } from 'carla';
 
 async function fetchComicInfo(url) {
   const res = await got.get(url);
@@ -38,7 +39,12 @@ async function fetchComicInfo(url) {
 }
 
 export const ComicInfo = function (route) {
-  let currentPage = 1;
-
-  return {};
+  console.log(route, '==================');
+  return Zone({
+    style: {
+      width: 200,
+      height: 400,
+      backgroundColor: 'red',
+    },
+  });
 };

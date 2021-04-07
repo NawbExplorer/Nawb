@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useContext, useEffect, useRef, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import {
   useWindowDimensions,
@@ -10,6 +10,7 @@ import {
 import { StackScreenProps } from '@react-navigation/stack';
 import nodejs from 'nodejs-mobile-react-native';
 import { MiaoIcon } from '../components';
+import { PluginContext, pluginProvider } from '../provider';
 // const Icon = require('react-native-vector-icons/FontAwesome');
 
 const Demo = function () {
@@ -26,29 +27,32 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
   const [index, setIndex] = React.useState(0);
   const ref = useRef<TextInput>(null);
   const [renderMiao, setRenderMiao] = useState<React.ReactNode>(null);
+  const ctx = useContext(PluginContext);
 
   // useEffect(() => {
   //   nodejs.channel.addListener(
   //     'render-/data/local/tmp/century-comic',
   //     (msg) => {
   //       console.log(msg, '================================');
-  //       const a = renderMiaoToReact(msg.data);
+  //       const a = renderCarlaToReact(msg.data);
   //       console.log(a);
   //       setRenderMiao(a);
   //     },
   //   );
   // }, []);
+  console.log(pluginProvider.pluginRouteLocker, 'HomeScreen');
 
   return (
-    <View style={{ flex: 1, height: 400 }} hitSlop={{}}>
+    <View style={{ flex: 1, height: 400 }}>
       <Text>{process.env.NODE_ENV}</Text>
       <Button
         title="demo"
         onPress={() => {
           // console.log(Icon.default);
+
           navigation.push('PluginRuntimeScreen', {
             pluginName: '/data/local/tmp/century-comic',
-            init: true,
+            // init: true,
           });
           // nodejs.channel.post('global', {
           //   action: AM.PLUGIN_RENDER,
@@ -60,13 +64,7 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
           // nodejs.channel.post('global', {
           //   action: 'execJs',
           //   script: `
-          //   delete require.cache[require.resolve('/data/local/tmp/century-comic')];
-          //   try{
-          //     const plugin = require('/data/local/tmp/century-comic');
-          //     console.log(plugin)
-          //   }catch(err){
-          //     console.log(err);
-          //   }
+          //   console.log(rnBridge.channel.removeAllListeners);
           //   `,
           // });
         }}

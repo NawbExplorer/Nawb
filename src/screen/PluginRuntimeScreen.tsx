@@ -1,15 +1,12 @@
 import React, { FC, ReactNode, useContext, useEffect, useState } from 'react';
-import {
-  StackScreenProps,
-  createStackNavigator,
-} from '@react-navigation/stack';
+import { StackScreenProps } from '@react-navigation/stack';
 import nodejs from 'nodejs-mobile-react-native';
 import { observer } from 'mobx-react-lite';
 import 'react-native-get-random-values';
-import { Button, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { nanoid } from 'nanoid';
-import { AM, renderMiaoToReact } from '../core';
-import { PluginContext } from '../provider';
+import { AM, renderCarlaToReact } from '../core';
+import { PluginContext, pluginProvider } from '../provider';
 
 export const PluginRuntimeScreen: FC<StackScreenProps<any>> = observer(
   function (props) {
@@ -18,7 +15,14 @@ export const PluginRuntimeScreen: FC<StackScreenProps<any>> = observer(
     const { params } = route;
     const ctx = useContext(PluginContext);
 
+    console.log(
+      pluginProvider.pluginRouteLocker,
+      'PluginScreen',
+      nodejs.channel,
+    );
     useEffect(() => {
+      const unsubscribe = navigation.addListener('focus', (e) => {});
+
       if (params?.pluginName) {
         if (!ctx.pluginSourceLocker && !ctx.sourceHolderName) {
           ctx.setPluginSourceLocker(true);
@@ -26,36 +30,27 @@ export const PluginRuntimeScreen: FC<StackScreenProps<any>> = observer(
         }
 
         const eventName = 'render-' + nanoid(16);
-        // navigation.addListener('transitionEnd', (e) => {
-        //   if (!root) {
-        //     root = e.target;
-        //   }
-        //   if (e.data.closing) {
-        //     if (root === e.target) {
-        //       root = null;
-        //     }
-        //   } else {
-        //   }
-        // });
 
         nodejs.channel.once('pluginRoute', (msg) => {
+          console.log(msg);
           navigation.push('PluginRuntimeScreen', {
             pluginName: '/data/local/tmp/century-comic',
+            route: msg.route,
           });
         });
 
         nodejs.channel.once('pluginRender', (msg) => {
-          console.log(
-            '============================pluginRender===================',
-          );
-          console.log(msg);
-          const entry = renderMiaoToReact(msg.data);
+          // console.log(
+          //   '============================pluginRender===================',
+          // );
+          // console.log(msg);
+          const entry = renderCarlaToReact(msg.data);
           setRenderMiao(entry);
         });
 
         nodejs.channel.post('global', {
           action: AM.PLUGIN_RENDER,
-          pluginName: params!.pluginName,
+          ...params,
           eventName,
         });
       }
@@ -66,6 +61,7 @@ export const PluginRuntimeScreen: FC<StackScreenProps<any>> = observer(
           nodejs.channel.removeAllListeners('pluginRoute');
           ctx.setSourceHolderName(null);
           ctx.setPluginSourceLocker(false);
+          unsubscribe();
         }
       };
       // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -9,5 +9,15 @@
   "cSpell.ignoreWords": [
     "carla",
     "miao"
-  ]
+  ],
+  "files.associations": {
+    ".js": "javascript",
+    "*.jsx": "javascriptreact",
+    "*.tsx": "typescriptreact",
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript",
+    "*.gyp": "python",
+    "mutex": "cpp"
+  }
 }

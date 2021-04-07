@@ -33,8 +33,10 @@ async function fetchMainPageData(page) {
           rnBridge.channel.post('pluginRoute', {
             action: 'route',
             route: {
-              path: '/info',
-              params: a++,
+              name: '/info',
+              params: {
+                href,
+              },
             },
           });
         },
@@ -61,7 +63,7 @@ async function fetchMainPageData(page) {
       }),
     );
   }
-  console.log(data);
+
   return data;
 }
 
@@ -123,7 +125,6 @@ const HomePageTabZone = function () {
 };
 const HomePageTab1Zone = function () {
   let currentPage = 1;
-  let isLoad = false;
   return BottomTabZone({
     name: 'homePage1',
     options: { title: '3218' },

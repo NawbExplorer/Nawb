@@ -34,7 +34,7 @@ const createCardStyleInterpolator = ({ current: { progress } }) => ({
   },
 });
 
-export const RootNavigator = function (props) {
+export const RootNavigator: FC = function (props) {
   console.log('root render==============================');
   return (
     <RootStack.Navigator

@@ -6,19 +6,19 @@ import { componentMapper } from './component-mapper';
 
 const handleChildren = function (children: MiaoTreeChildren): ReactNode {
   if (Array.isArray(children)) {
-    return children.map((ele) => renderMiaoToReact(ele));
+    return children.map((ele) => renderCarlaToReact(ele));
   } else {
     if (is.string(children)) {
       return children;
     } else if (children?.tagName) {
-      return renderMiaoToReact(children);
+      return renderCarlaToReact(children);
     } else {
       return null;
     }
   }
 };
 
-export const renderMiaoToReact: MiaoMiRenderer = function (tree, extraProps) {
+export const renderCarlaToReact: MiaoMiRenderer = function (tree, extraProps) {
   if (!tree?.tagName) {
     return;
   }

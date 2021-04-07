@@ -1,11 +1,14 @@
-const checkPackageName = function (name: string): boolean {
-  var keyword = 'miao-plugin';
-  if (!name) {
-    return false;
-  }
+import 'react-native-get-random-values';
+import { nanoid } from 'nanoid';
 
-  return name.startsWith(keyword) || name.includes(keyword);
-};
+// const checkPackageName = function (name: string): boolean {
+//   var keyword = 'miao-plugin';
+//   if (!name) {
+//     return false;
+//   }
+
+//   return name.startsWith(keyword) || name.includes(keyword);
+// };
 
 export const is = {
   type(obj: unknown, str: string): boolean {
@@ -35,4 +38,13 @@ export const is = {
   array(obj: unknown): obj is [] {
     return this.type(obj, 'Array');
   },
+};
+
+/**
+ *
+ * @param {string} name - 事件名
+ * @param {string} [uid] - 如果不填此参数会生成一个唯一id
+ */
+export const makeUniqueName = (name: string, uid?: string) => {
+  return uid ? name + '-' + uid : name + '-' + nanoid(16);
 };

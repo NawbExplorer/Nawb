@@ -11,7 +11,7 @@ import {
   LayoutProvider,
   RecyclerListView,
 } from 'recyclerlistview';
-import { HasEventElement, renderMiaoToReact } from '../core';
+import { HasEventElement, renderCarlaToReact } from '../core';
 import nodejs from 'nodejs-mobile-react-native';
 import LoadingIndicator from 'react-native-indicator';
 
@@ -176,7 +176,7 @@ export const RecyclerListZone: FC<RecyclerListZoneProps> = function (props) {
         onEndReachedThreshold={reachBottomDistance}
         initialOffset={initRenderOffset}
         rowRenderer={(_type, data) => {
-          const reactElement = renderMiaoToReact(data) as JSX.Element;
+          const reactElement = renderCarlaToReact(data) as JSX.Element;
           return reactElement;
         }}
         scrollViewProps={{

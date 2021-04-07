@@ -2,8 +2,6 @@ import { Home } from './page/Home';
 import { ComicInfo } from './page/ComicInfo';
 import { ComicContent } from './page/ComicContent';
 import { search } from './search';
-// import moduleName from 'module'
-// delete require.cache[require.resolve('miao-mi')];
 
 export default {
   search: {

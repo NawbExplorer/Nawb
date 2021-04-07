@@ -34,6 +34,8 @@ interface RenderMsg {
 export const handleRender = async function (msg: RenderMsg) {
   const { route, eventName, pluginName } = msg;
 
+  console.log(msg, '@@@@@@@@@@@@@@@@');
+
   const plugin: PluginProps = loadWithClean(pluginName);
 
   if (!plugin && plugin.pages) {

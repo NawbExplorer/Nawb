@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabBarOptions } from './BottomTabInterface';
 import {
   MiaoTreeEntity,
-  renderMiaoToReact,
+  renderCarlaToReact,
   SingleMiaoTreeEntity,
 } from '../../core';
 
@@ -88,7 +88,7 @@ export const BottomTabBar: FC<BottomTabBarProps> = function (props) {
               tab.props.options,
             )}
             children={(p) => {
-              return renderMiaoToReact(tab.props.page, p) as ReactElement;
+              return renderCarlaToReact(tab.props.page, p) as ReactElement;
             }}
           />
         );
