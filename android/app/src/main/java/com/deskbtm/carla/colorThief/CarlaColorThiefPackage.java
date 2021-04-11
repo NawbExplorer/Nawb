@@ -1,6 +1,6 @@
 package com.deskbtm.carla.colorThief;
 
-import com.deskbtm.carla.god.simulate.MiaoSimulateModule;
+import com.deskbtm.carla.god.simulate.CarlaSimulateModule;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -10,10 +10,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class MiaoColorThiefPackage implements ReactPackage {
+public class CarlaColorThiefPackage implements ReactPackage {
   @Override
   public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-    return Arrays.asList(new MiaoSimulateModule(reactContext));
+    return Arrays.asList(new CarlaSimulateModule(reactContext));
   }
 
   @Override

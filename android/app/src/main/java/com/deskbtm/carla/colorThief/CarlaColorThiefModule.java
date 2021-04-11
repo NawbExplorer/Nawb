@@ -19,12 +19,12 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.WritableMap;
 
-public class MiaoColorThiefModule extends ReactContextBaseJavaModule {
+public class CarlaColorThiefModule extends ReactContextBaseJavaModule {
 
   ReactContext reactContext;
   private final int defaultColor;
 
-  public MiaoColorThiefModule(ReactApplicationContext context) {
+  public CarlaColorThiefModule(ReactApplicationContext context) {
     reactContext = context;
     defaultColor = Color.LTGRAY;
   }

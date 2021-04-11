@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { View, ViewStyle } from 'react-native';
-import { MiaoTreeEntity } from '../core/core-type';
+import { CarlaTreeEntity } from '../core';
+
 import { renderCarlaToReact } from '../core/renderer';
 
 export interface ListTileProps {
@@ -9,10 +10,10 @@ export interface ListTileProps {
   trailingStyle?: ViewStyle;
   titleStyle?: ViewStyle;
   subtitleStyle?: ViewStyle;
-  leading?: MiaoTreeEntity;
-  trailing?: MiaoTreeEntity;
-  title?: MiaoTreeEntity;
-  subtitle?: MiaoTreeEntity;
+  leading?: CarlaTreeEntity;
+  trailing?: CarlaTreeEntity;
+  title?: CarlaTreeEntity;
+  subtitle?: CarlaTreeEntity;
 }
 
 export const MiaoListTile: FC<ListTileProps> = function (props) {

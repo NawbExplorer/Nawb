@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 // import * as Sentry from '@sentry/react-native';
-import pkg from '../package.json';
+
 import { observer } from 'mobx-react-lite';
 import {
   PluginContext,
@@ -24,8 +24,7 @@ import {
   NavigationContainer,
   NavigationContainerRef,
 } from '@react-navigation/native';
-import { sendDeviceInfoToNodejs } from './utils';
-import { handleMessage } from './core';
+import { EM, handleBridgeMessage } from './core';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -71,9 +70,7 @@ export const App: FC = observer(() => {
       nodejs.startWithParams(['/data/local/tmp/nodejs-project/boot.js']);
     }
 
-    sendDeviceInfoToNodejs();
-
-    nodejs.channel.addListener('global', handleMessage);
+    nodejs.channel.addListener(EM.CARLA_BRIDGE, handleBridgeMessage);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

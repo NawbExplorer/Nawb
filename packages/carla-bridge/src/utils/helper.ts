@@ -39,3 +39,7 @@ export const load = function (name: string) {
 
   return mod.default ? mod.default : mod;
 };
+
+export const runSafeScript = function (script: string, strict = false) {
+  return Function(`${strict ? 'use strict' : ''} ${script}`)();
+};

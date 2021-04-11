@@ -1,5 +1,6 @@
+import { ReceiveBridgeAction } from './core-type';
+import { sendDeviceInfoToNodejs } from './utils';
 import Toast from 'react-native-simple-toast';
-import { AM } from './action-mapper';
 
 interface ToastOptions {
   //毫秒
@@ -16,24 +17,21 @@ const handleShowToast = function (msg: ToastOptions) {
   }
 };
 
-interface CommonMessage {
-  action?: keyof typeof AM;
-  [key: string]: any;
-}
-
-export const handleMessage = function (msg: CommonMessage) {
-  console.log(msg, 'global =====');
-
+export const handleBridgeMessage = function (msg: ReceiveBridgeAction) {
   if (!msg) {
     return;
   }
 
   switch (msg.action) {
-    case AM.NODEJS_INIT_ERROR:
-      Toast.show('NODEJS初始化失败' + msg.error, Toast.LONG);
+    case 'error_report':
       break;
-    case AM.SHOW_TOAST:
-      handleShowToast(msg as any);
+    case 'nodejs_init_success':
+      sendDeviceInfoToNodejs();
+      break;
+    case 'nodejs_init_error':
+      Toast.show('NODEJS初始化失败', Toast.LONG);
+      // Toast.show('NODEJS初始化失败' + msg.error, Toast.LONG);
+      // handleShowToast(msg as any);
       break;
   }
 };

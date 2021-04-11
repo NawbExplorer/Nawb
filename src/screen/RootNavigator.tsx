@@ -5,7 +5,7 @@ import {
 } from '@react-navigation/stack';
 import { MainNavigator } from './MainNavigator';
 import { DialogScreen } from './DialogScreen';
-import { PluginRuntimeScreen } from './PluginRuntimeScreen';
+import { PluginRuntimeScreen } from './PluginRuntime';
 
 const RootStack = createStackNavigator();
 
@@ -54,6 +54,10 @@ export const RootNavigator: FC = function (props) {
         name="PluginRuntimeScreen"
         component={PluginRuntimeScreen}
         options={{
+          // headerLeft() {
+          //   // return;
+          // },
+          // headerShown: false,
           ...TransitionPresets.SlideFromRightIOS,
         }}
       />

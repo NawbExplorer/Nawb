@@ -1,10 +1,9 @@
 import { createElement, ReactNode } from 'react';
 import { is } from '../utils';
-import { MiaoMiRenderer, MiaoTreeChildren } from './core-type';
+import { CarlaComponentChildren, CarlaRenderer } from './core-type';
 import { componentMapper } from './component-mapper';
-// import * as componentMapper from '../components';
 
-const handleChildren = function (children: MiaoTreeChildren): ReactNode {
+const handleChildren = function (children: CarlaComponentChildren): ReactNode {
   if (Array.isArray(children)) {
     return children.map((ele) => renderCarlaToReact(ele));
   } else {
@@ -18,7 +17,7 @@ const handleChildren = function (children: MiaoTreeChildren): ReactNode {
   }
 };
 
-export const renderCarlaToReact: MiaoMiRenderer = function (tree, extraProps) {
+export const renderCarlaToReact: CarlaRenderer = function (tree, extraProps) {
   if (!tree?.tagName) {
     return;
   }

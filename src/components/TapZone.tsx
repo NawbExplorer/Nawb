@@ -1,11 +1,12 @@
 import React, { FC, useCallback } from 'react';
-import { ColorValue, Platform, Text, TextStyle } from 'react-native';
+import { ColorValue, Platform, Pressable, Text, TextStyle } from 'react-native';
 import { HasEventElement } from '../core';
 import nodejs from 'nodejs-mobile-react-native';
 import {
   TouchableWithoutFeedback,
   TouchableNativeFeedback,
 } from 'react-native-gesture-handler';
+import { makeUniqueName } from '../utils';
 
 export interface MiaoTapZoneProps extends HasEventElement {
   mode?: 'opacity' | 'highlight' | 'default';
@@ -26,7 +27,7 @@ export const MiaoTapZone: FC<MiaoTapZoneProps> = function (propsObj) {
     !events?.includes(TapZoneEvents.Tap)
       ? (undefined as any)
       : (e) => {
-          nodejs.channel.post(TapZoneEvents.Tap + elementId);
+          nodejs.channel.post(makeUniqueName(TapZoneEvents.Tap, elementId));
         },
     [elementId, events],
   );
@@ -35,18 +36,12 @@ export const MiaoTapZone: FC<MiaoTapZoneProps> = function (propsObj) {
     !events?.includes(TapZoneEvents.LongTap)
       ? (undefined as any)
       : (e) => {
-          nodejs.channel.post(TapZoneEvents.LongTap + elementId);
+          nodejs.channel.post(makeUniqueName(TapZoneEvents.LongTap, elementId));
         },
     [elementId, events],
   );
 
-  return (
-    <TouchableWithoutFeedback
-      {...props}
-      onPress={onPress}
-      onLongPress={onLongPress}
-    />
-  );
+  return <Pressable {...props} onPress={onPress} onLongPress={onLongPress} />;
 };
 
 // var a = {

@@ -10,7 +10,7 @@ interface OverwriteEventEmitter extends EventEmitter {
 
 interface BridgeChannel<E> extends OverwriteEventEmitter {
   on: (event: string, cb: BridgeEventCallback<E>) => this;
-  post?: (name: string, ...msg: any) => void;
+  post<T = any>(event: string, ...message: T[]): void;
   send?: (...msg: any) => void;
 }
 

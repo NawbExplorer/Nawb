@@ -7,6 +7,19 @@ const rnBridge = require('rn-bridge');
 
 let a = 0;
 
+function navigate(routeName: string) {
+  // rnBridge.channel.on('getRouteName', (e) => {
+  //   console.log(e);
+  // });
+  rnBridge.channel.post(`${routeName}_route`, {
+    action: 'route',
+    route: {
+      name: '/info',
+      params: {},
+    },
+  });
+}
+
 async function fetchMainPageData(page) {
   const res = await got.get(
     `https://www.bnmhapp.com/index/list/region/1?page=${page}`,
@@ -29,7 +42,7 @@ async function fetchMainPageData(page) {
       TapZone({
         style: { width: '100%', height: '100%' },
         onTap() {
-          // console.log(device);
+          console.log('tap======================================');
           rnBridge.channel.post('pluginRoute', {
             action: 'route',
             route: {
@@ -123,6 +136,7 @@ const HomePageTabZone = function () {
     }),
   });
 };
+
 const HomePageTab1Zone = function () {
   let currentPage = 1;
   return BottomTabZone({

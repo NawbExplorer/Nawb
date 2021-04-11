@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import nodejs from 'nodejs-mobile-react-native';
-import { MiaoIcon } from '../components';
+import { Icon } from '../components';
 import { PluginContext, pluginProvider } from '../provider';
 // const Icon = require('react-native-vector-icons/FontAwesome');
 
@@ -67,6 +67,14 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
           //   console.log(rnBridge.channel.removeAllListeners);
           //   `,
           // });
+        }}
+      />
+      <Button
+        title="Click"
+        color="green"
+        onPress={() => {
+          console.log(nodejs.channel);
+          // navigation.push('DialogScreen');
         }}
       />
       {/* <MiaoIcon lib="FontAwesome" name="film" size={40} elementId="dsadsadas" /> */}

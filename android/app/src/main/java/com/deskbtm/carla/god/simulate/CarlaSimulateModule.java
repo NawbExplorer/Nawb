@@ -28,20 +28,19 @@ import java.util.List;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
 
-public class MiaoSimulateModule extends ReactContextBaseJavaModule {
+public class CarlaSimulateModule extends ReactContextBaseJavaModule {
 
-  ReactApplicationContext reactContext;
+  ReactApplicationContext reactApplicationContext;
   
-  public MiaoSimulateModule(ReactApplicationContext context) {
+  public CarlaSimulateModule(ReactApplicationContext context) {
     super(context);
-    reactContext = context;
-    reactContext = getReactApplicationContext();
+    reactApplicationContext = context;
   }
 
   @NonNull
   @Override
   public String getName() {
-    return "MiaoGod";
+    return "CarlaGodSimulate";
   }
 
   public static boolean isAccessibilityServiceEnabled(Context context, Class<? extends AccessibilityService> service) {
@@ -62,21 +61,21 @@ public class MiaoSimulateModule extends ReactContextBaseJavaModule {
   @RequiresApi(api = Build.VERSION_CODES.N)
   @ReactMethod
   void startSimulateService(float x, float y) throws NoSuchMethodException {
-//    if (!isAccessibilityServiceEnabled(reactContext, SimulateService.class)) {
+//    if (!isAccessibilityServiceEnabled(reactApplicationContext, SimulateService.class)) {
 //      Intent i = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
 //      i.addFlags(FLAG_ACTIVITY_NEW_TASK);
-//      reactContext.startActivity(i);
+//      reactApplicationContext.startActivity(i);
 //      return;
 //    }
 
 //    SimulateService ss = new SimulateService();
 //    ss.dispatchGestureTouch(100,20);  
 //    
-    Intent intent = new Intent(reactContext, SimulateService.class);
+    Intent intent = new Intent(reactApplicationContext, SimulateService.class);
     intent.putExtra("x", x);
     intent.putExtra("y", y);
 //    intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
-    reactContext.startService(intent);
+    reactApplicationContext.startService(intent);
 
 
 //    Method dispatchGestureTouch = SimulateService.class.getDeclaredMethod("dispatchGestureTouch", int.class, int.class);
@@ -87,10 +86,10 @@ public class MiaoSimulateModule extends ReactContextBaseJavaModule {
   }
 
 
-  private void sendEvent(ReactContext reactContext,
+  private void sendEvent(ReactContext reactApplicationContext,
                          String eventName,
                          @Nullable WritableMap params) {
-    reactContext
+    reactApplicationContext
       .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
       .emit(eventName, params);
   }

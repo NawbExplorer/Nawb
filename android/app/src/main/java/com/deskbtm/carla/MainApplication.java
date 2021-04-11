@@ -6,7 +6,8 @@ import android.content.Context;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.deskbtm.carla.generated.BasePackageList;
-import com.deskbtm.carla.god.simulate.MiaoSimulatePackage;
+import com.deskbtm.carla.god.simulate.CarlaSimulatePackage;
+import com.deskbtm.carla.jsThread.CarlaJsThreadPackage;
 import com.deskbtm.carla.wallpaper.MiaoWallpaperPackage;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
@@ -44,7 +45,8 @@ public class MainApplication extends Application implements ReactApplication {
         packages.add(new SystemSettingPackage());
         packages.add(new ReactVideoPackage());
         packages.add(new MiaoWallpaperPackage());
-        packages.add(new MiaoSimulatePackage());
+        packages.add(new CarlaSimulatePackage());
+        packages.add(new CarlaJsThreadPackage(this));
         
         return packages;
       }

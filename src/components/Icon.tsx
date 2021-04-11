@@ -1,6 +1,6 @@
 import React, { FC, useMemo } from 'react';
 import { ColorValue, View } from 'react-native';
-import { BasicMiaoElementProps } from '../core';
+import { BasicComponentProps } from '../core';
 
 type IconLibs =
   | 'AntDesign'
@@ -10,14 +10,14 @@ type IconLibs =
   | 'MaterialIcons'
   | 'SimpleLineIcons';
 
-export interface MiaoIconProps extends BasicMiaoElementProps {
+export interface IconProps extends BasicComponentProps {
   size?: number;
   lib: IconLibs;
   name: string;
   color?: ColorValue;
 }
 
-export const MiaoIcon: FC<MiaoIconProps> = function (propsObj) {
+export const Icon: FC<IconProps> = function (propsObj) {
   const { name, elementId, lib, ...props } = propsObj;
 
   const DyIcon = useMemo(() => {

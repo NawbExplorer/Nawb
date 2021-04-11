@@ -1,30 +1,54 @@
 import { ReactNode } from 'react';
+import {
+  NodejsInitSuccessAction,
+  ExecJsAction,
+  ErrorReportAction,
+  PluginRenderAction,
+  PluginSearchAction,
+  SetDeviceInfoAction,
+  NodejsInitErrorAction,
+} from './action-type';
 
 export type AnyObject = Record<string, any>;
 
-export type MiaoTreeChildren =
-  | MiaoTreeEntity[]
+export type CarlaComponentChildren =
+  | CarlaTreeEntity[]
   | null
   | string
-  | MiaoTreeEntity;
+  | CarlaTreeEntity;
 
-export interface MiaoTreeEntity<P = {}> {
+export interface CarlaTreeEntity<P = {}> {
   tagName: string;
   props: AnyObject & { elementId: string } & P;
-  children: MiaoTreeChildren;
+  children: CarlaComponentChildren;
 }
-export interface SingleMiaoTreeEntity<P = {}> {
+export interface CarlaTreeEntity<P = {}> {
   tagName: string;
   props: AnyObject & { elementId: string } & P;
 }
 
-export interface MiaoMiRenderer {
-  (t?: MiaoTreeEntity, extraProps?: object): ReactNode;
+export interface CarlaRenderer {
+  (t?: CarlaTreeEntity, extraProps?: object): ReactNode;
 }
-export interface BasicMiaoElementProps {
+export interface BasicComponentProps {
   elementId: string;
 }
 
-export interface HasEventElement extends BasicMiaoElementProps {
+export interface EventComponent extends BasicComponentProps {
   events: string[];
 }
+
+// | PluginRenderAction;
+
+export type PostBridgeAction =
+  | ExecJsAction
+  | SetDeviceInfoAction
+  | ErrorReportAction
+  | PluginSearchAction
+  | PluginRenderAction;
+
+export type ReceiveBridgeAction =
+  | NodejsInitSuccessAction
+  | NodejsInitErrorAction
+  | ErrorReportAction
+  | PluginSearchAction;

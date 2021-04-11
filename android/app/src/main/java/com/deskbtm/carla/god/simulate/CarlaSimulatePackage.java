@@ -9,10 +9,14 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class MiaoSimulatePackage implements ReactPackage {
+public class CarlaSimulatePackage implements ReactPackage {
+    
+  
+  
+  
   @Override
-  public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-    return Arrays.asList(new MiaoSimulateModule(reactContext));
+  public List<NativeModule> createNativeModules(ReactApplicationContext reactApplicationContext) {
+    return Arrays.asList(new CarlaSimulateModule(reactApplicationContext));
   }
 
   @Override
