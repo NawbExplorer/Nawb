@@ -27,19 +27,3 @@ export const is = {
     return this.type(obj, 'Array');
   },
 };
-
-export const loadWithClean = function (name: string) {
-  delete require.cache[require.resolve(name)];
-  const mod = require(name);
-  return mod.default ? mod.default : mod;
-};
-
-export const load = function (name: string) {
-  const mod = require(name);
-
-  return mod.default ? mod.default : mod;
-};
-
-export const runSafeScript = function (script: string, strict = false) {
-  return Function(`${strict ? 'use strict' : ''} ${script}`)();
-};

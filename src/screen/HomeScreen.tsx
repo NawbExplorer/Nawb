@@ -9,8 +9,12 @@ import {
 } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
 import nodejs from 'nodejs-mobile-react-native';
-import { Icon } from '../components';
 import { PluginContext, pluginProvider } from '../provider';
+import * as Localize from 'react-native-localize';
+import { useTranslation } from 'react-i18next';
+import * as fs from 'react-native-fs';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 // const Icon = require('react-native-vector-icons/FontAwesome');
 
 const Demo = function () {
@@ -28,6 +32,7 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
   const ref = useRef<TextInput>(null);
   const [renderMiao, setRenderMiao] = useState<React.ReactNode>(null);
   const ctx = useContext(PluginContext);
+  const { t, i18n } = useTranslation();
 
   // useEffect(() => {
   //   nodejs.channel.addListener(
@@ -45,15 +50,23 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
   return (
     <View style={{ flex: 1, height: 400 }}>
       <Text>{process.env.NODE_ENV}</Text>
+      <Text>{t('noticeNS:nodejsInitError')}</Text>
       <Button
         title="demo"
-        onPress={() => {
+        onPress={async () => {
+          // console.log(fs.DocumentDirectoryPath);
+          // console.log(fs.ExternalDirectoryPath);
+          // const dir = await fs.readDir(fs.DocumentDirectoryPath);
+          // console.log(dir);
+          // console.log(Localize.getCountry());
+          // console.log(Localize.getLocales());
+          console.log(i18n.language);
+          // AsyncStorage.removeItem('language');
           // console.log(Icon.default);
-
-          navigation.push('PluginRuntimeScreen', {
-            pluginName: '/data/local/tmp/century-comic',
-            // init: true,
-          });
+          // navigation.push('PluginRuntimeScreen', {
+          //   pluginName: '/data/local/tmp/century-comic',
+          //   // init: true,
+          // });
           // nodejs.channel.post('global', {
           //   action: AM.PLUGIN_RENDER,
           //   name: '/data/local/tmp/century-comic',
@@ -61,11 +74,12 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
           //     params: 'dsdnasidhsajdpa',
           //   },
           // });
-          // nodejs.channel.post('global', {
-          //   action: 'execJs',
-          //   script: `
-          //   console.log(rnBridge.channel.removeAllListeners);
-          //   `,
+          // nodejs.startWithScript(`console.log('======================')`);
+          // nodejs.channel.post<PostBridgeAction>(EM.CARLA_BRIDGE, {
+          //   action: 'install_pkg',
+          //   data: {
+          //     packageName: 'better-sqlite3',
+          //   },
           // });
         }}
       />
@@ -74,7 +88,7 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
         color="green"
         onPress={() => {
           console.log(nodejs.channel);
-          // navigation.push('DialogScreen');
+          i18n.changeLanguage('en-US');
         }}
       />
       {/* <MiaoIcon lib="FontAwesome" name="film" size={40} elementId="dsadsadas" /> */}

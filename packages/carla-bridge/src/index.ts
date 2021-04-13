@@ -1,7 +1,19 @@
-import { ExecJsAction } from './core';
-import { EM, ReceiveReactNativeAction, PostReactNativeAction } from './core';
-import { handlePluginSearch, handleRender } from './handler';
-import { is, installPackage, RnBridge, runSafeScript } from './utils';
+import { handleRender } from './handler/render-handler';
+import { handleInstallPackage } from './handler/package-install-handler';
+import { EM } from './core';
+import {
+  ReceiveReactNativeAction,
+  PostReactNativeAction,
+  RnBridge,
+} from './type';
+import {
+  is,
+  installPackage,
+  runSafeScript,
+  reportErrorToReactNative,
+} from './utils';
+// 可以直接导入 因为 rn-bridge 的路径被加入到了NODE_PATH中
+// 可见 native-lib.cpp
 const rnBridge: RnBridge = require('rn-bridge');
 
 //node的执行目录切换到nodejs-project否则安装会安装到根目录
@@ -19,11 +31,18 @@ try {
   rnBridge.channel.on(
     EM.CARLA_BRIDGE,
     async (msg: ReceiveReactNativeAction) => {
+      console.log(msg, 'bridge receive messages ===========================');
       try {
         if (is.object(msg)) {
           switch (msg.action) {
             case 'exec_js':
-              runSafeScript(msg.data.script, msg.data.useStrict);
+              runSafeScript(msg.data?.script, msg.data?.useStrict);
+              break;
+            case 'install_pkg':
+              await handleInstallPackage(msg.data?.packageName);
+              break;
+            case 'plugin_render':
+              await handleRender(msg.data);
               break;
 
             // handleRender(msg);
@@ -51,17 +70,17 @@ try {
           }
         }
       } catch (error) {
-        console.error(error, 'error=======');
-        rnBridge.channel.post('global', {
-          action: 'error_report',
-          error: String(error),
-        });
+        reportErrorToReactNative(error);
+        // rnBridge.channel.post(EM.CARLA_BRIDGE, {
+        //   action: 'error_report',
+        //   error: String(error),
+        // });
       }
     },
   );
-} catch (err) {
-  rnBridge.channel.post('global', {
+} catch (error) {
+  rnBridge.channel.post(EM.CARLA_BRIDGE, {
     action: 'error_report',
-    error: String(err),
+    error: String(error),
   });
 }

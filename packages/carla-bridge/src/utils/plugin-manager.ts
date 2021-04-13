@@ -36,8 +36,11 @@ export const handlePackageJson = function (pkg) {
   }
 };
 
-export const checkPackageName = function (name) {
-  var keyword = 'miao-plugin';
+export const verifyCarlaPluginName = function (name) {
+  // carla-ui-plugin
+  // carla-plugin
+  // carla-script-plugin
+  var keyword = 'carla-ui-plugin';
   if (!name) {
     return false;
   }
@@ -46,11 +49,8 @@ export const checkPackageName = function (name) {
 };
 
 export const installPackage = async function (name) {
-  if (!checkPackageName(name)) {
-    return false;
-  }
   try {
-    await runYarn(['add', 'name']);
+    await runYarn(['add', name]);
     return true;
   } catch (err) {
     return false;

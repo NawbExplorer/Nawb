@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 // import * as Sentry from '@sentry/react-native';
-
+import i18n from 'i18next';
 import { observer } from 'mobx-react-lite';
 import {
   PluginContext,
@@ -8,7 +8,6 @@ import {
   ThemeContext,
   themeProvider,
 } from './provider';
-import { SENTRY_DSN } from './constants/';
 import { RootNavigator } from './screen/RootNavigator';
 import {
   Platform,
@@ -25,8 +24,7 @@ import {
   NavigationContainerRef,
 } from '@react-navigation/native';
 import { EM, handleBridgeMessage } from './core';
-
-const isProd = process.env.NODE_ENV === 'production';
+import './utils/i18n';
 
 // const routingInstrumentation = new Sentry.ReactNavigationV5Instrumentation();
 
@@ -60,18 +58,17 @@ const isProd = process.env.NODE_ENV === 'production';
 export const App: FC = observer(() => {
   const navigationRef = React.createRef<NavigationContainerRef>();
 
-  Linking.addEventListener('url', () => {});
+  // Linking.addEventListener('url', () => {});
 
   useEffect(() => {
     // routingInstrumentation.registerNavigationContainer(navigationRef as any);
-    if (isProd) {
-      nodejs.start('boot.js');
-    } else {
+    if (__DEV__) {
       nodejs.startWithParams(['/data/local/tmp/nodejs-project/boot.js']);
+    } else {
+      nodejs.start('boot.js');
     }
 
     nodejs.channel.addListener(EM.CARLA_BRIDGE, handleBridgeMessage);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

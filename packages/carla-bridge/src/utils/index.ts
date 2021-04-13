@@ -1,3 +1,3 @@
 export * from './helper';
 export * from './plugin-manager';
-export * from './bridge-types';
+export * from './utils';

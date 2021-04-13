@@ -7,6 +7,7 @@ import {
   PluginSearchAction,
   SetDeviceInfoAction,
   NodejsInitErrorAction,
+  InstallPkgAction,
 } from './action-type';
 
 export type AnyObject = Record<string, any>;
@@ -45,7 +46,8 @@ export type PostBridgeAction =
   | SetDeviceInfoAction
   | ErrorReportAction
   | PluginSearchAction
-  | PluginRenderAction;
+  | PluginRenderAction
+  | InstallPkgAction;
 
 export type ReceiveBridgeAction =
   | NodejsInitSuccessAction

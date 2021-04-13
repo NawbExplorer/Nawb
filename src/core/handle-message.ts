@@ -1,5 +1,5 @@
-import { ReceiveBridgeAction } from './core-type';
-import { sendDeviceInfoToNodejs } from './utils';
+import { ReceiveBridgeAction } from './type';
+import { sendDeviceInfoToNodejs } from './device';
 import Toast from 'react-native-simple-toast';
 
 interface ToastOptions {
@@ -17,16 +17,18 @@ const handleShowToast = function (msg: ToastOptions) {
   }
 };
 
-export const handleBridgeMessage = function (msg: ReceiveBridgeAction) {
+export const handleBridgeMessage = async function (msg: ReceiveBridgeAction) {
   if (!msg) {
     return;
   }
 
   switch (msg.action) {
     case 'error_report':
+      Toast.show(msg.data?.error, Toast.LONG);
       break;
     case 'nodejs_init_success':
-      sendDeviceInfoToNodejs();
+      await sendDeviceInfoToNodejs();
+      console.debug('nodejs init success');
       break;
     case 'nodejs_init_error':
       Toast.show('NODEJS初始化失败', Toast.LONG);

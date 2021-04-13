@@ -42,7 +42,7 @@ export default class PluginProvider {
    *
    * @param name
    */
-  setCurrentPluginRender(name: string) {
+  addCurrentPluginRender(name: string) {
     this.currentPluginRenderers.add(name);
   }
 
