@@ -38,6 +38,7 @@ export const makeUniqueName = (name: string, uid?: string) => {
  * @param {string} [uid] - 如果不填此参数会生成一个唯一id
  */
 export const reportErrorToReactNative = (error: any) => {
+  console.error(error);
   rnBridge.channel.post(EM.CARLA_BRIDGE, {
     action: 'error_report',
     error: String(error),

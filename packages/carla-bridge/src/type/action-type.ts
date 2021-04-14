@@ -1,5 +1,8 @@
+import { DeviceProps } from './device-type';
 import { PluginRenderProps } from './plugin-type';
 // 向reactnative和 nodejs 通信的动作
+
+// 此文件只规定通过CARLA_BRIDGE事件的动作 其他使用post-type 和 receive-type
 
 /**执行javascript*/
 export interface ExecJsAction {
@@ -43,7 +46,18 @@ export interface InstallPkgErrorAction {
 /**全局设置设备信息*/
 export interface SetDeviceInfoAction {
   action: 'set_device_info';
-  // data:
+  data: {
+    device: DeviceProps;
+  };
+}
+
+/**设置软件环境*/
+export interface SetEnvAction {
+  action: 'set_env';
+  data: {
+    env: 'production' | 'development';
+    IS_DEV: boolean;
+  };
 }
 
 /**全局设置设备信息*/
@@ -62,4 +76,12 @@ export interface PluginSearchAction {
 export interface PluginRenderAction {
   action: 'plugin_render';
   data: PluginRenderProps;
+}
+
+/**未发现 carla_bridge 上的有此action */
+export interface NotFoundAction {
+  action: 'not_found_action';
+  data: {
+    actionName: string;
+  };
 }

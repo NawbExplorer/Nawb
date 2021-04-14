@@ -1,14 +1,4 @@
 import { ReactNode } from 'react';
-import {
-  NodejsInitSuccessAction,
-  ExecJsAction,
-  ErrorReportAction,
-  PluginRenderAction,
-  PluginSearchAction,
-  SetDeviceInfoAction,
-  NodejsInitErrorAction,
-  InstallPkgAction,
-} from './action-type';
 
 export type AnyObject = Record<string, any>;
 
@@ -38,19 +28,3 @@ export interface BasicComponentProps {
 export interface EventComponent extends BasicComponentProps {
   events: string[];
 }
-
-// | PluginRenderAction;
-
-export type PostBridgeAction =
-  | ExecJsAction
-  | SetDeviceInfoAction
-  | ErrorReportAction
-  | PluginSearchAction
-  | PluginRenderAction
-  | InstallPkgAction;
-
-export type ReceiveBridgeAction =
-  | NodejsInitSuccessAction
-  | NodejsInitErrorAction
-  | ErrorReportAction
-  | PluginSearchAction;

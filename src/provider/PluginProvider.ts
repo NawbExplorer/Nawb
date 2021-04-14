@@ -3,23 +3,23 @@ import { makeAutoObservable } from 'mobx';
 export default class PluginProvider {
   constructor() {
     makeAutoObservable(this, {
-      pluginRouteLocker: false,
+      pluginRouteMutex: false,
       pluginHolderName: false,
-      pluginSourceLocker: false,
+      pluginSourceMutex: false,
       currentPluginRenderers: false,
       currentPluginRoutes: false,
     });
   }
-  pluginSourceLocker = false;
+  pluginSourceMutex = false;
 
-  setPluginSourceLocker(lock: boolean) {
-    this.pluginSourceLocker = lock;
+  setPluginSourceMutex(lock: boolean) {
+    this.pluginSourceMutex = lock;
   }
 
-  pluginRouteLocker = false;
+  pluginRouteMutex = false;
 
-  setPluginRouteLocker(lock: boolean) {
-    this.pluginRouteLocker = lock;
+  setPluginRouteMutex(lock: boolean) {
+    this.pluginRouteMutex = lock;
   }
 
   /**

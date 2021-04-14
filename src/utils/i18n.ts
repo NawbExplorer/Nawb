@@ -40,7 +40,7 @@ i18n
       'en-US': enUS,
       'zh-CN': zhCN,
     },
-    ns: ['noticeNS', 'settingNS'],
+    // ns: ['noticeNS', 'settingNS'],
     fallbackLng: ['zh-CN'],
     debug: __DEV__,
     react: {
@@ -48,6 +48,6 @@ i18n
     },
   });
 
-i18n.loadNamespaces(['noticeNS', 'settingNS']);
+// i18n.loadNamespaces(['noticeNS', 'settingNS']);
 
 export default i18n;

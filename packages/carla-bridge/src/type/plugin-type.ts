@@ -1,3 +1,18 @@
+import {
+  NodejsInitSuccessAction,
+  ExecJsAction,
+  ErrorReportAction,
+  PluginRenderAction,
+  PluginSearchAction,
+  SetDeviceInfoAction,
+  NodejsInitErrorAction,
+  InstallPkgAction,
+  InstallPkgErrorAction,
+  InstallPkgSuccessAction,
+  SetEnvAction,
+  NotFoundAction,
+} from './action-type';
+
 interface SearchProps {
   api: (kw: string) => Promise<Record<string, any>>;
 }
@@ -28,3 +43,21 @@ export interface PluginRenderProps {
   renderName: string;
   route?: CarlaRoute;
 }
+
+export type PostReactNativeAction =
+  | NodejsInitSuccessAction
+  | NodejsInitErrorAction
+  | ErrorReportAction
+  | PluginSearchAction
+  | InstallPkgErrorAction
+  | InstallPkgSuccessAction
+  | NotFoundAction;
+
+export type ReceiveReactNativeAction =
+  | ExecJsAction
+  | SetDeviceInfoAction
+  | ErrorReportAction
+  | PluginSearchAction
+  | PluginRenderAction
+  | InstallPkgAction
+  | SetEnvAction;

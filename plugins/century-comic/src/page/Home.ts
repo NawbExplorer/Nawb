@@ -43,15 +43,18 @@ async function fetchMainPageData(page) {
         style: { width: '100%', height: '100%' },
         onTap() {
           console.log('tap======================================');
-          rnBridge.channel.post('pluginRoute', {
-            action: 'route',
-            route: {
-              name: '/info',
-              params: {
-                href,
-              },
-            },
-          });
+          console.log(global.device);
+          console.log(device);
+          console.log(carla);
+          // rnBridge.channel.post('pluginRoute', {
+          //   action: 'route',
+          //   route: {
+          //     name: '/info',
+          //     params: {
+          //       href,
+          //     },
+          //   },
+          // });
         },
         children: ListTile({
           trailing: Image({

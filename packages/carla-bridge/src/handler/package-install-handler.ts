@@ -1,6 +1,6 @@
 import { EM } from './../core/event-mapper';
 import { RnBridge, PostReactNativeAction } from '../type';
-import { installPackage } from '../utils/plugin-manager';
+import { installPackage } from '../utils';
 const rnBridge: RnBridge = require('rn-bridge');
 
 export const handleInstallPackage = async function (packageName?: string) {

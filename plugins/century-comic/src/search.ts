@@ -17,5 +17,6 @@ export const search = async function (keywords) {
     const subtitle = ele.find('.vbox_t span').text();
     data.push({ leading, title, subtitle, route });
   }
+
   return data;
 };

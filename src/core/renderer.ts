@@ -1,7 +1,7 @@
 import { createElement, ReactNode } from 'react';
 import { is } from '../utils';
-import { CarlaComponentChildren, CarlaRenderer } from './core-type';
 import { componentMapper } from './component-mapper';
+import { CarlaComponentChildren, CarlaRenderer } from './type';
 
 const handleChildren = function (children: CarlaComponentChildren): ReactNode {
   if (Array.isArray(children)) {

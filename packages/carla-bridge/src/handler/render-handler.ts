@@ -1,7 +1,12 @@
-import { PluginExport, PluginRenderProps } from '../type';
-var rnBridge = require('rn-bridge');
+import {
+  PluginExport,
+  PluginRenderProps,
+  RnBridge,
+  PluginRenderPoster,
+} from '../type';
+var rnBridge: RnBridge = require('rn-bridge');
 
-import { importWithCleanCache } from '../utils';
+import { importWithCleanCache, reportErrorToReactNative } from '../utils';
 
 const verifyPluginExport = function (props: PluginExport) {
   if (!props && props.pages) {
@@ -11,6 +16,8 @@ const verifyPluginExport = function (props: PluginExport) {
 
 export const handleRender = async function (props: PluginRenderProps) {
   const { route, pluginName, renderName } = props;
+  if (!carla.pluginName) global.carla.pluginName = pluginName;
+  if (!carla.pluginSourceMutex) global.carla.pluginSourceMutex = pluginName;
 
   const plugin: PluginExport = importWithCleanCache(pluginName);
 
@@ -18,30 +25,30 @@ export const handleRender = async function (props: PluginRenderProps) {
 
   const pages = plugin.pages;
 
-  let data;
-  let option;
+  let uiTree;
+  let pageName;
 
-  for (const pageName in pages) {
-    const pageOption = pages[pageName];
+  for (const name in pages) {
+    const pageProps = pages[name];
 
-    if (pageOption.entry && !route?.name) {
-      data = pageOption.page(route);
-      option = pageOption;
+    if (pageProps.entry && !route?.name) {
+      uiTree = pageProps.page(route);
+      pageName = name;
       break;
     } else if (route) {
-      if (pageName === route.name) {
-        data = pageOption.page(route);
-        option = pageOption;
+      if (name === route.name) {
+        uiTree = pageProps.page(route);
+        pageName = name;
         break;
       } else {
-        console.log(pageName, route.name, 'not equal');
+        throw new Error(`page name ${name} ${route.name} not equal`);
       }
     }
   }
 
-  rnBridge.channel.post(renderName, {
-    data,
-    option,
+  rnBridge.channel.post<PluginRenderPoster>(renderName, {
+    uiTree,
+    pageName,
     renderName,
   });
 };

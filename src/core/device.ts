@@ -65,7 +65,7 @@ type DeviceLocaleProps = {
   /**
    * 当前软件语言
    */
-  currentSoftwareLanguage: string;
+  currentAppLanguage: string;
   /**
    * 数组分割
    */
@@ -110,7 +110,7 @@ export const sendDeviceInfoToNodejs = async function () {
   const { width: screenWidth, height: screenHeight } = Dimensions.get('screen');
   const locale: DeviceLocaleProps = {
     locates: Localize.getLocales(),
-    currentSoftwareLanguage: i18n.language,
+    currentAppLanguage: i18n.language,
     currentSysCountry: Localize.getCountry(),
     numberFormatSeparator: Localize.getNumberFormatSettings(),
     currencies: Localize.getCurrencies(),

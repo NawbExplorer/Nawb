@@ -45,7 +45,7 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
   //     },
   //   );
   // }, []);
-  console.log(pluginProvider.pluginRouteLocker, 'HomeScreen');
+  console.log(pluginProvider.pluginRouteMutex, 'HomeScreen');
 
   return (
     <View style={{ flex: 1, height: 400 }}>
@@ -60,13 +60,13 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
           // console.log(dir);
           // console.log(Localize.getCountry());
           // console.log(Localize.getLocales());
-          console.log(i18n.language);
+          // console.log(i18n.language);
           // AsyncStorage.removeItem('language');
           // console.log(Icon.default);
-          // navigation.push('PluginRuntimeScreen', {
-          //   pluginName: '/data/local/tmp/century-comic',
-          //   // init: true,
-          // });
+          navigation.push('PluginRuntimeScreen', {
+            pluginName: '/data/local/tmp/century-comic',
+            // init: true,
+          });
           // nodejs.channel.post('global', {
           //   action: AM.PLUGIN_RENDER,
           //   name: '/data/local/tmp/century-comic',
@@ -87,8 +87,9 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
         title="Click"
         color="green"
         onPress={() => {
-          console.log(nodejs.channel);
-          i18n.changeLanguage('en-US');
+          console.log(process);
+          // console.log(nodejs.channel);
+          // i18n.changeLanguage('en-US');
         }}
       />
       {/* <MiaoIcon lib="FontAwesome" name="film" size={40} elementId="dsadsadas" /> */}

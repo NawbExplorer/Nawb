@@ -21,6 +21,19 @@ export interface NodejsInitErrorAction {
   action: 'nodejs_init_error';
 }
 
+/**未发现 carla_bridge 上的有此action */
+export interface NotFoundAction {
+  action: 'not_found_action';
+  data: {
+    actionName: string;
+  };
+}
+
+// /**进入app后nodejs carla_bridge环境或配置初始化错误 */
+// export interface CarlaBridgeInitErrorAction {
+//   action: 'carla_bridge_init_error';
+// }
+
 /**安装 npm包*/
 export interface InstallPkgAction {
   action: 'install_pkg';
@@ -34,6 +47,15 @@ export interface SetDeviceInfoAction {
   action: 'set_device_info';
   data: {
     device: DeviceProps;
+  };
+}
+
+/**设置软件环境*/
+export interface SetEnvAction {
+  action: 'set_env';
+  data: {
+    env: 'production' | 'development';
+    IS_DEV: boolean;
   };
 }
 
