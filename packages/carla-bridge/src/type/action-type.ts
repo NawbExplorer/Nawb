@@ -43,18 +43,19 @@ export interface InstallPkgErrorAction {
   action: 'install_pkg_error';
 }
 
-/**全局设置设备信息*/
-export interface SetDeviceInfoAction {
-  action: 'set_device_info';
-  data: {
-    device: DeviceProps;
-  };
-}
+// /**全局设置设备信息*/
+// export interface SetDeviceInfoAction {
+//   action: 'set_device_info';
+//   data: {
+//     device: DeviceProps;
+//   };
+// }
 
 /**设置软件环境*/
 export interface SetEnvAction {
   action: 'set_env';
   data: {
+    device: DeviceProps;
     env: 'production' | 'development';
     IS_DEV: boolean;
   };
@@ -63,7 +64,9 @@ export interface SetEnvAction {
 /**全局设置设备信息*/
 export interface ErrorReportAction {
   action: 'error_report';
-  // data:
+  data: {
+    error: string | number | [];
+  };
 }
 
 /**插件内容搜索 */

@@ -14,6 +14,9 @@ export const is = {
   asyncFunction(obj: unknown): obj is Function {
     return this.type(obj, 'AsyncFunction');
   },
+  func(obj: unknown): obj is Function {
+    return typeof obj === 'function';
+  },
   null(obj: unknown): obj is null {
     return this.type(obj, 'Null');
   },

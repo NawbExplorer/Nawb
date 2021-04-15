@@ -1,3 +1,4 @@
+import { PostReactNativeAction } from './../type/plugin-type';
 import type { RnBridge } from '../type/bridge-type';
 import { EM } from '../core';
 import assert from 'assert';
@@ -39,9 +40,11 @@ export const makeUniqueName = (name: string, uid?: string) => {
  */
 export const reportErrorToReactNative = (error: any) => {
   console.error(error);
-  rnBridge.channel.post(EM.CARLA_BRIDGE, {
+  rnBridge.channel.post<PostReactNativeAction>(EM.CARLA_BRIDGE, {
     action: 'error_report',
-    error: String(error),
+    data: {
+      error: 'NODEJS: ' + String(error),
+    },
   });
 };
 

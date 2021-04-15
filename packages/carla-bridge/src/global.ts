@@ -79,20 +79,19 @@ type DeviceProps = {
   screen: DeviceScreenProps;
 };
 
-interface Carla {
-  pluginName: string;
-  pluginSourceMutex: boolean;
+interface CarlaEnv {
+  _device: Readonly<DeviceProps | {}>;
+  _IS_ENV: Readonly<boolean>;
+  _env: Readonly<'development' | 'production'>;
+  device: DeviceProps;
+  IS_ENV: boolean;
+  env: 'development' | 'production';
 }
 
-declare var carla: any;
+declare var carla: CarlaEnv;
 
 declare module NodeJS {
   interface Global {
-    device: DeviceProps;
-    IS_ENV: boolean;
-    carla: {
-      pluginName: string;
-      pluginSourceMutex: boolean;
-    };
+    carla: CarlaEnv;
   }
 }

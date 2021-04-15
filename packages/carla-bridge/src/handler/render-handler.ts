@@ -3,27 +3,32 @@ import {
   PluginRenderProps,
   RnBridge,
   PluginRenderPoster,
+  PostReactNativeAction,
 } from '../type';
 var rnBridge: RnBridge = require('rn-bridge');
 
-import { importWithCleanCache, reportErrorToReactNative } from '../utils';
+import { importWithCleanCache, reportErrorToReactNative, is } from '../utils';
 
-const verifyPluginExport = function (props: PluginExport) {
-  if (!props && props.pages) {
-    throw new Error('illegal plug-in check for properties');
-  }
-};
+// const verifyPluginExport = function (props: PluginExport) {
+//   if (!props && is.func(props.pages)) {
+//     throw new Error('illegal plug-in check for property pages');
+//   }
+// };
 
-export const handleRender = async function (props: PluginRenderProps) {
+export const handlePluginRender = async function (props: PluginRenderProps) {
   const { route, pluginName, renderName } = props;
-  if (!carla.pluginName) global.carla.pluginName = pluginName;
-  if (!carla.pluginSourceMutex) global.carla.pluginSourceMutex = pluginName;
 
   const plugin: PluginExport = importWithCleanCache(pluginName);
 
-  verifyPluginExport(plugin);
+  if (!plugin.uiEntry) {
+    rnBridge.channel.post<PostReactNativeAction>(renderName, {
+      action: 'error_report',
+      data: { error: '' },
+    });
+    return;
+  }
 
-  const pages = plugin.pages;
+  const pages = plugin.uiEntry({ pluginName, renderName });
 
   let uiTree;
   let pageName;

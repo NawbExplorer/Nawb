@@ -4,7 +4,7 @@ import {
   ErrorReportAction,
   PluginRenderAction,
   PluginSearchAction,
-  SetDeviceInfoAction,
+  // SetDeviceInfoAction,
   NodejsInitErrorAction,
   InstallPkgAction,
   InstallPkgErrorAction,
@@ -28,11 +28,22 @@ interface PageProps {
   [key: string]: PageOptionsProps;
 }
 
-export interface PluginExport {
-  search?: SearchProps;
-  pages?: PageProps;
+export interface PluginUIExport {
+  namespace: string;
+  // pages:
 }
 
+export interface PluginSearchExport {
+  namespace: string;
+}
+
+export interface PluginExport {
+  uiEntry(args: any): PluginUIExport;
+  searchEntry(): PluginSearchExport;
+}
+
+// search?: (args: any) => SearchProps;
+// pages: (args: any) => PageProps;
 export type CarlaRoute = {
   name: string;
   params?: Record<string, any>;
@@ -55,8 +66,7 @@ export type PostReactNativeAction =
 
 export type ReceiveReactNativeAction =
   | ExecJsAction
-  | SetDeviceInfoAction
-  | ErrorReportAction
+  // | SetDeviceInfoAction
   | PluginSearchAction
   | PluginRenderAction
   | InstallPkgAction

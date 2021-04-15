@@ -39,7 +39,7 @@ type DeviceLocaleProps = {
   /**
    * 当前软件语言
    */
-  currentSoftwareLanguage: string;
+  currentAppLanguage: string;
   /**
    * 数组分割
    */
