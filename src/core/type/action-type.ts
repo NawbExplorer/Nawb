@@ -1,4 +1,4 @@
-import { DeviceProps } from '../device';
+import { DeviceProps } from '../carla-env';
 import { PluginRenderProps } from './plugin-type';
 // 向reactnative和 nodejs 通信的动作
 
@@ -42,13 +42,13 @@ export interface InstallPkgAction {
   };
 }
 
-/**全局设置设备信息*/
-export interface SetDeviceInfoAction {
-  action: 'set_device_info';
-  data: {
-    device: DeviceProps;
-  };
-}
+// /**全局设置设备信息*/
+// export interface SetDeviceInfoAction {
+//   action: 'set_device_info';
+//   data: {
+//     device: DeviceProps;
+//   };
+// }
 
 /**设置软件环境*/
 export interface SetEnvAction {
@@ -56,6 +56,7 @@ export interface SetEnvAction {
   data: {
     env: 'production' | 'development';
     IS_DEV: boolean;
+    device: DeviceProps;
   };
 }
 

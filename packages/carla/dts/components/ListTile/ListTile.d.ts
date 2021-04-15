@@ -1,4 +1,4 @@
-import { SingleMiaoEle } from '../../common';
+import { NoChildComponent } from '../../common';
 import { ListTileProps } from './ListTileInterface';
-declare const ListTile: SingleMiaoEle<ListTileProps>;
+declare const ListTile: NoChildComponent<ListTileProps>;
 export { ListTile };

@@ -1,4 +1,4 @@
-import { BasicMiaoEvent, ColorValue } from '../../common';
+import { ColorValue } from '../../common';
 import { ZoneStyle } from '../Zone';
 
 export interface TextStyle extends ZoneStyle {

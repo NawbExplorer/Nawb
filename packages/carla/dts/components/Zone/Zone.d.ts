@@ -1,4 +1,10 @@
-import { MiaoEle } from '../../common';
 import { ZoneProps } from './ZoneInterface';
-declare const Zone: MiaoEle<ZoneProps>;
+import { Component } from '../../common';
+/**
+ *
+ * 一个支持flex的区域 ，概念类似div
+ *
+ *
+ */
+declare const Zone: Component<ZoneProps>;
 export { Zone };

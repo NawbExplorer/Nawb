@@ -1,14 +1,14 @@
-import { MiaoEntity } from './../../common';
+import { WithChildrenEntity } from '../../common';
 import { ZoneStyle } from '../Zone';
 export declare const listTileValidProps: string[];
 export interface ListTileProps {
     containerStyle?: ZoneStyle;
-    leading?: MiaoEntity;
+    leading?: WithChildrenEntity;
     leadingStyle?: ZoneStyle;
-    trailing?: MiaoEntity;
+    trailing?: WithChildrenEntity;
     trailingStyle?: ZoneStyle;
-    title?: MiaoEntity;
+    title?: WithChildrenEntity;
     titleStyle?: ZoneStyle;
-    subtitle?: MiaoEntity;
+    subtitle?: WithChildrenEntity;
     subtitleStyle?: ZoneStyle;
 }

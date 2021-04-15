@@ -1,51 +1,31 @@
 import { Home } from './page/Home';
 import { ComicInfo } from './page/ComicInfo';
 import { ComicContent } from './page/ComicContent';
-import { search } from './search';
-import { nanoid } from 'nanoid';
-// import { Page } from 'carla';
+import { search as searchApi } from './search';
+import { Page, CarlaUI } from 'carla';
 
-const Page = function (props) {
-  const pageName = 'page-' + nanoid(16);
-
-  return {
-    pageName,
-    ...props,
-  };
+export const uiEntry = function (ctx) {
+  return CarlaUI({
+    namespace: 'century-comic',
+    context: { name: 'demo' },
+    pages: {
+      home: Page({
+        entry: true,
+        page: Home,
+        title: '主页',
+      }),
+      info: Page({
+        page: ComicInfo,
+        title: '详情',
+      }),
+      content: Page({
+        page: ComicContent,
+        title: '漫画',
+      }),
+    },
+  });
 };
 
-const Carla = function (props: {
-  namespace: string;
-  search?: { api: any };
-  pages: { [key: string]: (props: any) => any };
-}) {
-  // const pageName = 'page-' + nanoid(16);
-
-  return {
-    namespace: props.namespace,
-    search: props.search,
-    pages: props.pages,
-  };
+export const searchEntry = function (ctx) {
+  return searchApi;
 };
-
-export default Carla({
-  namespace: 'century-comic',
-  search: {
-    api: search,
-  },
-  pages: {
-    home: Page({
-      entry: true,
-      page: Home,
-      title: '主页',
-    }),
-    info: Page({
-      page: ComicInfo,
-      title: '详情',
-    }),
-    content: Page({
-      page: ComicContent,
-      title: '漫画',
-    }),
-  },
-});

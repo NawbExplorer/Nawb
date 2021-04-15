@@ -5,3 +5,5 @@ export * from './ListTile';
 export * from './Image';
 export * from './Actions';
 export * from './Global';
+export * from './Page';
+export * from './CarlaUI';

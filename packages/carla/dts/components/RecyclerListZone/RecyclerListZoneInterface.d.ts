@@ -1,9 +1,6 @@
-import { MiaoEntity } from './../../common/miao';
-import { BasicMiaoEvent } from './../../common';
+import { WithChildrenEntity } from 'src/common';
 import { ZoneStyle } from '../Zone';
 declare type PresetLayout = 'line' | 'card' | 'stagger';
-export interface RecyclerListZoneEvent extends BasicMiaoEvent {
-}
 export interface RecyclerListProps {
     style?: ZoneStyle;
     onRefresh?: () => Promise<Record<any, any>>;
@@ -12,8 +9,8 @@ export interface RecyclerListProps {
     preRenderTopOffset?: number;
     presetLayout?: PresetLayout;
     initRenderOffset?: number;
-    footer?: MiaoEntity;
-    header?: MiaoEntity;
+    footer?: WithChildrenEntity;
+    header?: WithChildrenEntity;
     itemHeight?: number;
     initData?: object;
     zoneHeight?: number;

@@ -1,4 +1,4 @@
-import type { ColorValue, FlexStyle, ShadowStyleIOS } from '../../common';
+import type { ColorValue, FlexStyle, Insets, ShadowStyleIOS } from '../../common';
 export interface ZoneStyle extends FlexStyle, ShadowStyleIOS {
     backfaceVisibility?: 'visible' | 'hidden';
     backgroundColor?: ColorValue;
@@ -38,4 +38,13 @@ export interface ZoneStyle extends FlexStyle, ShadowStyleIOS {
 }
 export interface ZoneProps {
     style?: ZoneStyle;
+    hitSlop?: Insets;
+    /**
+     * 用于控制当前视图是否可以作为触控事件的目标。
+     * auto：视图可以作为触控事件的目标。
+     * none：视图不能作为触控事件的目标。
+     * box-none：视图自身不能作为触控事件的目标，但其子视图可以。类似于你在 CSS 中这样设置:
+     * box-only: 视图自身可以作为触控事件的目标，但其子视图不能。类似于你在 CSS 中这样设置:
+     */
+    pointerEvents?: 'box-none' | 'none' | 'box-only' | 'auto';
 }

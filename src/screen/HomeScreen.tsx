@@ -14,6 +14,7 @@ import * as Localize from 'react-native-localize';
 import { useTranslation } from 'react-i18next';
 import * as fs from 'react-native-fs';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Toast from 'react-native-simple-toast';
 
 // const Icon = require('react-native-vector-icons/FontAwesome');
 
@@ -87,7 +88,7 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
         title="Click"
         color="green"
         onPress={() => {
-          console.log(process);
+          Toast.show('dsahudgsaidgasiudgsaigi', Toast.LONG);
           // console.log(nodejs.channel);
           // i18n.changeLanguage('en-US');
         }}

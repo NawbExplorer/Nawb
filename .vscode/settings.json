@@ -8,7 +8,8 @@
   },
   "cSpell.ignoreWords": [
     "carla",
-    "miao"
+    "miao",
+    "mutex"
   ],
   "files.associations": {
     ".js": "javascript",

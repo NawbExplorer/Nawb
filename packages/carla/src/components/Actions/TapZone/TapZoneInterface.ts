@@ -1,9 +1,8 @@
 import { ZoneStyle } from '../../Zone/ZoneInterface';
-import { BasicMiaoEvent } from '../../../common';
 
 export interface TapZoneStyle extends ZoneStyle {}
 
-export interface MiaoTapZoneEvent extends BasicMiaoEvent {}
+export interface MiaoTapZoneEvent {}
 
 export const tapZoneValidProps = [
   'mode',

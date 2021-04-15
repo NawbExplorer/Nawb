@@ -1,4 +1,4 @@
-import { MiaoEle } from '../../common';
+import { Component } from '../../common';
 import { TextChildren, TextProps } from './TextInterface';
-declare const Text: MiaoEle<TextProps, TextChildren>;
+declare const Text: Component<TextProps, TextChildren>;
 export { Text };

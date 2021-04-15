@@ -1,8 +1,8 @@
-import { MiaoEle } from '../../common';
+import { Component } from '../../common';
 import { ImageProps, PreloadImage } from './ImageInterface';
 import { nanoid } from 'nanoid';
 
-const Image: MiaoEle<ImageProps> = function (propsObj) {
+const Image: Component<ImageProps> = function (propsObj) {
   const elementId = nanoid(16);
 
   return {

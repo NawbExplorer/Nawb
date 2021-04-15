@@ -1,7 +1,7 @@
 import { PostBridgeAction } from './type';
 import { EM } from './event-mapper';
 import { ReceiveBridgeAction } from './type';
-import { sendDeviceInfoToNodejs } from './device';
+import { sendDeviceInfoToNodejs } from './carla-env';
 import Toast from 'react-native-simple-toast';
 import nodejs from 'nodejs-mobile-react-native';
 
@@ -20,16 +20,6 @@ const handleShowToast = function (msg: ToastOptions) {
   }
 };
 
-const sendEnvToNodejs = function () {
-  nodejs.channel.post<PostBridgeAction>(EM.CARLA_BRIDGE, {
-    action: 'set_env',
-    data: {
-      env: __DEV__ ? 'development' : 'production',
-      IS_DEV: __DEV__,
-    },
-  });
-};
-
 export const handleBridgeMessage = async function (msg: ReceiveBridgeAction) {
   if (!msg) {
     return;
@@ -40,9 +30,8 @@ export const handleBridgeMessage = async function (msg: ReceiveBridgeAction) {
       Toast.show(msg.data?.error, Toast.LONG);
       break;
     case 'nodejs_init_success':
-      sendDeviceInfoToNodejs();
-      sendEnvToNodejs();
-      console.debug('nodejs init success');
+      sendDeviceInfoToNodejs(EM.INIT_CARLA_ENV);
+      console.log('nodejs init success');
       break;
     case 'nodejs_init_error':
       Toast.show('NODEJS初始化失败', Toast.LONG);

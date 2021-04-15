@@ -9,4 +9,23 @@ export declare const is: {
     number(obj: unknown): obj is number;
     array(obj: unknown): obj is [];
 };
-export declare const verifyElementProps: (verifyProps: string[], props: Record<string, any>) => void;
+/**
+ *
+ * 校验属性 如果校验到不包含的属性, 报错
+ * @param {string[]} name - 校验的属性
+ * @param {object} props - 校验的目标
+ */
+export declare const verifyProps: (verifyProps: string[], props: Record<string, any>, componentName: string) => void;
+/**
+ *
+ * 校验必选属性
+ * @param {string[]} name - 校验的属性
+ * @param {object} props - 校验的目标
+ */
+export declare const verifyRequiredProps: (verifyProps: string[], props: Record<string, any>, componentName: string) => void;
+/**
+ *
+ * @param {string} name - 事件名
+ * @param {string} [uid] - 如果不填此参数会生成一个唯一id
+ */
+export declare const makeUniqueName: (name: string, uid?: string) => string;

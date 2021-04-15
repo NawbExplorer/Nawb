@@ -1,6 +1,5 @@
 import {
   ExecJsAction,
-  SetDeviceInfoAction,
   ErrorReportAction,
   PluginSearchAction,
   PluginRenderAction,
@@ -24,7 +23,6 @@ export interface PluginRenderProps {
 
 export type PostBridgeAction =
   | ExecJsAction
-  | SetDeviceInfoAction
   | ErrorReportAction
   | PluginSearchAction
   | PluginRenderAction
