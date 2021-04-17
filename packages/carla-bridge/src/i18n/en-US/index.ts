@@ -1,3 +1,5 @@
 export const enUS = {
-  demo: 'demo',
+  ui: {
+    entry: 'not found uiEntry',
+  },
 };

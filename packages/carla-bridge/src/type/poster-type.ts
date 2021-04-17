@@ -5,4 +5,5 @@ export interface PluginRenderPoster {
    * 强制发给react native 虽然没用
    */
   renderName: string;
+  pluginName: string;
 }

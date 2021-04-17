@@ -1,3 +1,5 @@
 export const zhCN = {
-  demo: '呆莫',
+  ui: {
+    entry: '未发现uiEntry',
+  },
 };

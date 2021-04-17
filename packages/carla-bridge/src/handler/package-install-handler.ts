@@ -1,4 +1,4 @@
-import { EM } from './../core/event-mapper';
+import { EM } from '../core/event-mapper';
 import { RnBridge, PostReactNativeAction } from '../type';
 import { installPackage } from '../utils';
 const rnBridge: RnBridge = require('rn-bridge');

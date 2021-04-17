@@ -1,4 +1,13 @@
-import { Text, ListTile, RecyclerListZone, Image, TapZone, Zone } from 'carla';
+import {
+  Text,
+  ListTile,
+  RecyclerListZone,
+  Image,
+  TapZone,
+  Zone,
+  Context,
+  navigation,
+} from 'carla';
 import cheerio from 'cheerio';
 import got from 'got';
 import { nanoid } from 'nanoid';
@@ -42,19 +51,7 @@ async function fetchMainPageData(page) {
       TapZone({
         style: { width: '100%', height: '100%' },
         onTap() {
-          console.log('tap======================================');
-          console.log(global.device);
-          console.log(device);
-          console.log(carla);
-          // rnBridge.channel.post('pluginRoute', {
-          //   action: 'route',
-          //   route: {
-          //     name: '/info',
-          //     params: {
-          //       href,
-          //     },
-          //   },
-          // });
+          navigation.push('info');
         },
         children: ListTile({
           trailing: Image({
@@ -160,7 +157,8 @@ const HomePageTab1Zone = function () {
   });
 };
 
-export const Home = function (context) {
+export const Home = function (args) {
+  Context.addToContext({ renderName: 'home' });
   return BottomTabBar({
     tabs: [HomePageTabZone(), HomePageTab1Zone()],
   });

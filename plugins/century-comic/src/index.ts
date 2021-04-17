@@ -4,10 +4,10 @@ import { ComicContent } from './page/ComicContent';
 import { search as searchApi } from './search';
 import { Page, CarlaUI } from 'carla';
 
-export const uiEntry = function (ctx) {
+export const uiEntry = function (context) {
   return CarlaUI({
     namespace: 'century-comic',
-    context: { name: 'demo' },
+    context,
     pages: {
       home: Page({
         entry: true,

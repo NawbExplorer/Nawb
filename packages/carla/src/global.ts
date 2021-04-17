@@ -1,4 +1,4 @@
-export type DeviceInfoProps = {
+type DeviceInfoProps = {
   brand: string | null;
   isDevice: boolean;
   manufacturer: string | null;
@@ -17,7 +17,7 @@ export type DeviceInfoProps = {
   deviceName: string | null;
 };
 
-export type DeviceScreenProps = {
+type DeviceScreenProps = {
   windowWidth: number;
   windowHeight: number;
   screenWidth: number;
@@ -73,8 +73,26 @@ type DeviceLocaleProps = {
   is24hClock: boolean;
 };
 
-export type DeviceProps = {
+type DeviceProps = {
   locale: DeviceLocaleProps;
   info: DeviceInfoProps;
   screen: DeviceScreenProps;
 };
+
+interface Carla {
+  pluginName: string;
+  pluginSourceMutex: boolean;
+}
+
+declare var carla: any;
+
+declare module NodeJS {
+  interface Global {
+    device: DeviceProps;
+    IS_ENV: boolean;
+    carla: {
+      pluginName: string;
+      pluginSourceMutex: boolean;
+    };
+  }
+}

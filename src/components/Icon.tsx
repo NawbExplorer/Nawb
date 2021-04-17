@@ -1,6 +1,5 @@
 import React, { FC, useMemo } from 'react';
 import { ColorValue, View } from 'react-native';
-import { BasicComponentProps } from '../core';
 
 type IconLibs =
   | 'AntDesign'
@@ -10,7 +9,8 @@ type IconLibs =
   | 'MaterialIcons'
   | 'SimpleLineIcons';
 
-export interface IconProps extends BasicComponentProps {
+export interface IconProps {
+  elementId: string;
   size?: number;
   lib: IconLibs;
   name: string;

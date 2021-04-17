@@ -1,5 +1,7 @@
+import { Platform } from 'react-native';
 import { DeviceProps } from '../carla-env';
 import { PluginRenderProps } from './plugin-type';
+
 // 向reactnative和 nodejs 通信的动作
 
 /**执行javascript*/
@@ -56,6 +58,7 @@ export interface SetEnvAction {
   data: {
     env: 'production' | 'development';
     IS_DEV: boolean;
+    platform: typeof Platform;
     device: DeviceProps;
   };
 }
@@ -86,3 +89,57 @@ export interface ShowToastAction {
 
   // data:
 }
+
+// 路由==========================================================
+
+/**发送路由入栈事件 */
+export interface PluginRoutePushAction {
+  action: 'plugin_route_push';
+  data: {
+    name: string;
+    params?: Record<string, any>;
+  };
+}
+
+/**发送路由出栈事件 */
+export interface PluginRoutePopAction {
+  action: 'plugin_route_pop';
+  data: {
+    count?: number;
+  };
+}
+
+/**发送路由退出到栈底事件 */
+export interface PluginRoutePopToRootAction {
+  action: 'plugin_route_popToRoot';
+}
+
+/**发送路由替换事件事件 */
+export interface PluginRouteNavigateAction {
+  action: 'plugin_route_navigate';
+  data: {
+    name: string;
+    params?: Record<string, any>;
+  };
+}
+
+export type PostBridgeAction =
+  | ExecJsAction
+  | ErrorReportAction
+  | PluginSearchAction
+  | PluginRenderAction
+  | InstallPkgAction
+  | SetEnvAction;
+
+export type ReceiveBridgeAction =
+  | NodejsInitSuccessAction
+  | NodejsInitErrorAction
+  | ErrorReportAction
+  | PluginSearchAction
+  | NotFoundAction
+  | PluginRoutePushAction
+  | PluginRoutePopAction
+  | PluginRoutePopToRootAction
+  | PluginRouteNavigateAction;
+
+// export type ReceivePluginRouteAction =

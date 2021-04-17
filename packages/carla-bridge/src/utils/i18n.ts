@@ -2,11 +2,6 @@ import { zhCN } from '../i18n/zh-CN';
 import { enUS } from '../i18n/en-US';
 import i18n from 'i18next';
 
-console.log(
-  global.carla.device.locale.currentAppLanguage,
-  '==================',
-);
-
 i18n.init({
   lng: global.carla.device.locale.currentAppLanguage,
   debug: global.carla.IS_ENV,

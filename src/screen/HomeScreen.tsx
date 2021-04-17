@@ -46,7 +46,6 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
   //     },
   //   );
   // }, []);
-  console.log(pluginProvider.pluginRouteMutex, 'HomeScreen');
 
   return (
     <View style={{ flex: 1, height: 400 }}>
@@ -55,15 +54,6 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
       <Button
         title="demo"
         onPress={async () => {
-          // console.log(fs.DocumentDirectoryPath);
-          // console.log(fs.ExternalDirectoryPath);
-          // const dir = await fs.readDir(fs.DocumentDirectoryPath);
-          // console.log(dir);
-          // console.log(Localize.getCountry());
-          // console.log(Localize.getLocales());
-          // console.log(i18n.language);
-          // AsyncStorage.removeItem('language');
-          // console.log(Icon.default);
           navigation.push('PluginRuntimeScreen', {
             pluginName: '/data/local/tmp/century-comic',
             // init: true,
@@ -88,8 +78,8 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
         title="Click"
         color="green"
         onPress={() => {
-          Toast.show('dsahudgsaidgasiudgsaigi', Toast.LONG);
-          // console.log(nodejs.channel);
+          // Toast.show('dsahudgsaidgasiudgsaigi', Toast.LONG);
+          console.log(nodejs.channel);
           // i18n.changeLanguage('en-US');
         }}
       />

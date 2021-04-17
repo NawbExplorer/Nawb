@@ -11,9 +11,7 @@ export const MarketScreen: FC<
   const { navigation } = props;
 
   React.useEffect(() => {
-    const unsubscribe = navigation.addListener('tabPress' as any, (e) => {
-      console.log(e);
-    });
+    const unsubscribe = navigation.addListener('tabPress' as any, (e) => {});
     return unsubscribe;
   }, [navigation]);
 

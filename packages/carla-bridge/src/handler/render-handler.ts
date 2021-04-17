@@ -3,9 +3,9 @@ import {
   PluginRenderProps,
   RnBridge,
   PluginRenderPoster,
-  PostReactNativeAction,
 } from '../type';
 var rnBridge: RnBridge = require('rn-bridge');
+import i18n from 'i18next';
 
 import { importWithCleanCache, reportErrorToReactNative, is } from '../utils';
 
@@ -16,26 +16,23 @@ import { importWithCleanCache, reportErrorToReactNative, is } from '../utils';
 // };
 
 export const handlePluginRender = async function (props: PluginRenderProps) {
-  const { route, pluginName, renderName } = props;
+  const { route, pluginName, renderName, renderId } = props;
 
   const plugin: PluginExport = importWithCleanCache(pluginName);
 
   if (!plugin.uiEntry) {
-    rnBridge.channel.post<PostReactNativeAction>(renderName, {
-      action: 'error_report',
-      data: { error: '' },
-    });
+    reportErrorToReactNative(i18n.t('ui.entry'));
     return;
   }
 
-  const pages = plugin.uiEntry({ pluginName, renderName });
+  const carlaUI = plugin.uiEntry({ pluginName, renderName, renderId });
+  const pages = carlaUI.pages;
 
   let uiTree;
   let pageName;
 
   for (const name in pages) {
     const pageProps = pages[name];
-
     if (pageProps.entry && !route?.name) {
       uiTree = pageProps.page(route);
       pageName = name;
@@ -45,8 +42,6 @@ export const handlePluginRender = async function (props: PluginRenderProps) {
         uiTree = pageProps.page(route);
         pageName = name;
         break;
-      } else {
-        throw new Error(`page name ${name} ${route.name} not equal`);
       }
     }
   }
@@ -55,5 +50,6 @@ export const handlePluginRender = async function (props: PluginRenderProps) {
     uiTree,
     pageName,
     renderName,
+    pluginName,
   });
 };

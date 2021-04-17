@@ -1,6 +1,6 @@
 import cheerio from 'cheerio';
 import got from 'got';
-import { TapZone, Zone } from 'carla';
+import { Context, TapZone, Zone, navigation } from 'carla';
 
 async function fetchComicInfo(url) {
   const res = await got.get(url);
@@ -39,12 +39,20 @@ async function fetchComicInfo(url) {
 }
 
 export const ComicInfo = function (route) {
-  console.log(route, '==================');
-  return Zone({
-    style: {
-      width: 200,
-      height: 400,
-      backgroundColor: 'red',
+  Context.addToContext({
+    renderName: 'info',
+  });
+
+  return TapZone({
+    onTap() {
+      navigation.push('content');
     },
+    children: Zone({
+      style: {
+        width: 200,
+        height: 400,
+        backgroundColor: 'red',
+      },
+    }),
   });
 };

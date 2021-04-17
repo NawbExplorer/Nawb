@@ -1,3 +1,1 @@
-export interface PluginRenderReceiver {
-  
-}
+export interface PluginRenderReceiver {}

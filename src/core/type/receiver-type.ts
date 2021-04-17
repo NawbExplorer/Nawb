@@ -1,4 +1,4 @@
-import { CarlaTreeEntity } from './core-type';
+import { CarlaTreeEntity } from './plugin-type';
 
 export interface PluginRenderReceiver {
   uiTree: CarlaTreeEntity;
@@ -7,4 +7,5 @@ export interface PluginRenderReceiver {
    * 强制发给react native 虽然没用
    */
   renderName: string;
+  pluginName: string;
 }

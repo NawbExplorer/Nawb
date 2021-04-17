@@ -26,7 +26,7 @@ const RecyclerListZone: NoChildComponent<RecyclerListProps> = function (
       const data = await props.onRefresh();
       if (!(data && data[0] && data[0].tagName)) {
         throw new Error(
-          `[${tagName}] onRefresh return value must be MiaoElement e.g. ListTile[]`,
+          `[${tagName}] onRefresh return value must be Component e.g. ListTile[]`,
         );
       }
 
@@ -45,7 +45,7 @@ const RecyclerListZone: NoChildComponent<RecyclerListProps> = function (
 
       if (!(data && data[0] && data[0].tagName)) {
         throw new Error(
-          `[${tagName}] onFetch return value must be MiaoElement e.g. ListTile[]`,
+          `[${tagName}] onFetch return value must be Component e.g. ListTile[]`,
         );
       }
 

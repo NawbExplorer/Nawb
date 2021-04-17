@@ -1,4 +1,17 @@
 import type { EventEmitter } from 'events';
+import {
+  ErrorReportAction,
+  ExecJsAction,
+  InstallPkgAction,
+  InstallPkgErrorAction,
+  InstallPkgSuccessAction,
+  NodejsInitErrorAction,
+  NodejsInitSuccessAction,
+  NotFoundAction,
+  PluginRenderAction,
+  PluginSearchAction,
+  SetEnvAction,
+} from './action-type';
 
 interface BridgeEventCallback<E> {
   (msg: E): void;
@@ -29,3 +42,20 @@ export interface RnBridge<E = any> {
   channel: BridgeChannel<E>;
   app: BridgeApp;
 }
+
+export type PostReactNativeAction =
+  | NodejsInitSuccessAction
+  | NodejsInitErrorAction
+  | ErrorReportAction
+  | PluginSearchAction
+  | InstallPkgErrorAction
+  | InstallPkgSuccessAction
+  | NotFoundAction;
+
+export type ReceiveReactNativeAction =
+  | ExecJsAction
+  // | SetDeviceInfoAction
+  | PluginSearchAction
+  | PluginRenderAction
+  | InstallPkgAction
+  | SetEnvAction;

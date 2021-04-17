@@ -16,7 +16,14 @@ import {
 // 可以直接导入 因为 rn-bridge 的路径被加入到了NODE_PATH中
 // 可见 native-lib.cpp
 const rnBridge: RnBridge = require('rn-bridge');
-import i18n from 'i18next';
+
+const setCarlaGlobal = function (data: SetEnvAction['data']) {
+  global.carla.device = data.device;
+  global.carla.IS_ENV = data.IS_DEV;
+  global.carla.env = data.env;
+  global.carla.platform = data.platform;
+  process.env.CARLA_ENV = data.env;
+};
 
 /**
  *  阻塞  先创建carla所要的环境
@@ -28,12 +35,7 @@ const createCarlaEnv = function () {
         if (msg.action === 'set_env') {
           try {
             const data = msg.data;
-
-            global.carla.device = data.device;
-            global.carla.IS_ENV = data.IS_DEV;
-            global.carla.env = data.env;
-            process.env.CARLA_ENV = msg.data.env;
-
+            setCarlaGlobal(data);
             resolve(null);
           } catch (error) {
             reject(error);
@@ -64,9 +66,9 @@ const listenBridge = function () {
               case 'plugin_render':
                 await handlePluginRender(msg.data);
                 break;
-
               case 'set_env':
-                process.env.CARLA_ENV = msg.data?.env;
+                const data = msg.data;
+                setCarlaGlobal(data);
                 break;
               case 'plugin_search':
                 break;
@@ -75,7 +77,6 @@ const listenBridge = function () {
                   action: 'not_found_action',
                   data: {
                     actionName: (msg as any).action,
-                    // actionName: msg.action,
                   },
                 });
                 break;

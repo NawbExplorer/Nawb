@@ -9,6 +9,7 @@ import {
   themeProvider,
 } from './provider';
 import { RootNavigator } from './screen/RootNavigator';
+import NetInfo from '@react-native-community/netinfo';
 import {
   Platform,
   SafeAreaView,
@@ -24,6 +25,7 @@ import {
   NavigationContainerRef,
 } from '@react-navigation/native';
 import { EM, handleBridgeMessage } from './core';
+import Toast from 'react-native-simple-toast';
 import './utils/i18n';
 
 // const routingInstrumentation = new Sentry.ReactNavigationV5Instrumentation();
@@ -61,6 +63,14 @@ export const App: FC = observer(() => {
   // Linking.addEventListener('url', () => {});
 
   useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener((state) => {
+      console.log('Connection type', state.type);
+      console.log('Is connected?', state.isConnected);
+      if (!state.isConnected) {
+        // Toast;T
+      }
+    });
+
     // routingInstrumentation.registerNavigationContainer(navigationRef as any);
     if (__DEV__) {
       nodejs.startWithParams(['/data/local/tmp/nodejs-project/boot.js']);
@@ -69,6 +79,7 @@ export const App: FC = observer(() => {
     }
 
     nodejs.channel.addListener(EM.CARLA_BRIDGE, handleBridgeMessage);
+    return unsubscribe;
   }, []);
 
   return (

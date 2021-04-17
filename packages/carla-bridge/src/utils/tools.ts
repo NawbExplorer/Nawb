@@ -1,4 +1,4 @@
-import { PostReactNativeAction } from './../type/plugin-type';
+import { PostReactNativeAction } from '../type/plugin-type';
 import type { RnBridge } from '../type/bridge-type';
 import { EM } from '../core';
 import assert from 'assert';

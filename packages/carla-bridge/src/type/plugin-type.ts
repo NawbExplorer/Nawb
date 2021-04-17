@@ -30,7 +30,7 @@ interface PageProps {
 
 export interface PluginUIExport {
   namespace: string;
-  // pages:
+  pages: PageProps;
 }
 
 export interface PluginSearchExport {
@@ -53,21 +53,5 @@ export interface PluginRenderProps {
   pluginName: string;
   renderName: string;
   route?: CarlaRoute;
+  renderId: string;
 }
-
-export type PostReactNativeAction =
-  | NodejsInitSuccessAction
-  | NodejsInitErrorAction
-  | ErrorReportAction
-  | PluginSearchAction
-  | InstallPkgErrorAction
-  | InstallPkgSuccessAction
-  | NotFoundAction;
-
-export type ReceiveReactNativeAction =
-  | ExecJsAction
-  // | SetDeviceInfoAction
-  | PluginSearchAction
-  | PluginRenderAction
-  | InstallPkgAction
-  | SetEnvAction;

@@ -2,6 +2,7 @@
   "name": "carla",
   "version": "0.0.1",
   "main": "dist/index.js",
+  "types": "src/index.ts",
   "scripts": {
     "start": "rimraf dist && node ./scripts/prepare.js && node ./esbuild.config.js",
     "release": "rimraf dist && node ./scripts/prepare.js && cross-env NODE_ENV=production node ./esbuild.config.js",

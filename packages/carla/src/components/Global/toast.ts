@@ -1,5 +1,7 @@
-import { AM } from '../../common/action-mapper';
-const rnBridge = require('rn-bridge');
+import { EM, RnBridge } from '../../common';
+import { PostReactNativeAction } from '../../common';
+
+const rnBridge: RnBridge = require('rn-bridge');
 
 interface ToastOptions {
   //毫秒
@@ -20,9 +22,7 @@ export const TOAST = {
 };
 
 export const toast: ToastArgs = function (message, options) {
-  rnBridge.channel.post('global', {
-    action: AM.SHOW_TOAST,
-    message,
-    ...options,
+  rnBridge.channel.post<PostReactNativeAction>(EM.CARLA_BRIDGE, {
+    action: 'show_toast',
   });
 };

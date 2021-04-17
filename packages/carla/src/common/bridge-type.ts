@@ -1,4 +1,5 @@
 import type { EventEmitter } from 'events';
+import { PluginRoutePushAction, PluginRoutePopAction } from './action-type';
 
 interface BridgeEventCallback<E> {
   (msg: E): void;
@@ -10,8 +11,8 @@ interface OverwriteEventEmitter extends EventEmitter {
 
 interface BridgeChannel<E> extends OverwriteEventEmitter {
   on: (event: string, cb: BridgeEventCallback<E>) => this;
-  post?: (name: string, ...msg: any) => void;
-  send?: (...msg: any) => void;
+  post<T = any>(event: string, ...message: T[]): void;
+  send<T = any>(...msg: T[]): void;
 }
 
 type AppEventName = 'resume' | 'pause';

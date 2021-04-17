@@ -9,6 +9,7 @@ export const presetGlobalVariable = function () {
       _device: {},
       _env: null,
       _IS_ENV: null,
+      _platform: null,
       set device(value) {
         if (!!value) {
           this._device = value;
@@ -38,6 +39,16 @@ export const presetGlobalVariable = function () {
       },
       get IS_ENV() {
         return this._device;
+      },
+      set platform(value) {
+        if (!!value) {
+          this._platform = value;
+        } else {
+          throw new Error('carla:platform get null');
+        }
+      },
+      get platform() {
+        return this._platform;
       },
     };
   }

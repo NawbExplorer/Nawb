@@ -1,4 +1,3 @@
-import { DeviceProps } from './device-type';
 import { PluginRenderProps } from './plugin-type';
 // 向reactnative和 nodejs 通信的动作
 
@@ -58,6 +57,7 @@ export interface SetEnvAction {
     device: DeviceProps;
     env: 'production' | 'development';
     IS_DEV: boolean;
+    platform: Platform;
   };
 }
 

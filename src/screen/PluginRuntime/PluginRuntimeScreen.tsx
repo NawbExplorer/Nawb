@@ -1,19 +1,21 @@
 import 'react-native-get-random-values';
 import { observer } from 'mobx-react-lite';
-import { Button, View } from 'react-native';
+import { Button, Platform, View } from 'react-native';
 import { PluginContext } from '../../provider';
 import { makeUniqueName } from '../../utils';
 import Toast from 'react-native-simple-toast';
 import nodejs from 'nodejs-mobile-react-native';
 import { StackScreenProps } from '@react-navigation/stack';
-import { RootNavigatorStackParamList } from '../type/stack-type';
+import { RootNavigatorStackParamList } from '../type/navigation-type';
+import React, { FC, ReactNode, useContext, useEffect, useState } from 'react';
+import { nanoid } from 'nanoid';
 import {
   renderCarlaToReact,
   EM,
   PostBridgeAction,
   PluginRenderReceiver,
+  ReceiveBridgeAction,
 } from '../../core';
-import React, { FC, ReactNode, useContext, useEffect, useState } from 'react';
 
 export const PluginRuntimeScreen: FC<
   StackScreenProps<RootNavigatorStackParamList, 'PluginRuntimeScreen'>
@@ -24,45 +26,52 @@ export const PluginRuntimeScreen: FC<
   const ctx = useContext(PluginContext);
 
   useEffect(() => {
-    // const unsubscribe = navigation.addListener('transitionEnd', (e) => {
-    //   console.log(ctx.pluginRouteLocker, Date.now(), 'blur');
-    //   ctx.setPluginRouteLocker(false);
-    // });
+    const unsubscribe = navigation.addListener('transitionEnd', (e) => {
+      ctx.setPluginRouteMutex(false);
+    });
+
+    // 每次渲染一个 page都会有一个 renderId, carla没有局部渲染
+    // renderId 用来表示每个 page用于路由跳转等等
+    const renderId = nanoid(16);
+    const routeName = makeUniqueName('pluginRoute', renderId);
+    const renderName = makeUniqueName('pluginRender', renderId);
 
     if (params?.pluginName) {
       if (!ctx.pluginHolderName) {
         ctx.setPluginHolderName(route.key);
       }
 
-      const renderName = makeUniqueName('pluginRender');
-
-      // 添加到当前插件渲染的队列中
-      ctx.addCurrentPluginRender(renderName);
+      nodejs.channel.addListener(routeName, (m: ReceiveBridgeAction) => {
+        if (!ctx.pluginRouteMutex) {
+          ctx.setPluginRouteMutex(true);
+          switch (m.action) {
+            case 'plugin_route_push':
+              navigation.push('PluginRuntimeScreen', {
+                pluginName: '/data/local/tmp/century-comic',
+                route: {
+                  name: m?.data.name,
+                  params: m?.data.params,
+                },
+              });
+              break;
+            default:
+              break;
+          }
+        }
+      });
 
       nodejs.channel.once(renderName, (msg: PluginRenderReceiver) => {
-        console.log(msg);
         const entry = renderCarlaToReact(msg.uiTree);
         setRenderCarlaPlugin(entry);
-
-        // nodejs.channel.addListener(msg.pageName, (msg) => {
-        //   console.log(ctx.pluginRouteLocker, Date.now());
-
-        //   if (!ctx.pluginRouteLocker) {
-        //     ctx.setPluginRouteLocker(true);
-
-        //     navigation.push('PluginRuntimeScreen', {
-        //       pluginName: '/data/local/tmp/century-comic',
-        //       // route: msg.route,
-        //     });
-        //   }
-        // });
       });
 
       nodejs.channel.post<PostBridgeAction>(EM.CARLA_BRIDGE, {
         action: 'plugin_render',
         data: {
-          pluginName: params.pluginName,
           renderName,
+          renderId,
+          pluginName: params.pluginName,
+          route: params.route,
         },
       });
     } else {
@@ -70,17 +79,19 @@ export const PluginRuntimeScreen: FC<
     }
 
     return () => {
-      for (const name of ctx.currentPluginRenderers) {
-        nodejs.channel.removeAllListeners(name);
-        ctx.clearCurrentPluginRender(name);
-      }
+      // for (const name of ctx.currentPluginRenderers) {
+      //   ctx.clearCurrentPluginRender(name);
+      // }
+
+      nodejs.channel.removeAllListeners(renderName);
+      nodejs.channel.removeAllListeners(routeName);
 
       // 如果栈推到插件更目录 丢掉插件占用
       if (route.key === ctx.pluginHolderName) {
         ctx.setPluginHolderName(null);
       }
 
-      // unsubscribe();
+      unsubscribe();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -91,8 +102,11 @@ export const PluginRuntimeScreen: FC<
         title="Click"
         color="green"
         onPress={() => {
-          console.log(nodejs.channel);
-          // navigation.push('DialogScreen');
+          navigation.push('PluginRuntimeScreen', {
+            pluginName: '/data/local/tmp/century-comic',
+            // route: msg.route,
+          });
+          // navigation.push('PluginRuntimeScreen');
         }}
       />
       {/* <Text>{String(ctx.pluginSourceLocker)}</Text> */}

@@ -79,6 +79,8 @@ type DeviceProps = {
   screen: DeviceScreenProps;
 };
 
+type PlatformOSType = 'ios' | 'android' | 'macos' | 'windows';
+
 type PlatformConstants = {
   isTesting: boolean;
   reactNativeVersion: {
@@ -139,8 +141,7 @@ interface CarlaEnv {
   _device: Readonly<DeviceProps | {}>;
   _IS_ENV: Readonly<boolean>;
   _env: Readonly<'development' | 'production'>;
-  _platform: Readonly<Platform>;
-  device: Readonly<DeviceProps>;
+  device: DeviceProps;
   IS_ENV: boolean;
   env: 'development' | 'production';
   platform: Platform;
