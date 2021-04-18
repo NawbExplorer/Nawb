@@ -5,6 +5,7 @@ import { search as searchApi } from './search';
 import { Page, CarlaUI } from 'carla';
 
 export const uiEntry = function (context) {
+  console.log(context, '-------------------------------------');
   return CarlaUI({
     namespace: 'century-comic',
     context,

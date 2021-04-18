@@ -26,7 +26,7 @@ export interface PluginRouteNavigateAction {
   data: {
     name: string;
     params?: Record<string, any>;
-  };
+  }; 
 }
 
 /**发送toast事件 */

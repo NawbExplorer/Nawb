@@ -16,7 +16,7 @@ import { importWithCleanCache, reportErrorToReactNative, is } from '../utils';
 // };
 
 export const handlePluginRender = async function (props: PluginRenderProps) {
-  const { route, pluginName, renderName, renderId } = props;
+  const { route, pluginName, renderName } = props;
 
   const plugin: PluginExport = importWithCleanCache(pluginName);
 
@@ -25,7 +25,7 @@ export const handlePluginRender = async function (props: PluginRenderProps) {
     return;
   }
 
-  const carlaUI = plugin.uiEntry({ pluginName, renderName, renderId });
+  const carlaUI = plugin.uiEntry(props);
   const pages = carlaUI.pages;
 
   let uiTree;

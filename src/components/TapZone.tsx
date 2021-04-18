@@ -1,18 +1,15 @@
 import React, { FC, useCallback } from 'react';
 import { ColorValue, Platform, Pressable, Text, TextStyle } from 'react-native';
-import { HasEventElement } from '../core';
 import nodejs from 'nodejs-mobile-react-native';
-import {
-  TouchableWithoutFeedback,
-  TouchableNativeFeedback,
-} from 'react-native-gesture-handler';
 import { makeUniqueName } from '../utils';
 
-export interface MiaoTapZoneProps extends HasEventElement {
+export interface MiaoTapZoneProps {
   mode?: 'opacity' | 'highlight' | 'default';
   delayLongTap: number;
   delayTapDown: number;
   delayTapUp: number;
+  events: string[];
+  elementId: string;
 }
 
 const TapZoneEvents = {

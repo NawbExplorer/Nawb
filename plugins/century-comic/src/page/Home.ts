@@ -41,6 +41,7 @@ async function fetchMainPageData(page) {
 
   const data = [];
   const $ = cheerio.load(res.body);
+
   for (var ele of $('.vbox') as any) {
     ele = $(ele);
     const href = `${ele.find('a.vbox_t').attr('href')}`;
@@ -51,7 +52,8 @@ async function fetchMainPageData(page) {
       TapZone({
         style: { width: '100%', height: '100%' },
         onTap() {
-          navigation.push('info');
+          console.log(rnBridge.channel);
+          navigation.push('info', { fuck: true });
         },
         children: ListTile({
           trailing: Image({

@@ -43,8 +43,12 @@ export const ComicInfo = function (route) {
     renderName: 'info',
   });
 
+  console.log(Context.value);
   return TapZone({
     onTap() {
+      console.log(Context.value);
+      console.log(Context.value.route.params);
+
       navigation.push('content');
     },
     children: Zone({

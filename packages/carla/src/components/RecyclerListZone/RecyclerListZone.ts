@@ -1,4 +1,5 @@
-import { RnBridge, NoChildComponent } from '../../common';
+import { Context } from '../../provider';
+import { RnBridge, NoChildComponent, makeUniqueName } from '../../common';
 import { nanoid } from 'nanoid';
 import { RecyclerListProps } from './RecyclerListZoneInterface';
 const rnBridge: RnBridge = require('rn-bridge');
@@ -17,12 +18,14 @@ const RecyclerListZone: NoChildComponent<RecyclerListProps> = function (
 
   const elementId = nanoid(16);
   const events = [];
+  let allRegisterEvents = [];
 
   if (props.onRefresh) {
     events.push(RecyclerListZoneEvents.Refresh);
-    const eventId = RecyclerListZoneEvents.Refresh + elementId;
+    const eventName = makeUniqueName(RecyclerListZoneEvents.Refresh, elementId);
+    allRegisterEvents.push(eventName);
 
-    rnBridge.channel.on(eventId, async function (event) {
+    rnBridge.channel.on(eventName, async function (event) {
       const data = await props.onRefresh();
       if (!(data && data[0] && data[0].tagName)) {
         throw new Error(
@@ -30,7 +33,7 @@ const RecyclerListZone: NoChildComponent<RecyclerListProps> = function (
         );
       }
 
-      rnBridge.channel.post(eventId, {
+      rnBridge.channel.post(eventName, {
         data,
       });
     });
@@ -38,9 +41,9 @@ const RecyclerListZone: NoChildComponent<RecyclerListProps> = function (
 
   if (props.onFetch) {
     events.push(RecyclerListZoneEvents.Fetch);
-    const eventId = RecyclerListZoneEvents.Fetch + elementId;
-
-    rnBridge.channel.on(eventId, async function (event) {
+    const eventName = makeUniqueName(RecyclerListZoneEvents.Fetch, elementId);
+    allRegisterEvents.push(eventName);
+    rnBridge.channel.on(eventName, async function (event) {
       const data = await props.onFetch();
 
       if (!(data && data[0] && data[0].tagName)) {
@@ -49,9 +52,22 @@ const RecyclerListZone: NoChildComponent<RecyclerListProps> = function (
         );
       }
 
-      rnBridge.channel.post(eventId, {
+      rnBridge.channel.post(eventName, {
         data,
       });
+    });
+  }
+
+  if (props.onFetch || props.onRefresh) {
+    const removeEventName = makeUniqueName(
+      'removeEvent',
+      Context.value.renderId,
+    );
+    rnBridge.channel.once(removeEventName, () => {
+      for (const event of allRegisterEvents) {
+        rnBridge.channel.removeAllListeners(event);
+        allRegisterEvents = [];
+      }
     });
   }
 

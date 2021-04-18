@@ -2,6 +2,7 @@ import { MiaoTapZoneEvent, TapZoneProps } from './TapZoneInterface';
 import { RnBridge, Component, makeUniqueName } from '../../../common';
 let rnBridge: RnBridge<MiaoTapZoneEvent> = require('rn-bridge');
 import { nanoid } from 'nanoid';
+import { Context } from '../../../provider/context';
 
 const TapZoneEvents = {
   Tap: 'tap',
@@ -19,16 +20,18 @@ const TapZone: Component<TapZoneProps> = function (propsObj) {
   props.mode = props.mode ?? 'default';
 
   const elementId = nanoid(16);
+  let allRegisterEvents = [];
 
   const events = [];
 
   if (propsObj.onTap) {
     const eventName = makeUniqueName(TapZoneEvents.Tap, elementId);
+    console.log(eventName);
+    allRegisterEvents.push(eventName);
     events.push(TapZoneEvents.Tap);
 
     rnBridge.channel.on(eventName, async function (event) {
       const result = await propsObj.onTap();
-
       rnBridge.channel.post(eventName, {
         data: result,
       });
@@ -37,6 +40,7 @@ const TapZone: Component<TapZoneProps> = function (propsObj) {
 
   if (propsObj.onLongTap) {
     const eventName = makeUniqueName(TapZoneEvents.LongTap, elementId);
+    allRegisterEvents.push(eventName);
     events.push(TapZoneEvents.LongTap);
 
     rnBridge.channel.on(eventName, async function (event) {
@@ -44,6 +48,19 @@ const TapZone: Component<TapZoneProps> = function (propsObj) {
       rnBridge.channel.post(eventName, {
         data: result,
       });
+    });
+  }
+
+  if (propsObj.onTap || propsObj.onLongTap) {
+    const removeEventName = makeUniqueName(
+      'removeEvent',
+      Context.value.renderId,
+    );
+    rnBridge.channel.once(removeEventName, () => {
+      for (const event of allRegisterEvents) {
+        rnBridge.channel.removeAllListeners(event);
+        allRegisterEvents = [];
+      }
     });
   }
 

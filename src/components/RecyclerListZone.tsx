@@ -11,9 +11,10 @@ import {
   LayoutProvider,
   RecyclerListView,
 } from 'recyclerlistview';
-import { HasEventElement, renderCarlaToReact } from '../core';
+import { renderCarlaToReact } from '../core';
 import nodejs from 'nodejs-mobile-react-native';
 import LoadingIndicator from 'react-native-indicator';
+import { makeUniqueName } from '../utils';
 
 type PresetLayout = 'line' | 'card' | 'stagger';
 
@@ -68,7 +69,7 @@ const createLayoutProvider = function (
   );
 };
 
-export interface RecyclerListZoneProps extends HasEventElement {
+export interface RecyclerListZoneProps {
   zoneHeight?: number;
   zoneWidth?: number;
   style?: ViewStyle;
@@ -80,6 +81,7 @@ export interface RecyclerListZoneProps extends HasEventElement {
   initRenderOffset?: number;
   header?: object;
   footer?: object;
+  elementId: string;
 }
 
 export const RecyclerListZone: FC<RecyclerListZoneProps> = function (props) {
@@ -96,8 +98,15 @@ export const RecyclerListZone: FC<RecyclerListZoneProps> = function (props) {
     elementId,
   } = props;
   const { width } = useWindowDimensions();
-  const refreshEventName = RecyclerListZoneEvents.Refresh + elementId;
-  const fetchEventName = RecyclerListZoneEvents.Fetch + elementId;
+  const refreshEventName = makeUniqueName(
+    RecyclerListZoneEvents.Refresh,
+    elementId,
+  );
+
+  const fetchEventName = makeUniqueName(
+    RecyclerListZoneEvents.Fetch,
+    elementId,
+  );
 
   const initDataProvider = useMemo(
     () =>

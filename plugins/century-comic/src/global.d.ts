@@ -138,9 +138,6 @@ type Platform =
   | PlatformMacOSStatic;
 
 interface CarlaEnv {
-  _device: Readonly<DeviceProps | {}>;
-  _IS_ENV: Readonly<boolean>;
-  _env: Readonly<'development' | 'production'>;
   device: DeviceProps;
   IS_ENV: boolean;
   env: 'development' | 'production';

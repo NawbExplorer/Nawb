@@ -24,6 +24,7 @@ export const PluginRuntimeScreen: FC<
   const { params } = route;
   const [renderMiao, setRenderCarlaPlugin] = useState<ReactNode>(null);
   const ctx = useContext(PluginContext);
+  const [state, setstate] = useState('');
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('transitionEnd', (e) => {
@@ -35,6 +36,8 @@ export const PluginRuntimeScreen: FC<
     const renderId = nanoid(16);
     const routeName = makeUniqueName('pluginRoute', renderId);
     const renderName = makeUniqueName('pluginRender', renderId);
+    const removeEventName = makeUniqueName('removeEvent', renderId);
+    setstate(removeEventName);
 
     if (params?.pluginName) {
       if (!ctx.pluginHolderName) {
@@ -42,6 +45,7 @@ export const PluginRuntimeScreen: FC<
       }
 
       nodejs.channel.addListener(routeName, (m: ReceiveBridgeAction) => {
+        console.log(m, ctx.pluginRouteMutex);
         if (!ctx.pluginRouteMutex) {
           ctx.setPluginRouteMutex(true);
           switch (m.action) {
@@ -79,12 +83,11 @@ export const PluginRuntimeScreen: FC<
     }
 
     return () => {
-      // for (const name of ctx.currentPluginRenderers) {
-      //   ctx.clearCurrentPluginRender(name);
-      // }
-
       nodejs.channel.removeAllListeners(renderName);
       nodejs.channel.removeAllListeners(routeName);
+
+      // 释放退栈销毁当前页 nodejs的所有事件
+      nodejs.channel.post(removeEventName);
 
       // 如果栈推到插件更目录 丢掉插件占用
       if (route.key === ctx.pluginHolderName) {
@@ -102,10 +105,28 @@ export const PluginRuntimeScreen: FC<
         title="Click"
         color="green"
         onPress={() => {
-          navigation.push('PluginRuntimeScreen', {
-            pluginName: '/data/local/tmp/century-comic',
-            // route: msg.route,
+          nodejs.channel.post(state);
+          // navigation.push('PluginRuntimeScreen', {
+          //   pluginName: '/data/local/tmp/century-comic',
+          //   // route: msg.route,
+          // });
+          // navigation.push('PluginRuntimeScreen');
+        }}
+      />
+      <Button
+        title="Click"
+        color="blue"
+        onPress={() => {
+          nodejs.channel.post('carla_bridge', {
+            action: 'exec_js',
+            data: {
+              script: `console.log(bridge.channel)`,
+            },
           });
+          // navigation.push('PluginRuntimeScreen', {
+          //   pluginName: '/data/local/tmp/century-comic',
+          //   // route: msg.route,
+          // });
           // navigation.push('PluginRuntimeScreen');
         }}
       />

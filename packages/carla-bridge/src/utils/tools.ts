@@ -1,5 +1,4 @@
-import { PostReactNativeAction } from '../type/plugin-type';
-import type { RnBridge } from '../type/bridge-type';
+import { PostReactNativeAction, RnBridge } from '../type';
 import { EM } from '../core';
 import assert from 'assert';
 import { nanoid } from 'nanoid';
@@ -78,5 +77,16 @@ export const importPackage = function (name: string) {
  * @param {string} strict - 是否启用严格模式
  */
 export const runSafeScript = function (script: string, strict = false) {
-  return Function(`${strict ? 'use strict' : ''} ${script}`)();
+  const func = Function(
+    'exports',
+    'require',
+    'module',
+    '__filename',
+    '__dirname',
+    'bridge',
+    `return function(){ ${strict ? 'use strict' : ''}  ${script}}`,
+  )(exports, require, module, __filename, __dirname, rnBridge);
+  if (func) {
+    func();
+  }
 };

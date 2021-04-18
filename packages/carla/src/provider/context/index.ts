@@ -3,7 +3,6 @@ import { ContextBasicProps } from './ContextBasicProps';
 
 export class ContextProvider {
   private static _instance: ContextProvider;
-  private _routeMap = new Map();
   public value: ContextBasicProps;
 
   public setContext(context: Record<string, any> | ContextBasicProps) {

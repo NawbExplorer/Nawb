@@ -1,4 +1,4 @@
-import { CarlaTreeEntity } from './plugin-type';
+import { CarlaTreeEntity } from './carlaUI-type';
 
 export interface PluginRenderReceiver {
   uiTree: CarlaTreeEntity;
