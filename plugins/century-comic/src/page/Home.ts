@@ -38,7 +38,7 @@ async function fetchMainPageData(page) {
       },
     },
   );
-
+  console.log(res.body);
   const data = [];
   const $ = cheerio.load(res.body);
 

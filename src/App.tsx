@@ -60,7 +60,7 @@ import './utils/i18n';
 export const App: FC = observer(() => {
   const navigationRef = React.createRef<NavigationContainerRef>();
 
-  // Linking.addEventListener('url', () => {});
+  Linking.addEventListener('url', () => {});
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener(state => {

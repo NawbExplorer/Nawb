@@ -155,7 +155,7 @@ export const RecyclerListZone: FC<RecyclerListZoneProps> = function (props) {
 
   useEffect(() => {
     nodejs.channel.post(fetchEventName);
-    nodejs.channel.once(fetchEventName, (msg) => {
+    nodejs.channel.once(fetchEventName, msg => {
       const data = setData(msg);
       setRefreshing(false);
       setInit(true);
@@ -163,7 +163,7 @@ export const RecyclerListZone: FC<RecyclerListZoneProps> = function (props) {
     });
 
     return () => {
-      nodejs.channel.removeAllListeners(fetchEventName);
+      // nodejs.channel.removeAllListeners(fetchEventName);
       nodejs.channel.removeAllListeners(refreshEventName);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -194,7 +194,7 @@ export const RecyclerListZone: FC<RecyclerListZoneProps> = function (props) {
               refreshing={isRefreshing}
               onRefresh={async () => {
                 if (!isRefreshing) {
-                  nodejs.channel.once(refreshEventName, (msg) => {
+                  nodejs.channel.once(refreshEventName, msg => {
                     const data = setData(msg, true);
                     setDataProvider(dataProvider.cloneWithRows(data));
                     setRefreshing(false);
@@ -213,7 +213,7 @@ export const RecyclerListZone: FC<RecyclerListZoneProps> = function (props) {
             ? undefined
             : () => {
                 if (!updating) {
-                  nodejs.channel.once(fetchEventName, (msg) => {
+                  nodejs.channel.once(fetchEventName, msg => {
                     const data = setData(msg);
                     setDataProvider(dataProvider.cloneWithRows(data));
                     setUpdating(false);

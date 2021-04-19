@@ -27,7 +27,7 @@ export const PluginRuntimeScreen: FC<
   const [state, setstate] = useState('');
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener('transitionEnd', (e) => {
+    const unsubscribe = navigation.addListener('transitionEnd', e => {
       ctx.setPluginRouteMutex(false);
     });
 
@@ -65,6 +65,7 @@ export const PluginRuntimeScreen: FC<
       });
 
       nodejs.channel.once(renderName, (msg: PluginRenderReceiver) => {
+        console.log(msg);
         const entry = renderCarlaToReact(msg.uiTree);
         setRenderCarlaPlugin(entry);
       });
@@ -105,7 +106,6 @@ export const PluginRuntimeScreen: FC<
         title="Click"
         color="green"
         onPress={() => {
-          nodejs.channel.post(state);
           // navigation.push('PluginRuntimeScreen', {
           //   pluginName: '/data/local/tmp/century-comic',
           //   // route: msg.route,
@@ -117,12 +117,13 @@ export const PluginRuntimeScreen: FC<
         title="Click"
         color="blue"
         onPress={() => {
-          nodejs.channel.post('carla_bridge', {
-            action: 'exec_js',
-            data: {
-              script: `console.log(bridge.channel)`,
-            },
-          });
+          console.log(nodejs.channel);
+          // nodejs.channel.post('carla_bridge', {
+          //   action: 'exec_js',
+          //   data: {
+          //     script: `console.log(bridge.channel)`,
+          //   },
+          // });
           // navigation.push('PluginRuntimeScreen', {
           //   pluginName: '/data/local/tmp/century-comic',
           //   // route: msg.route,
