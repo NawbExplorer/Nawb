@@ -30,3 +30,7 @@ export const uiEntry = function (context) {
 export const searchEntry = function (ctx) {
   return searchApi;
 };
+
+// export const scriptEntry = function () {};
+
+// export const scheduleEntry = function () {};
