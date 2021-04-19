@@ -63,7 +63,7 @@ export const App: FC = observer(() => {
   // Linking.addEventListener('url', () => {});
 
   useEffect(() => {
-    const unsubscribe = NetInfo.addEventListener((state) => {
+    const unsubscribe = NetInfo.addEventListener(state => {
       console.log('Connection type', state.type);
       console.log('Is connected?', state.isConnected);
       if (!state.isConnected) {

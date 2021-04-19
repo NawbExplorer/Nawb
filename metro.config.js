@@ -17,9 +17,8 @@ module.exports = {
   },
   resolver: {
     sourceExts: ['jsx', 'js', 'ts', 'tsx'],
-    blacklistRE: exclusionList([
+    blockList: exclusionList([
       /nodejs-assets\/.*/,
-      /plugins\/.*/,
       /packages\/.*/,
       /android\/.*/,
       /ios\/.*/,
