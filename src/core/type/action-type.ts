@@ -1,6 +1,6 @@
+import { PluginRenderProps } from './carlaUI-type';
 import { Platform } from 'react-native';
 import { DeviceProps } from '../carla-env';
-import { PluginRenderProps } from './plugin-type';
 
 // 向reactnative和 nodejs 通信的动作
 
@@ -114,7 +114,20 @@ export interface PluginRoutePopToRootAction {
   action: 'plugin_route_popToRoot';
 }
 
+/**发送路由返回上一级事件*/
+export interface PluginRouteGoBackAction {
+  action: 'plugin_route_goBack';
+}
+
 /**发送路由替换事件事件 */
+export interface PluginRouteReplaceAction {
+  action: 'plugin_route_replace';
+  data: {
+    name: string;
+    params: Record<string, any>;
+  };
+}
+
 export interface PluginRouteNavigateAction {
   action: 'plugin_route_navigate';
   data: {
@@ -140,6 +153,8 @@ export type ReceiveBridgeAction =
   | PluginRoutePushAction
   | PluginRoutePopAction
   | PluginRoutePopToRootAction
-  | PluginRouteNavigateAction;
+  | PluginRouteNavigateAction
+  | PluginRouteGoBackAction
+  | PluginRouteReplaceAction;
 
 // export type ReceivePluginRouteAction =

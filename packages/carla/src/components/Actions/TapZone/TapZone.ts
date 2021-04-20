@@ -26,7 +26,6 @@ const TapZone: Component<TapZoneProps> = function (propsObj) {
 
   if (propsObj.onTap) {
     const eventName = makeUniqueName(TapZoneEvents.Tap, elementId);
-    console.log(eventName);
     allRegisterEvents.push(eventName);
     events.push(TapZoneEvents.Tap);
 

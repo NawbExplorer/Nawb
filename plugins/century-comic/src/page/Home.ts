@@ -18,7 +18,7 @@ let a = 0;
 
 function navigate(routeName: string) {
   // rnBridge.channel.on('getRouteName', (e) => {
-  //   console.log(e);
+
   // });
   rnBridge.channel.post(`${routeName}_route`, {
     action: 'route',
@@ -38,12 +38,13 @@ async function fetchMainPageData(page) {
       },
     },
   );
-  console.log(res.body);
+
   const data = [];
   const $ = cheerio.load(res.body);
 
   for (var ele of $('.vbox') as any) {
     ele = $(ele);
+
     const href = `${ele.find('a.vbox_t').attr('href')}`;
     const cover = ele.find('a mip-img').attr('src');
     const name = ele.find('.h4 a').text();
@@ -52,7 +53,6 @@ async function fetchMainPageData(page) {
       TapZone({
         style: { width: '100%', height: '100%' },
         onTap() {
-          console.log(rnBridge.channel);
           navigation.push('info', { fuck: true });
         },
         children: ListTile({

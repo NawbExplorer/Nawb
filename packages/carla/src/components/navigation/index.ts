@@ -8,6 +8,12 @@ export type Route = {
 };
 
 export const navigation = {
+  /**
+   *
+   * 不论是否存在都会加到路由栈中
+   * @param name
+   * @param params
+   */
   push(name: string, params?: Record<string, any>) {
     if (!name) {
       throw new Error('name can not be null');
@@ -36,11 +42,54 @@ export const navigation = {
       },
     });
   },
+
   popToRoot() {
     const routeName = makeUniqueName('pluginRoute', Context.value.renderId);
     rnBridge.channel.post<PostReactNativeAction>(routeName, {
       action: 'plugin_route_popToRoot',
     });
   },
-  navigate() {},
+
+  /**
+   *
+   *
+   * @param {string} name
+   * @param params
+   */
+  replace(name: string, params?: Record<string, any>) {
+    if (!name) {
+      throw new Error('name can not be null');
+    }
+
+    const routeName = makeUniqueName('pluginRoute', Context.value.renderId);
+
+    rnBridge.channel.post<PostReactNativeAction>(routeName, {
+      action: 'plugin_route_replace',
+      data: {
+        name,
+        params,
+      },
+    });
+  },
+  /**
+   *
+   *
+   * @param {string} name
+   * @param params
+   */
+  navigate(name: string, params?: Record<string, any>) {
+    if (!name) {
+      throw new Error('name can not be null');
+    }
+
+    const routeName = makeUniqueName('pluginRoute', Context.value.renderId);
+
+    rnBridge.channel.post<PostReactNativeAction>(routeName, {
+      action: 'plugin_route_navigate',
+      data: {
+        name,
+        params,
+      },
+    });
+  },
 };

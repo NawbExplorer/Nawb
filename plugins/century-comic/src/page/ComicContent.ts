@@ -4,7 +4,9 @@ export const ComicContent = function () {
   let currentPage = 1;
 
   return TapZone({
-    onTap() {},
+    onTap() {
+      navigation.popToRoot();
+    },
     children: Zone({
       style: {
         width: 200,

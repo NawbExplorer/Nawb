@@ -23,50 +23,75 @@ export const PluginRuntimeScreen: FC<
   const { route, navigation } = props;
   const { params } = route;
   const [renderMiao, setRenderCarlaPlugin] = useState<ReactNode>(null);
-  const ctx = useContext(PluginContext);
-  const [state, setstate] = useState('');
+  const pluginCtx = useContext(PluginContext);
 
   useEffect(() => {
-    const unsubscribe = navigation.addListener('transitionEnd', e => {
-      ctx.setPluginRouteMutex(false);
-    });
-
     // 每次渲染一个 page都会有一个 renderId, carla没有局部渲染
     // renderId 用来表示每个 page用于路由跳转等等
     const renderId = nanoid(16);
     const routeName = makeUniqueName('pluginRoute', renderId);
     const renderName = makeUniqueName('pluginRender', renderId);
     const removeEventName = makeUniqueName('removeEvent', renderId);
-    setstate(removeEventName);
 
     if (params?.pluginName) {
-      if (!ctx.pluginHolderName) {
-        ctx.setPluginHolderName(route.key);
+      const { pluginName } = params;
+
+      if (!pluginCtx.pluginHolderKey) {
+        pluginCtx.setPluginHolderKey(route.key);
+      }
+
+      if (!pluginCtx.currentPluginName) {
+        pluginCtx.setCurrentPluginName(params.pluginName);
       }
 
       nodejs.channel.addListener(routeName, (m: ReceiveBridgeAction) => {
-        console.log(m, ctx.pluginRouteMutex);
-        if (!ctx.pluginRouteMutex) {
-          ctx.setPluginRouteMutex(true);
-          switch (m.action) {
-            case 'plugin_route_push':
+        switch (m.action) {
+          case 'plugin_route_push':
+            if (m?.data?.name) {
+              pluginCtx.pushToCurrentPluginRoutes(m.data.name);
               navigation.push('PluginRuntimeScreen', {
-                pluginName: '/data/local/tmp/century-comic',
-                route: {
-                  name: m?.data.name,
-                  params: m?.data.params,
-                },
+                pluginName,
+                route: m.data,
               });
-              break;
-            default:
-              break;
-          }
+            }
+            break;
+          case 'plugin_route_navigate':
+            if (m?.data?.name) {
+              if (pluginCtx.addToCurrentPluginRoutes(m.data.name)) {
+                navigation.navigate('PluginRuntimeScreen', {
+                  pluginName,
+                  route: m?.data,
+                });
+              }
+            }
+            break;
+          case 'plugin_route_pop':
+            pluginCtx.popFromCurrentPluginRoutes(m?.data.count);
+            navigation.pop(m?.data.count);
+            break;
+          case 'plugin_route_popToRoot':
+            navigation.pop(pluginCtx.popToRootFromCurrentPluginRoutes());
+            break;
+          case 'plugin_route_goBack':
+            if (navigation.canGoBack()) {
+              pluginCtx.popFromCurrentPluginRoutes();
+              navigation.goBack();
+            }
+            break;
+          case 'plugin_route_replace':
+            navigation.replace('PluginRuntimeScreen', {
+              pluginName,
+              route: m?.data,
+            });
+            break;
+          default:
+            break;
         }
       });
 
       nodejs.channel.once(renderName, (msg: PluginRenderReceiver) => {
-        console.log(msg);
         const entry = renderCarlaToReact(msg.uiTree);
+        pluginCtx.pushToCurrentPluginRoutes(msg.pageName);
         setRenderCarlaPlugin(entry);
       });
 
@@ -91,11 +116,9 @@ export const PluginRuntimeScreen: FC<
       nodejs.channel.post(removeEventName);
 
       // 如果栈推到插件更目录 丢掉插件占用
-      if (route.key === ctx.pluginHolderName) {
-        ctx.setPluginHolderName(null);
+      if (route.key === pluginCtx.pluginHolderKey) {
+        pluginCtx.setPluginHolderKey(null);
       }
-
-      unsubscribe();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -107,7 +130,7 @@ export const PluginRuntimeScreen: FC<
         color="green"
         onPress={() => {
           // navigation.push('PluginRuntimeScreen', {
-          //   pluginName: '/data/local/tmp/century-comic',
+          //   pluginName,
           //   // route: msg.route,
           // });
           // navigation.push('PluginRuntimeScreen');
@@ -125,17 +148,17 @@ export const PluginRuntimeScreen: FC<
           //   },
           // });
           // navigation.push('PluginRuntimeScreen', {
-          //   pluginName: '/data/local/tmp/century-comic',
+          //   pluginName,
           //   // route: msg.route,
           // });
           // navigation.push('PluginRuntimeScreen');
         }}
       />
-      {/* <Text>{String(ctx.pluginSourceLocker)}</Text> */}
+      {/* <Text>{String(pluginCtx.pluginSourceLocker)}</Text> */}
       {/* <Button
           title="demo"
           onPress={() => {
-            // ctx.setPluginSourceLocker(!ctx.pluginSourceLocker);
+            // pluginCtx.setPluginSourceLocker(!pluginCtx.pluginSourceLocker);
           }}
         /> */}
       {renderMiao}

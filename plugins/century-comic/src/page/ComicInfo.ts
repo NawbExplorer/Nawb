@@ -44,19 +44,68 @@ export const ComicInfo = function (route) {
   });
 
   console.log(Context.value);
-  return TapZone({
-    onTap() {
-      console.log(Context.value);
-      console.log(Context.value.route.params);
+  return Zone({
+    children: [
+      TapZone({
+        onTap() {
+          console.log(Context.value);
+          console.log(Context.value.route.params);
 
-      navigation.push('content');
-    },
-    children: Zone({
-      style: {
-        width: 200,
-        height: 400,
-        backgroundColor: 'red',
-      },
-    }),
+          navigation.push('content');
+        },
+        children: Zone({
+          style: {
+            width: 200,
+            height: 200,
+            backgroundColor: 'red',
+          },
+        }),
+      }),
+      TapZone({
+        onTap() {
+          console.log(Context.value);
+          console.log(Context.value.route.params);
+
+          navigation.pop(10);
+        },
+        children: Zone({
+          style: {
+            width: 200,
+            height: 200,
+            backgroundColor: 'green',
+          },
+        }),
+      }),
+      TapZone({
+        onTap() {
+          console.log(Context.value);
+          console.log(Context.value.route.params);
+
+          navigation.replace('content');
+        },
+        children: Zone({
+          style: {
+            width: 200,
+            height: 100,
+            backgroundColor: 'black',
+          },
+        }),
+      }),
+      TapZone({
+        onTap() {
+          console.log(Context.value);
+          console.log(Context.value.route.params);
+
+          navigation.navigate('content');
+        },
+        children: Zone({
+          style: {
+            width: 200,
+            height: 100,
+            backgroundColor: 'pink',
+          },
+        }),
+      }),
+    ],
   });
 };

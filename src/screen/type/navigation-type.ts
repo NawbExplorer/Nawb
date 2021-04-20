@@ -1,5 +1,5 @@
 export type PluginRuntimeScreenParamProps = {
-  pluginName: string;
+  pluginName: string | null;
   route?: {
     name: string;
     params?: Record<string, any>;

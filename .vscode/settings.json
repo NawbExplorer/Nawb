@@ -8,8 +8,24 @@
   },
   "cSpell.ignoreWords": [
     "carla",
+    "channel",
+    "const",
+    "entry",
     "miao",
-    "mutex"
+    "msg",
+    "mutex",
+    "name",
+    "nodejs",
+    "once",
+    "pl",
+    "plugin",
+    "react",
+    "receiver",
+    "render",
+    "set",
+    "to",
+    "tree",
+    "ui"
   ],
   "files.associations": {
     ".js": "javascript",
