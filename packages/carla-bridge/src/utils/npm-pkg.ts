@@ -17,18 +17,18 @@ export const handlePackageJson = function (pkg) {
   var useful = {} as any;
   pkg = is.string(pkg) ? JSON.parse(pkg) : pkg;
 
-  if (pkg && pkg.miao) {
+  if (pkg && pkg.carla) {
     useful.author = pkg.author;
     useful.packageName = pkg.name;
     useful.version = pkg.version;
 
-    useful.logo = pkg.miao.logo;
-    useful.cover = pkg.miao.cover;
-    useful.description = pkg.miao.description;
-    useful.updateInfo = pkg.miao.updateInfo;
-    useful.pluginName = pkg.miao.pluginName;
-    useful.sourceSite = pkg.miao.sourceSite;
-    useful.authorAvatar = pkg.miao.authorAvatar;
+    useful.logo = pkg.carla.logo;
+    useful.cover = pkg.carla.cover;
+    useful.description = pkg.carla.description;
+    useful.updateInfo = pkg.carla.updateInfo;
+    useful.pluginName = pkg.carla.pluginName;
+    useful.sourceSite = pkg.carla.sourceSite;
+    useful.authorAvatar = pkg.carla.authorAvatar;
 
     return useful;
   } else {

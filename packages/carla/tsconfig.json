@@ -13,12 +13,7 @@
     "baseUrl": ".",
     "declaration": true,
     "rootDir": ".",
-    "outDir": "dist",
-    "paths": {
-      "*": [
-        "*"
-      ]
-    }
+    "outDir": "dist"
   },
   "exclude": [
     "node_modules"

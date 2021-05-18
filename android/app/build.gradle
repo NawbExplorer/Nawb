@@ -230,6 +230,7 @@ dependencies {
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-video')
     implementation 'androidx.palette:palette:1.0.0'
+    implementation 'androidx.work:work-runtime:2.3.4'
 
     addUnimodulesDependencies()
 

@@ -29,4 +29,7 @@ export const is = {
   array(obj: unknown): obj is [] {
     return this.type(obj, 'Array');
   },
+  boolean(obj: unknown): obj is boolean {
+    return this.type(obj, 'Boolean');
+  },
 };

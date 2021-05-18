@@ -16,7 +16,9 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "emitDecoratorMetadata": true,
+    "baseUrl": ".",
+    "rootDir": "."
   },
   "exclude": [
     "**/node_modules/*",

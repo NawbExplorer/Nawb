@@ -6,12 +6,10 @@ import android.content.Context;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.deskbtm.carla.generated.BasePackageList;
-import com.deskbtm.carla.god.simulate.CarlaSimulatePackage;
-import com.deskbtm.carla.jsThread.CarlaJsThreadPackage;
-import com.deskbtm.carla.wallpaper.MiaoWallpaperPackage;
+import com.deskbtm.carla.god.simulate.SimulatePackage;
+import com.deskbtm.carla.tools.wallpaper.WallpaperPackage;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
-import com.swmansion.reanimated.ReanimatedPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -45,9 +43,10 @@ public class MainApplication extends Application implements ReactApplication {
         packages.add(new OrientationPackage());
         packages.add(new SystemSettingPackage());
         packages.add(new ReactVideoPackage());
-        packages.add(new MiaoWallpaperPackage());
-        packages.add(new CarlaSimulatePackage());
-        packages.add(new CarlaJsThreadPackage(this));
+        packages.add(new WallpaperPackage());
+        packages.add(new SimulatePackage());
+        // packages.add(new JsThreadPackage(this));
+        // packages.add(new ScheduleJobPackage(this));
         
         return packages;
       }
@@ -82,7 +81,7 @@ public class MainApplication extends Application implements ReactApplication {
     if (BuildConfig.DEBUG) {
       try {
         /*
-         We use reflection here to pick up the class that initializes Flipper,
+        We use reflection here to pick up the class that initializes Flipper,
         since Flipper library is not available in release mode
         */
         Class<?> aClass = Class.forName("com.deskbtm.carla.ReactNativeFlipper");

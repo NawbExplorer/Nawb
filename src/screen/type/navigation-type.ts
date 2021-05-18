@@ -1,5 +1,5 @@
 export type PluginRuntimeScreenParamProps = {
-  pluginName: string | null;
+  pluginName: string;
   route?: {
     name: string;
     params?: Record<string, any>;
@@ -7,5 +7,5 @@ export type PluginRuntimeScreenParamProps = {
 };
 
 export type RootNavigatorStackParamList = {
-  PluginRuntimeScreen?: PluginRuntimeScreenParamProps;
+  PluginRuntimeScreen: PluginRuntimeScreenParamProps;
 };

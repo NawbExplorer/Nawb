@@ -45,15 +45,14 @@ async function fetchMainPageData(page) {
   for (var ele of $('.vbox') as any) {
     ele = $(ele);
 
-    const href = `${ele.find('a.vbox_t').attr('href')}`;
     const cover = ele.find('a mip-img').attr('src');
     const name = ele.find('.h4 a').text();
     const update = ele.find('.h4.red').text();
     data.push(
       TapZone({
         style: { width: '100%', height: '100%' },
-        onTap() {
-          navigation.push('info', { fuck: true });
+        onTap(e) {
+          navigation.push('content', { name: 'demo' });
         },
         children: ListTile({
           trailing: Image({
@@ -121,6 +120,7 @@ const BottomTabZone = function (props) {
 
 const HomePageTabZone = function () {
   let currentPage = 1;
+
   return BottomTabZone({
     name: 'homePage',
     options: { title: '极爱是' },

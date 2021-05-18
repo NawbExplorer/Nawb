@@ -1,5 +1,5 @@
 import { PostReactNativeAction, RnBridge } from '../type';
-import { EM } from '../core';
+import { EM } from '../common';
 import assert from 'assert';
 import { nanoid } from 'nanoid';
 const rnBridge: RnBridge = require('rn-bridge');
@@ -32,16 +32,15 @@ export const makeUniqueName = (name: string, uid?: string) => {
   return uid ? name + '-' + uid : name + '-' + nanoid(16);
 };
 
-/**
- *
- * @param {string} name - 事件名
- * @param {string} [uid] - 如果不填此参数会生成一个唯一id
- */
-export const reportErrorToReactNative = (error: any) => {
+export const reportErrorToReactNative = (
+  error: any,
+  type: string = 'normal',
+) => {
   console.error(error);
   rnBridge.channel.post<PostReactNativeAction>(EM.CARLA_BRIDGE, {
     action: 'error_report',
     data: {
+      type,
       error: 'NODEJS: ' + String(error),
     },
   });
@@ -70,23 +69,27 @@ export const importPackage = function (name: string) {
   return mod.default ? mod.default : mod;
 };
 
-/**
- * 使用Function 代替 eval 更加安全
- *
- * @param {string} script - 执行的脚本
- * @param {string} strict - 是否启用严格模式
- */
-export const runSafeScript = function (script: string, strict = false) {
-  const func = Function(
-    'exports',
-    'require',
-    'module',
-    '__filename',
-    '__dirname',
-    'bridge',
-    `return function(){ ${strict ? 'use strict' : ''}  ${script}}`,
-  )(exports, require, module, __filename, __dirname, rnBridge);
-  if (func) {
-    func();
-  }
+export const delay = function (time: number) {
+  return new Promise(r => setTimeout(r, time));
 };
+
+// /**
+//  * 使用Function 代替 eval 更加安全
+//  *
+//  * @param {string} script - 执行的脚本
+//  * @param {string} strict - 是否启用严格模式
+//  */
+// export const runSafeScript = function (script: string, strict = false) {
+//   const func = Function(
+//     'exports',
+//     'require',
+//     'module',
+//     '__filename',
+//     '__dirname',
+//     'bridge',
+//     `return function(){ ${strict ? 'use strict' : ''}  ${script}}`,
+//   )(exports, require, module, __filename, __dirname, rnBridge);
+//   if (func) {
+//     func();
+//   }
+// };

@@ -4,7 +4,7 @@ import i18n from 'i18next';
 
 i18n.init({
   lng: global.carla.device.locale.currentAppLanguage,
-  debug: global.carla.IS_ENV,
+  debug: global.carla.IS_DEV,
   resources: {
     'en-US': enUS,
     'zh-CN': zhCN,

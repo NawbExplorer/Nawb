@@ -38,50 +38,64 @@ export default class PluginProvider {
   // 推出插件
   exitPlugin() {
     this.setCurrentPluginName(null);
-    this.clearCurrentPluginRoutes();
+    this.clearPluginRoute();
   }
 
-  // 插件路由管理===================================================================
+  // 插件路由管理=========================================================
 
-  currentPluginRoutes: string[] = [];
+  private _currentPluginRoutes: string[] = [];
 
-  pushToCurrentPluginRoutes(name: string) {
-    this.currentPluginRoutes.push(name);
+  get currentPluginRoutes() {
+    return this._currentPluginRoutes;
   }
 
-  popFromCurrentPluginRoutes(count?: number) {
+  set currentPluginRoutes(val) {}
+
+  get currentPluginRoutesLength() {
+    return this._currentPluginRoutes.length;
+  }
+
+  pushPluginRoute(name: string) {
+    this._currentPluginRoutes.push(name);
+  }
+
+  popPluginRoute(count?: number) {
     if (count) {
-      const len = this.currentPluginRoutes.length;
-      this.currentPluginRoutes.splice(len - count, count);
+      const len = this._currentPluginRoutes.length;
+
+      this._currentPluginRoutes.splice(len - count, count);
     } else {
-      this.currentPluginRoutes.pop();
+      this._currentPluginRoutes.pop();
     }
   }
 
-  popToRootFromCurrentPluginRoutes(): number {
-    const len = this.currentPluginRoutes.length;
-    this.currentPluginRoutes.splice(1, len - 1);
-    return len - 1;
+  getPopToRootCount(): number {
+    return this._currentPluginRoutes.length - 1;
   }
 
-  replaceFromCurrentPluginRoutes(name: string) {
+  replacePluginRoute(name: string) {
     try {
-      const len = this.currentPluginRoutes.length;
+      const len = this._currentPluginRoutes.length;
       if (len > 0) {
-        this.currentPluginRoutes[this.currentPluginRoutes.length - 1] = name;
+        this._currentPluginRoutes[this._currentPluginRoutes.length - 1] = name;
       }
     } catch (err) {}
   }
 
-  clearCurrentPluginRoutes() {
-    this.currentPluginRoutes = [];
+  clearPluginRoute() {
+    this._currentPluginRoutes = [];
   }
 
-  addToCurrentPluginRoutes(name: string): boolean {
-    const len = this.currentPluginRoutes.length;
+  /**
+   *
+   * @param name 添加到路由栈的名字
+   * @returns {boolean} 如果添加的名字和栈底名字相同则不添加
+   */
+  addToPluginRoute(name: string): boolean {
+    const len = this._currentPluginRoutes.length;
     if (len > 0) {
-      if (this.currentPluginRoutes[len - 1] !== name) {
-        this.currentPluginRoutes.push(name);
+      if (this._currentPluginRoutes[len - 1] !== name) {
+        this._currentPluginRoutes.push(name);
         return true;
       } else {
         return false;

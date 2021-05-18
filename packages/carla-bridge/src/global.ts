@@ -129,6 +129,10 @@ interface PlatformWindowsOSStatic extends PlatformStatic {
   OS: 'windows';
 }
 
+interface CurrentPlugin {
+  name: string;
+}
+
 type Platform =
   | PlatformIOSStatic
   | PlatformAndroidStatic
@@ -137,18 +141,18 @@ type Platform =
 
 interface CarlaEnv {
   _device: Readonly<DeviceProps | {}>;
-  _IS_ENV: Readonly<boolean>;
+  _IS_DEV: Readonly<boolean>;
   _env: Readonly<'development' | 'production'>;
   _platform: Readonly<Platform>;
+  _currentPlugin: Readonly<CurrentPlugin>;
   device: Readonly<DeviceProps>;
-  IS_ENV: boolean;
+  IS_DEV: boolean;
   env: 'development' | 'production';
   platform: Platform;
+  currentPlugin: CurrentPlugin;
 }
 
 declare var carla: CarlaEnv;
-
-
 
 declare module NodeJS {
   interface Global {

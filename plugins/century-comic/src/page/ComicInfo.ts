@@ -50,7 +50,6 @@ export const ComicInfo = function (route) {
         onTap() {
           console.log(Context.value);
           console.log(Context.value.route.params);
-
           navigation.push('content');
         },
         children: Zone({
@@ -65,7 +64,6 @@ export const ComicInfo = function (route) {
         onTap() {
           console.log(Context.value);
           console.log(Context.value.route.params);
-
           navigation.pop(10);
         },
         children: Zone({
@@ -93,8 +91,8 @@ export const ComicInfo = function (route) {
       }),
       TapZone({
         onTap() {
-          console.log(Context.value);
-          console.log(Context.value.route.params);
+          // console.log(Context.value);
+          // console.log(Context.value.route.params);
 
           navigation.navigate('content');
         },

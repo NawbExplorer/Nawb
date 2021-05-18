@@ -11,8 +11,8 @@
     "resolveJsonModule": true,
     "isolatedModules": false,
     "baseUrl": ".",
-    "declaration": true,
-    "rootDir": ".",
+    "declaration": false,
+    "rootDir": "./src",
     "outDir": "dist"
   },
   "exclude": [

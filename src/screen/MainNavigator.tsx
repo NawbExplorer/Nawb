@@ -1,18 +1,18 @@
 import React, { FC } from 'react';
 import { HomeScreen } from './HomeScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { CatIcon, FishIcon, ShopIcon } from '../constants/svg';
+import { CatIcon, FishIcon, ShopIcon } from '../common';
 import { MarketScreen } from './MarketScreen';
 import { SettingScreen } from './SettingScreen';
-import { ScaleSimpleAnimation } from './components/ScaleSimpleAnimation';
-import { View } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
-import { AnimationBarIconWrapper, defaultTabBarOptions } from '../components';
-import { PluginContext, pluginProvider } from '../provider';
+import {
+  AnimationBarIconWrapper,
+  defaultTabBarOptions,
+} from '../plugin-core/components';
 
 const HomeBottomTab = createBottomTabNavigator();
 
-export const MainNavigator: FC<StackScreenProps<any>> = function (props) {
+export const MainNavigator: FC<StackScreenProps<any>> = function () {
   console.log('MainNavigator render =================================');
 
   return (

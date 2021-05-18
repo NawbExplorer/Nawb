@@ -1,6 +1,4 @@
 import React, { FC, useEffect } from 'react';
-// import * as Sentry from '@sentry/react-native';
-import i18n from 'i18next';
 import { observer } from 'mobx-react-lite';
 import {
   PluginContext,
@@ -9,7 +7,6 @@ import {
   themeProvider,
 } from './provider';
 import { RootNavigator } from './screen/RootNavigator';
-import NetInfo from '@react-native-community/netinfo';
 import {
   Platform,
   SafeAreaView,
@@ -18,15 +15,13 @@ import {
   Linking,
 } from 'react-native';
 import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
-import nodejs from 'nodejs-mobile-react-native';
 
 import {
   NavigationContainer,
   NavigationContainerRef,
 } from '@react-navigation/native';
-import { EM, handleBridgeMessage } from './core';
-import Toast from 'react-native-simple-toast';
-import './utils/i18n';
+import { PluginEnvBooter } from './plugin-core';
+import './common/utils/i18n';
 
 // const routingInstrumentation = new Sentry.ReactNavigationV5Instrumentation();
 
@@ -63,23 +58,25 @@ export const App: FC = observer(() => {
   Linking.addEventListener('url', () => {});
 
   useEffect(() => {
-    const unsubscribe = NetInfo.addEventListener(state => {
-      console.log('Connection type', state.type);
-      console.log('Is connected?', state.isConnected);
-      if (!state.isConnected) {
-        // Toast;T
-      }
-    });
+    // const unsubscribe = NetInfo.addEventListener(state => {
+    //   console.log('Connection type', state.type);
+    //   console.log('Is connected?', state.isConnected);
+    //   if (!state.isConnected) {
+    //     // Toast;T
+    //   }
+    // });
 
     // routingInstrumentation.registerNavigationContainer(navigationRef as any);
-    if (__DEV__) {
-      nodejs.startWithParams(['/data/local/tmp/nodejs-project/boot.js']);
-    } else {
-      nodejs.start('boot.js');
-    }
+    const booter = PluginEnvBooter.start({
+      mainEntryDevParams: ['/data/local/tmp/nodejs-project/boot.js'],
+      mainEntry: 'boot.js',
+    });
 
-    nodejs.channel.addListener(EM.CARLA_BRIDGE, handleBridgeMessage);
-    return unsubscribe;
+    booter.startMsgListener();
+
+    return () => {
+      booter.removeMsgListener();
+    };
   }, []);
 
   return (

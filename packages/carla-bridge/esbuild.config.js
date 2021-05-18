@@ -10,7 +10,20 @@ require('esbuild')
       ? '../../nodejs-assets/nodejs-project/boot.js'
       : './dist/boot.js',
     platform: 'node',
-    watch: !isProd,
+    watch: isProd
+      ? false
+      : {
+          onRebuild(error, result) {
+            if (error) {
+              console.error('watch build failed:', error);
+            } else {
+              if (result.warnings.length > 0) {
+                console.log(result.warnings);
+              }
+              console.log('🚩🚩watch build succeeded');
+            }
+          },
+        },
     minify: isProd,
     format: 'cjs',
     plugins: [

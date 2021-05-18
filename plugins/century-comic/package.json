@@ -1,8 +1,15 @@
 {
-  "name": "century-comic",
+  "name": "carla-plugin-century-comic",
   "version": "0.0.1",
+  "main": "./index.js",
+  "keywords": [
+    "deskbtm",
+    "carla-plugin",
+    "carlajs"
+  ],
   "scripts": {
     "start": "cross-env NODE_ENV=development node ./esbuild.config.js",
+    "build": "tsc",
     "release": "cross-env NODE_ENV=production rollup -c rollup.config.js",
     "push": "adb push ./dist/. /data/local/tmp/century-comic"
   },

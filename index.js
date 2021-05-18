@@ -18,8 +18,6 @@ LogBox.ignoreLogs([
   'Error while triggering instrumentation handler',
 ]);
 
-console.log(App);
-
 Text.defaultProps = Text.defaultProps || {};
 Text.defaultProps.allowFontScaling = false;
 

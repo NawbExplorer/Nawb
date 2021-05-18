@@ -11,13 +11,21 @@
     "demo": "node ./index.js"
   },
   "keywords": [
-    "carla-plugin"
+    "carlajs-plugin-prefix$headless",
+    "carlajs-plugin-prefix$webview",
+    "carlajs-plugin-prefix$webview-automation",
+    "carlajs-plugin-prefix$ui",
+    "carlajs-plugin"
   ],
   // * 作者
   "author": "maxcalibur",
   "license": "MIT",
   "dependencies": {},
   "carla": {
+    //  插件类型
+    "pluginTypes": [
+      "webview"
+    ],
     // *插件logo
     "logo": "https://s.gravatar.com/avatar/c87c2708e02af645afe70b5ac862d60a?size=496&default=retro",
     // *插件提供搜索功能

@@ -1,16 +1,16 @@
 import { PluginRenderProps } from './plugin-type';
 // 向reactnative和 nodejs 通信的动作
 
-// 此文件只规定通过CARLA_BRIDGE事件的动作 其他使用post-type 和 receive-type
+// 此文件只规定通过CARLA_BRIDGE事件的动作 其他使用poster-type 和 receiver-type
 
-/**执行javascript*/
-export interface ExecJsAction {
-  action: 'exec_js';
-  data: {
-    script: string;
-    useStrict?: boolean;
-  };
-}
+// /**执行javascript*/
+// export interface ExecJsAction {
+//   action: 'exec_js';
+//   data: {
+//     script: string;
+//     useStrict?: boolean;
+//   };
+// }
 
 /**nodejs 初始化成功 */
 export interface NodejsInitSuccessAction {
@@ -65,6 +65,7 @@ export interface SetEnvAction {
 export interface ErrorReportAction {
   action: 'error_report';
   data: {
+    type: string;
     error: string | number | [];
   };
 }
@@ -88,3 +89,25 @@ export interface NotFoundAction {
     actionName: string;
   };
 }
+
+/**重启carla环境 */
+export interface RestartCarlaEnvAction {
+  action: 'restart_carla_env_action';
+}
+
+export type PostReactNativeAction =
+  | NodejsInitSuccessAction
+  | NodejsInitErrorAction
+  | ErrorReportAction
+  | PluginSearchAction
+  | InstallPkgErrorAction
+  | InstallPkgSuccessAction
+  | NotFoundAction;
+
+export type ReceiveReactNativeAction =
+  // | SetDeviceInfoAction
+  | PluginSearchAction
+  | PluginRenderAction
+  | InstallPkgAction
+  | SetEnvAction
+  | RestartCarlaEnvAction;

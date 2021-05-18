@@ -5,7 +5,6 @@ import { search as searchApi } from './search';
 import { Page, CarlaUI } from 'carla';
 
 export const uiEntry = function (context) {
-  console.log(context, '-------------------------------------');
   return CarlaUI({
     namespace: 'century-comic',
     context,
@@ -34,3 +33,16 @@ export const searchEntry = function (ctx) {
 // export const scriptEntry = function () {};
 
 // export const scheduleEntry = function () {};
+
+// {
+//   tagName: 'CarlaUI';
+//   pages: {
+//     home: {
+//       pageName: 'home',
+//       page: {
+//         tagName: 'BottomTabBar',
+//         elementId: 'sjagdosa9sda8d01y2n'
+//       }
+//     }
+//   }
+// }

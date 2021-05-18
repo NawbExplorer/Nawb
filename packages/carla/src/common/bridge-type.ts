@@ -1,5 +1,4 @@
 import type { EventEmitter } from 'events';
-import { PluginRoutePushAction, PluginRoutePopAction } from './action-type';
 
 interface BridgeEventCallback<E> {
   (msg: E): void;

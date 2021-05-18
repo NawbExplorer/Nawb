@@ -73,5 +73,9 @@ export const verifyRequiredProps = function (
  * @param {string} [uid] - 如果不填此参数会生成一个唯一id
  */
 export const makeUniqueName = (name: string, uid?: string) => {
+  if (name.includes('-')) {
+    throw new Error('makeUniqueName: name can not include "-"');
+  }
+
   return uid ? name + '-' + uid : name + '-' + nanoid(16);
 };
