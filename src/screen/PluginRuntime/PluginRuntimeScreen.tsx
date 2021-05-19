@@ -128,7 +128,7 @@ export const PluginRuntimeScreen: FC<
   return (
     <View style={{ flex: 1 }}>
       <Button
-        title="Click"
+        title="路由栈"
         color="green"
         onPress={() => {
           // console.log(pluginCtx.currentPluginRoutes);
@@ -140,7 +140,7 @@ export const PluginRuntimeScreen: FC<
         }}
       />
       <Button
-        title="Click"
+        title="事件队列"
         color="blue"
         onPress={() => {
           console.log(nodejs.channel);
