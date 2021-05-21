@@ -6,25 +6,25 @@ import com.facebook.react.bridge.NativeModule;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.uimanager.ViewManager;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class JsThreadPackage implements ReactPackage {
 
   private ReactNativeHost reactNativeHost;
-  private ReactPackage extraPackages[];
+  
 
-
-  public JsThreadPackage(ReactNativeHost rnh, ReactPackage... ep) {
-    reactNativeHost = rnh;
-    extraPackages = ep;
+  public JsThreadPackage(ReactNativeHost reactNativeHost, ReactPackage... ep) {
+    this.reactNativeHost = reactNativeHost;
   }
 
 
   @Override
   public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-    return Arrays.asList(new JsThreadModule(reactContext, reactNativeHost));
+    ArrayList list = new ArrayList();
+    list.add(new JsThreadModule(reactContext, reactNativeHost));
+    return list;
   }
 
   @Override

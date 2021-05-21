@@ -6,17 +6,12 @@ import androidx.annotation.NonNull;
 
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
-import com.facebook.react.bridge.CatalystInstanceImpl;
-import com.facebook.react.bridge.JSBundleLoader;
 import com.facebook.react.bridge.LifecycleEventListener;
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.bridge.queue.ReactQueueConfigurationSpec;
 import com.facebook.react.devsupport.interfaces.DevSupportManager;
-
-import java.io.File;
 
 public class JsThreadModule extends ReactContextBaseJavaModule implements LifecycleEventListener {
   private String TAG = "CarlaJsThreadModule";
@@ -105,22 +100,25 @@ public class JsThreadModule extends ReactContextBaseJavaModule implements Lifecy
 
   @ReactMethod
   public void startThread(final String path, final Promise promise) {
-    Log.d(TAG, "Starting web thread - " + path);
+//    Log.d(TAG, "Starting web thread - " + path);
 
-    File file = new File(path);
-    if (!file.exists()) {
-      promise.reject("NOT_FOUND", path + "path not found");
-      return;
-    }
-
-    Log.d(TAG, getDevSupportManager().getSourceMapUrl());
-    Log.d(TAG, getDevSupportManager().getSourceUrl());
+//    File file = new File(path);
+//    if (!file.exists()) {
+//      promise.reject("NOT_FOUND", path + "path not found");
+//      return;
+//    }
+    
+//    Log.d(TAG, getDevSupportManager().getSourceMapUrl());
+//    Log.d(TAG, getDevSupportManager().getSourceUrl());
+    
+    Log.d("url", getDevSupportManager().getSourceUrl());
+    
 
 
 //    reactNativeHost.getReactInstanceManager().attachRootView();
-    JSBundleLoader bundle = JSBundleLoader.createFileLoader("demo");
-    CatalystInstanceImpl.Builder builder = new CatalystInstanceImpl.Builder()
-      .setReactQueueConfigurationSpec(ReactQueueConfigurationSpec.createDefault());
+//    JSBundleLoader bundle = JSBundleLoader.createFileLoader("demo");
+//    CatalystInstanceImpl.Builder builder = new CatalystInstanceImpl.Builder()
+//      .setReactQueueConfigurationSpec(ReactQueueConfigurationSpec.createDefault());
 
 
 //    ReactContextBuil

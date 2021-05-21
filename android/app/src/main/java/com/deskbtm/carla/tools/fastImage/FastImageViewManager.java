@@ -26,9 +26,10 @@ import java.util.WeakHashMap;
 
 import javax.annotation.Nullable;
 
-import static com.dylanvann.fastimage.FastImageRequestListener.REACT_ON_ERROR_EVENT;
-import static com.dylanvann.fastimage.FastImageRequestListener.REACT_ON_LOAD_END_EVENT;
-import static com.dylanvann.fastimage.FastImageRequestListener.REACT_ON_LOAD_EVENT;
+import static com.deskbtm.carla.tools.fastImage.FastImageRequestListener.REACT_ON_ERROR_EVENT;
+import static com.deskbtm.carla.tools.fastImage.FastImageRequestListener.REACT_ON_LOAD_END_EVENT;
+import static com.deskbtm.carla.tools.fastImage.FastImageRequestListener.REACT_ON_LOAD_EVENT;
+
 
 class FastImageViewManager extends SimpleViewManager<FastImageViewWithUrl> implements FastImageProgressListener {
 

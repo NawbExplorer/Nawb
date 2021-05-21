@@ -3,10 +3,12 @@ package com.deskbtm.carla;
 import android.app.Application;
 import android.content.Context;
 
-import com.BV.LinearGradient.LinearGradientPackage;
-import com.brentvatne.react.ReactVideoPackage;
-import com.deskbtm.carla.generated.BasePackageList;
+//import com.BV.LinearGradient.LinearGradientPackage;
+//import com.brentvatne.react.ReactVideoPackage;
+//import com.deskbtm.carla.generated.BasePackageList;
+import com.deskbtm.carla.dev.DevtoolsPackage;
 import com.deskbtm.carla.god.simulate.SimulatePackage;
+import com.deskbtm.carla.jsThread.JsThreadPackage;
 import com.deskbtm.carla.tools.wallpaper.WallpaperPackage;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
@@ -14,18 +16,18 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
-import com.ninty.system.setting.SystemSettingPackage;
-
-import org.unimodules.adapters.react.ModuleRegistryAdapter;
-import org.unimodules.adapters.react.ReactModuleRegistryProvider;
-import org.wonday.orientation.OrientationPackage;
+//import com.ninty.system.setting.SystemSettingPackage;
+//
+//import org.unimodules.adapters.react.ModuleRegistryAdapter;
+//import org.unimodules.adapters.react.ReactModuleRegistryProvider;
+//import org.wonday.orientation.OrientationPackage;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 
 public class MainApplication extends Application implements ReactApplication {
-  private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(new BasePackageList().getPackageList(), null);
+//  private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(new BasePackageList().getPackageList(), null);
 
   private final ReactNativeHost mReactNativeHost =
     new ReactNativeHost(this) {
@@ -38,14 +40,15 @@ public class MainApplication extends Application implements ReactApplication {
       protected List<ReactPackage> getPackages() {
         @SuppressWarnings("UnnecessaryLocalVariable")
         List<ReactPackage> packages = new PackageList(this).getPackages();
-        packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider));
-        packages.add(new LinearGradientPackage());
-        packages.add(new OrientationPackage());
-        packages.add(new SystemSettingPackage());
-        packages.add(new ReactVideoPackage());
+//        packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider));
+//        packages.add(new LinearGradientPackage());
+//        packages.add(new OrientationPackage());
+//        packages.add(new SystemSettingPackage());
+//        packages.add(new ReactVideoPackage());
         packages.add(new WallpaperPackage());
         packages.add(new SimulatePackage());
-        // packages.add(new JsThreadPackage(this));
+        packages.add(new DevtoolsPackage(this));
+         packages.add(new JsThreadPackage(this));
         // packages.add(new ScheduleJobPackage(this));
         
         return packages;
