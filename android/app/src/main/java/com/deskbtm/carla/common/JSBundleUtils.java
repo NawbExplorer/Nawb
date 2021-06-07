@@ -17,12 +17,12 @@ import okhttp3.Response;
 import okio.Okio;
 import okio.Sink;
 
-public class JsBundleUtils {
+public class JSBundleUtils {
   private String TAG = "JsBundleUtils";
   private ReactNativeHost reactNativeHost;
   private ReactApplicationContext reactApplicationContext;
 
-  public JsBundleUtils(ReactNativeHost rnh, ReactApplicationContext rac) {
+  public JSBundleUtils(ReactNativeHost rnh, ReactApplicationContext rac) {
     reactNativeHost = rnh;
     reactApplicationContext = rac;
   }

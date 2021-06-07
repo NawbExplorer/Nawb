@@ -51,7 +51,7 @@ public class WallpaperModule extends ReactContextBaseJavaModule {
 
   @Override
   public String getName() {
-    return "Wallpaper";
+    return "CarlaWallpaper";
   }
 
 

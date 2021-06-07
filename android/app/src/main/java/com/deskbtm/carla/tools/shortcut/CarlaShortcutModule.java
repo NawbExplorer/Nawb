@@ -43,7 +43,7 @@ public class CarlaShortcutModule extends ReactContextBaseJavaModule {
   @NonNull
   @Override
   public String getName() {
-    return "Shortcut";
+    return "CarlaShortcut";
   }
 
   @ReactMethod

@@ -68,7 +68,7 @@ public class CarlaColorThiefModule extends ReactContextBaseJavaModule {
     String lightVibrantColor = intColorToHex(palette.getLightVibrantColor(defaultColor));
 
     map.putString("averageColor", averageColor);
-    map.putString("domainColor", dominantColor);
+    map.putString("dominantColor", dominantColor);
     map.putString("vibrantColor", vibrantColor);
     map.putString("darkVibrantColor", darkVibrantColor);
     map.putString("lightVibrantColor", lightVibrantColor);
@@ -117,6 +117,6 @@ public class CarlaColorThiefModule extends ReactContextBaseJavaModule {
   @NonNull
   @Override
   public String getName() {
-    return "ColorThief";
+    return "CarlaColorThief";
   }
 }

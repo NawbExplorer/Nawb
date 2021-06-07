@@ -7,6 +7,7 @@ import com.BV.LinearGradient.LinearGradientPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.deskbtm.carla.generated.BasePackageList;
 import com.deskbtm.carla.god.simulate.SimulatePackage;
+import com.deskbtm.carla.screens.CarlaScreensPackage;
 import com.deskbtm.carla.tools.wallpaper.WallpaperPackage;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
@@ -45,6 +46,7 @@ public class MainApplication extends Application implements ReactApplication {
         packages.add(new ReactVideoPackage());
         packages.add(new WallpaperPackage());
         packages.add(new SimulatePackage());
+        packages.add(new CarlaScreensPackage());
         // packages.add(new JsThreadPackage(this));
         // packages.add(new ScheduleJobPackage(this));
         
