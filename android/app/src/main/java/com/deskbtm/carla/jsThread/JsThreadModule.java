@@ -113,9 +113,7 @@ public class JsThreadModule extends ReactContextBaseJavaModule implements Lifecy
     
     Log.d("url", getDevSupportManager().getSourceUrl());
     
-
-
-//    reactNativeHost.getReactInstanceManager().attachRootView();
+    
 //    JSBundleLoader bundle = JSBundleLoader.createFileLoader("demo");
 //    CatalystInstanceImpl.Builder builder = new CatalystInstanceImpl.Builder()
 //      .setReactQueueConfigurationSpec(ReactQueueConfigurationSpec.createDefault());

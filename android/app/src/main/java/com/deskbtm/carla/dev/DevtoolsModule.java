@@ -49,7 +49,7 @@ public class DevtoolsModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void setProfilingEnabled(Boolean enabled){
 //    reactApplicationContext;
-    new CatalystInstance()
+//    new CatalystInstance()
     
   }
 
