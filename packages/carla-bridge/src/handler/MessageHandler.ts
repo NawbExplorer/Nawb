@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2021 
+ *   All rights reserved.
+ */
 import { CarlaEnvBuilder } from 'src/CarlaEnvBuilder';
 import { EM } from 'src/common';
 import {

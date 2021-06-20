@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2021
+ *   All rights reserved.
+ */
 import {
   Text,
   ListTile,
@@ -123,7 +127,7 @@ const HomePageTabZone = function () {
 
   return BottomTabZone({
     name: 'homePage',
-    options: { title: '极爱是' },
+    options: { title: 'Title1' },
     icon: Icon({ lib: 'Feather', name: 'home', size: 28 }),
     page: RecyclerListZone({
       presetLayout: 'line',

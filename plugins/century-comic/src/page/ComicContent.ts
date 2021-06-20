@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2021 
+ *   All rights reserved.
+ */
 import { TapZone, Zone, navigation, Text } from 'carla';
 
 export const ComicContent = function () {

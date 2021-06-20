@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2021 
+ *   All rights reserved.
+ */
 import cheerio from 'cheerio';
 import got from 'got';
 import { Context, TapZone, Zone, navigation } from 'carla';

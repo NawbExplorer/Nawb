@@ -1,5 +1,6 @@
 package com.deskbtm.carla.common;
 
+import android.net.Uri;
 import android.util.Log;
 
 import com.facebook.react.ReactInstanceManager;
@@ -10,6 +11,7 @@ import com.facebook.react.devsupport.interfaces.DevSupportManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -56,8 +58,28 @@ public class JsBundleUtils {
     }
   }
 
+//  public void downloadBundleStringSync(String bundleUrl, String bundleOut) {
+//    OkHttpClient client = new OkHttpClient();
+//    final File out = new File(bundleOut);
+//
+//    Request request = new Request.Builder()
+//      .url(bundleUrl)
+//      .build();
+//
+//    try {
+//      Response response = client.newCall(request).execute();
+//      if (!response.isSuccessful()) {
+//        throw new RuntimeException("Error downloading thread script - " + response.toString());
+//      }
+//
+//      response.body().source();
+//    } catch (IOException e) {
+//      throw new RuntimeException("Exception downloading thread script to file", e);
+//    }
+//  }
 
-  private String bundleUrlForFile(final String fileName) {
+
+  private String getCachedLocalBundlePath(final String fileName) {
     // http://localhost:8081/index.android.bundle?platform=android&dev=true&hot=false&minify=false
     String sourceUrl = getDevSupportManager().getSourceUrl().replace("http://", "");
     return "http://"
@@ -67,18 +89,11 @@ public class JsBundleUtils {
       + ".bundle?platform=android&dev=true&hot=false&minify=false";
   }
 
-  public JSBundleLoader createDevBundleLoader(String jsFileName, String jsFileSlug) {
-    String bundleUrl = bundleUrlForFile(jsFileName);
-    // nested file directory will not exist in the files dir during development,
-    // so remove any leading directory paths to simply download a flat file into
-    // the root of the files directory.
-    String[] splitFileSlug = jsFileSlug.split("/");
-    String bundleOut = reactApplicationContext.getFilesDir().getAbsolutePath() + "/" + splitFileSlug[splitFileSlug.length - 1];
-
-    Log.d(TAG, "createDevBundleLoader - download web thread to - " + bundleOut);
-    downloadBundleToFileSync(bundleUrl, bundleOut);
-
-    return JSBundleLoader.createCachedBundleFromNetworkLoader(bundleUrl, bundleOut);
+  
+  public JSBundleLoader getJsBundleFromDevServer(String uri) {
+    String outBundlePath = reactApplicationContext.getFilesDir().getAbsolutePath() + '/' + Uri.parse(uri).getLastPathSegment(); 
+    getDevSupportManager().downloadBundleResourceFromUrlSync(uri, new File(outBundlePath));
+    return JSBundleLoader.createCachedBundleFromNetworkLoader(uri, outBundlePath);
   }
 
   public JSBundleLoader createReleaseBundleLoader(String jsFileSlug) {

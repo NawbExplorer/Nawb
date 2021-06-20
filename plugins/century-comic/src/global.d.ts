@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2021 
+ *   All rights reserved.
+ */
 type DeviceInfoProps = {
   brand: string | null;
   isDevice: boolean;

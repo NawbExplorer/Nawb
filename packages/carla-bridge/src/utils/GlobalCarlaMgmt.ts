@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2021
+ *   All rights reserved.
+ */
 import { is } from 'src/utils';
 /**
  * 初始化 carla 所有的全局变量
@@ -70,16 +74,8 @@ export class GlobalCarlaMgmt {
    */
   public static makeCarlaNotBeNull() {
     Object.defineProperty(global, 'carla', {
-      //@ts-ignore
-      _v: null,
-      get() {
-        return this._v;
-      },
-      set(v) {
-        if (v) {
-          this._v = v;
-        }
-      },
+      writable: false,
+      configurable: false,
     });
     return this;
   }

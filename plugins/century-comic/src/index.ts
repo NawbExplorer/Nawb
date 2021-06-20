@@ -1,3 +1,7 @@
+/*
+ *   Copyright (c) 2021 
+ *   All rights reserved.
+ */
 import { Home } from './page/Home';
 import { ComicInfo } from './page/ComicInfo';
 import { ComicContent } from './page/ComicContent';

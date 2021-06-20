@@ -1,7 +1,13 @@
 package com.deskbtm.carla.dev;
 
+import android.app.Activity;
+import android.util.Log;
+import android.view.View;
+
 import androidx.annotation.NonNull;
 
+import com.deskbtm.carla.R;
+import com.deskbtm.carla.common.JsBundleUtils;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.bridge.CatalystInstance;
@@ -17,17 +23,19 @@ public class DevtoolsModule extends ReactContextBaseJavaModule {
   ReactApplicationContext reactApplicationContext;
   ReactNativeHost reactNativeHost;
 
+
   public DevtoolsModule(ReactApplicationContext reactApplicationContext, ReactNativeHost reactNativeHost) {
     this.reactApplicationContext = reactApplicationContext;
     this.reactNativeHost = reactNativeHost;
   }
+
 
   @NonNull
   @Override
   public String getName() {
     return "Devtools";
   }
-  
+
   private ReactInstanceManager getReactInstanceManager() {
     return reactNativeHost.getReactInstanceManager();
   }
@@ -35,31 +43,31 @@ public class DevtoolsModule extends ReactContextBaseJavaModule {
   private DevSupportManager getDevSupportManager() {
     return getReactInstanceManager().getDevSupportManager();
   }
-  
+
   @ReactMethod
-  public void startInspector(){
-    getDevSupportManager().startInspector();
-  }
-  
-  @ReactMethod
-  public void stopInspector(){
+  public void startInspector() {
     getDevSupportManager().startInspector();
   }
 
   @ReactMethod
-  public void setProfilingEnabled(Boolean enabled){
+  public void stopInspector() {
+    getDevSupportManager().startInspector();
+  }
+
+  @ReactMethod
+  public void setProfilingEnabled(Boolean enabled) {
 //    reactApplicationContext;
 //    new CatalystInstance()
-    
+
   }
 
   @ReactMethod
-  public void showDevtoolsDialog(){
+  public void showDevtoolsDialog() {
     getReactInstanceManager().showDevOptionsDialog();
   }
-  
+
   @ReactMethod
-  public void toggleElementInspector(){
+  public void toggleElementInspector() {
     getDevSupportManager().toggleElementInspector();
   }
 }

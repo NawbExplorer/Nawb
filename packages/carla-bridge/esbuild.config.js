@@ -6,6 +6,7 @@ require('esbuild')
     bundle: true,
     target: 'node12',
     external: ['rn-bridge', './lib/yarn'],
+    sourcemap: true,
     outfile: isProd
       ? '../../nodejs-assets/nodejs-project/boot.js'
       : './dist/boot.js',
