@@ -7,11 +7,11 @@ import { reportErrorToReactNative } from './utils';
 // bridge 入口
 (async function () {
   try {
-    process.on('unhandledRejection', reason => {
-      const tip = 'unhandledrejection -- ' + JSON.stringify(reason);
-      console.log(tip);
-      reportErrorToReactNative(tip);
-    });
+    // process.on('unhandledRejection', reason => {
+    //   const tip = 'unhandledrejection -- ' + JSON.stringify(reason);
+    //   console.log(tip);
+    //   reportErrorToReactNative(tip);
+    // });
 
     GlobalCarlaMgmt.makeCarlaNotBeNull().presetCarlaAsGlobalVariable();
 

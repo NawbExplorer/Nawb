@@ -24,11 +24,12 @@ export class CarlaEnvBuilder {
       if (!self.messageHandler) {
         self._retryCounter++;
         (function () {
-          this.setEnv()
+          self
+            .setEnv()
             .then(() => {
               self._retryCounter = 0;
               self.messageHandler = new MessageHandler();
-              resolve(this.messageHandler);
+              resolve(self.messageHandler);
             })
             .catch(err => {
               if (retryCount <= self._retryCounter) {

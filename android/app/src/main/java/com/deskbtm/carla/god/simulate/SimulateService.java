@@ -14,6 +14,8 @@ import android.view.accessibility.AccessibilityEvent;
 
 import androidx.annotation.RequiresApi;
 
+import com.facebook.react.bridge.CatalystInstance;
+
 public class SimulateService extends AccessibilityService {
   private static final String TAG = SimulateService.class.getSimpleName();
 
@@ -66,10 +68,6 @@ public class SimulateService extends AccessibilityService {
     
     dispatchPointGesture(x, y);
     
-    
-    
-
-
     return START_STICKY;
   }
 
