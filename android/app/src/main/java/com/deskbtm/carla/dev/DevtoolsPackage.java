@@ -6,8 +6,6 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
-import com.deskbtm.carla.R;
-import com.deskbtm.carla.common.JsBundleUtils;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.bridge.NativeModule;
@@ -23,11 +21,9 @@ public class DevtoolsPackage implements ReactPackage {
   private ReactNativeHost reactNativeHost;
 
 
-
   public DevtoolsPackage(ReactNativeHost reactNativeHost) {
     this.reactNativeHost = reactNativeHost;
-
-
+    
     Log.d("demo", "================================");
 
 //    getActivity().setContentView(R.layout.layout_main);

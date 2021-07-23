@@ -7,7 +7,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 import com.deskbtm.carla.R;
-import com.deskbtm.carla.common.JsBundleUtils;
+
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.bridge.CatalystInstance;

@@ -20,13 +20,13 @@ export const App: FC = observer(() => {
       <Button
         title="demo"
         onPress={() => {
-          NativeModules.Devtools.toggleElementInspector();
+          // NativeModules.Devtools.toggleElementInspector();
         }}
       />
       <Button
         title="start"
         onPress={() => {
-          NativeModules.Devtools.showDevtoolsDialog();
+          // NativeModules.Devtools.showDevtoolsDialog();
         }}
       />
     </View>

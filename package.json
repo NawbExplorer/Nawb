@@ -1,6 +1,6 @@
 {
-  "name": "carla-app",
-  "version": "0.0.3",
+  "name": "carla",
+  "version": "0.0.1-alpha1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -10,7 +10,8 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "release": "standard-version",
     "bundle:android": "react-native bundle --platform android --dev true --entry-file index.js --bundle-output ./dist/android/index.android.bundle --assets-dest ./dist/android",
-    "tree": "node ./doc/tree"
+    "tree": "node ./doc/tree",
+    "windows": "react-native run-windows"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.4",
@@ -57,7 +58,8 @@
     "react-native-vector-icons": "^8.1.0",
     "react-native-webview": "^11.4.4",
     "recyclerlistview": "^3.0.5",
-    "semver": "^7.3.5"
+    "semver": "^7.3.5",
+    "react-native-windows": "^0.64.0-0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
