@@ -28,6 +28,6 @@
     "./temp",
     "./plugins",
     "./packages",
-    "./external/nodejs-mobile-react-native/*"
+    "third_party/nodejs-mobile-react-native/*"
   ]
 }
