@@ -1,6 +1,6 @@
-import { PluginRenderProps } from './carlaUI-type';
+import { PluginRenderProps } from './nawbUI-type';
 import { Platform } from 'react-native';
-import { DeviceProps } from '../carla-env';
+import { DeviceProps } from '../nawb-env';
 
 // 向reactnative和 nodejs 通信的动作
 
@@ -23,7 +23,7 @@ export interface NodejsInitErrorAction {
   action: 'nodejs_init_error';
 }
 
-/**未发现 carla_bridge 上的有此action */
+/**未发现 nawb_bridge 上的有此action */
 export interface NotFoundAction {
   action: 'not_found_action';
   data: {
@@ -31,9 +31,9 @@ export interface NotFoundAction {
   };
 }
 
-// /**进入app后nodejs carla_bridge环境或配置初始化错误 */
-// export interface CarlaBridgeInitErrorAction {
-//   action: 'carla_bridge_init_error';
+// /**进入app后nodejs nawb_bridge环境或配置初始化错误 */
+// export interface NawbBridgeInitErrorAction {
+//   action: 'nawb_bridge_init_error';
 // }
 
 /**安装 npm包*/

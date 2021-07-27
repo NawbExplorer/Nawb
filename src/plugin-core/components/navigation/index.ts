@@ -1,1 +1,1 @@
-export * from './useCarlaUIPluginNavigation';
+export * from './useNawbUIPluginNavigation';

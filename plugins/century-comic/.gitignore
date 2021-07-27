@@ -2,7 +2,7 @@
 # OSX
 #
 .DS_Store
-.carla
+.nawb
 
 libnode/bin/**/*.so
 .cxx

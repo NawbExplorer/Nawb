@@ -1,17 +1,21 @@
 {
-  "name": "carla",
+  "name": "nawb",
   "version": "0.0.1-alpha1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "windows": "react-native run-windows",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "release": "standard-version",
     "bundle:android": "react-native bundle --platform android --dev true --entry-file index.js --bundle-output ./dist/android/index.android.bundle --assets-dest ./dist/android",
-    "tree": "node ./doc/tree",
-    "windows": "react-native run-windows"
+    "tree": "node ./doc/tree"
+  },
+  "engines": {
+    "node": ">=14.16.1 <15",
+    "npm": ">=7.20.1"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.15.5",
@@ -37,29 +41,24 @@
     "mobx": "^6.2.0",
     "mobx-react-lite": "^3.2.0",
     "nanoid": "^3.1.22",
+    "nawb-fs": "file:packages/fs",
     "react": "17.0.1",
     "react-i18next": "^11.8.13",
     "react-native": "0.64.0",
     "react-native-background-downloader": "^2.3.4",
-    "react-native-fs": "^2.17.0",
+    "react-native-fs": "^2.18.0",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-get-random-values": "^1.7.0",
-    "react-native-image-zoom-viewer": "file:third_party/react-native-image-viewer",
-    "react-native-indicator": "file:third_party/react-native-indicator",
     "react-native-localize": "^2.0.3",
-    "react-native-reanimated": "^2.1.0",
-    "react-native-rn-videoplayer": "file:third_party/react-native-rn-videoplayer",
-    "react-native-safe-area-context": "^3.2.0",
     "react-native-screens": "^3.1.1",
-    "react-native-simple-toast": "^1.1.3",
     "react-native-svg": "^12.1.1",
     "react-native-tab-view": "^3.0.1",
     "react-native-unimodules": "^0.13.3",
     "react-native-vector-icons": "^8.1.0",
     "react-native-webview": "^11.6.5",
+    "react-native-windows": "^0.64.0-0",
     "recyclerlistview": "^3.0.5",
-    "semver": "^7.3.5",
-    "react-native-windows": "^0.64.0-0"
+    "semver": "^7.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -103,5 +102,9 @@
       "json",
       "node"
     ]
-  }
+  },
+  "workspaces": [
+    "packages/fs",
+    "packages/path"
+  ]
 }

@@ -1,10 +1,10 @@
 /*
- *   Copyright (c) 2021 
+ *   Copyright (c) 2021
  *   All rights reserved.
  */
 import cheerio from 'cheerio';
 import got from 'got';
-import { Context, TapZone, Zone, navigation } from 'carla';
+import { Context, TapZone, Zone, navigation } from 'nawb';
 
 async function fetchComicInfo(url) {
   const res = await got.get(url);

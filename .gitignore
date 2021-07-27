@@ -2,6 +2,7 @@
 #
 .DS_Store
 
+*.binlog
 temp
 .cxx
 external/nodejs-mobile-react-native

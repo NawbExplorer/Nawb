@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { BottomTabBarOptions } from './BottomTabInterface';
-import { CarlaNoLeafTree, CarlaTree, renderCarlaToReact } from '../..';
+import { NawbNoLeafTree, NawbTree, renderNawbToReact } from '../..';
 
 import { CatIcon } from '../../../common';
 import { AnimationBarIconWrapper } from './AnimationBarIconWrapper';
@@ -12,10 +12,10 @@ interface TabZoneProps {
   tagName: string;
   props: {
     options?: Record<string, any>;
-    icon?: CarlaNoLeafTree;
+    icon?: NawbNoLeafTree;
     elementId: string;
     name: string;
-    page: CarlaTree;
+    page: NawbTree;
   };
 }
 
@@ -84,7 +84,7 @@ export const BottomTabBar: FC<BottomTabBarProps> = function (props) {
               tab.props.options,
             )}
             children={p => {
-              return renderCarlaToReact(tab.props.page, p) as ReactElement;
+              return renderNawbToReact(tab.props.page, p) as ReactElement;
             }}
           />
         );

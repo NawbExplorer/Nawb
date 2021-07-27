@@ -8,14 +8,14 @@ import {
   Button,
 } from 'react-native';
 import { StackScreenProps } from '@react-navigation/stack';
-import nodejs from 'nodejs-mobile-react-native';
+// import nodejs from 'nodejs-mobile-react-native';
 import { PluginContext, pluginProvider } from '../provider';
 import * as Localize from 'react-native-localize';
 import { useTranslation } from 'react-i18next';
-import * as fs from 'react-native-fs';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Toast from 'react-native-simple-toast';
-import { EM, PostBridgeAction } from '../plugin-core';
+// import * as fs from 'react-native-fs';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+// import Toast from 'react-native-simple-toast';
+// import { EM, PostBridgeAction } from '../plugin-core';
 
 // const Icon = require('react-native-vector-icons/FontAwesome');
 
@@ -43,7 +43,7 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
   //     'render-/data/local/tmp/century-comic',
   //     (msg) => {
   //       console.log(msg, '================================');
-  //       const a = renderCarlaToReact(msg.data);
+  //       const a = renderNawbToReact(msg.data);
   //       console.log(a);
   //       setRenderMiao(a);
   //     },
@@ -57,8 +57,8 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
       <Button
         title="插件Demo"
         onPress={async () => {
-          navigation.navigate('PluginRuntimeScreen', {
-            pluginName: '/data/local/tmp/century-comic',
+          navigation.push('PluginRuntimeScreen', {
+            // pluginName: '/data/local/tmp/century-comic',
             // init: true,
           });
 
@@ -77,8 +77,8 @@ export const HomeScreen: FC<StackScreenProps<any>> = observer(function (props) {
         color="green"
         onPress={() => {
           // Toast.show('dsahudgsaidgasiudgsaigi', Toast.LONG);
-          console.log(nodejs.channel);
-          setEventJson(String(nodejs.channel));
+          // console.log(nodejs.channel);
+          // setEventJson(String(nodejs.channel));
           // i18n.changeLanguage('en-US');
         }}
       />

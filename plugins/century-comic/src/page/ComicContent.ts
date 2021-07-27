@@ -1,8 +1,8 @@
 /*
- *   Copyright (c) 2021 
+ *   Copyright (c) 2021
  *   All rights reserved.
  */
-import { TapZone, Zone, navigation, Text } from 'carla';
+import { TapZone, Zone, navigation, Text } from 'nawb';
 
 export const ComicContent = function () {
   let currentPage = 1;

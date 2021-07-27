@@ -11,7 +11,7 @@ import {
   LayoutProvider,
   RecyclerListView,
 } from 'recyclerlistview';
-import { renderCarlaToReact } from '../renderer';
+import { renderNawbToReact } from '../renderer';
 import nodejs from 'nodejs-mobile-react-native';
 import LoadingIndicator from 'react-native-indicator';
 import { makeUniqueName } from '../../common/utils';
@@ -188,7 +188,7 @@ export const RecyclerListZone: FC<RecyclerListZoneProps> = function (props) {
         layoutProvider={initLayoutProvider}
         dataProvider={dataProvider}
         rowRenderer={(_type, data) => {
-          const reactTree = renderCarlaToReact(data) as JSX.Element;
+          const reactTree = renderNawbToReact(data) as JSX.Element;
           return reactTree;
         }}
         scrollViewProps={{

@@ -1,23 +1,23 @@
 import { createElement, ReactNode } from 'react';
 import { is } from '../common/utils';
 import { componentMapper } from './components/mapper';
-import { CarlaComponentChildren, CarlaRenderer } from './type';
+import { NawbComponentChildren, NawbRenderer } from './type';
 
-const handleChildren = function (children: CarlaComponentChildren): ReactNode {
+const handleChildren = function (children: NawbComponentChildren): ReactNode {
   if (Array.isArray(children)) {
-    return children.map(ele => renderCarlaToReact(ele));
+    return children.map(ele => renderNawbToReact(ele));
   } else {
     if (is.string(children)) {
       return children;
     } else if (children?.tagName) {
-      return renderCarlaToReact(children);
+      return renderNawbToReact(children);
     } else {
       return null;
     }
   }
 };
 
-export const renderCarlaToReact: CarlaRenderer = function (tree, extraProps) {
+export const renderNawbToReact: NawbRenderer = function (tree, extraProps) {
   if (!tree?.tagName) {
     return;
   }

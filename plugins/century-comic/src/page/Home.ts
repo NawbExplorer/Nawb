@@ -11,7 +11,7 @@ import {
   Zone,
   Context,
   navigation,
-} from 'carla';
+} from 'nawb';
 import cheerio from 'cheerio';
 import got from 'got';
 import { nanoid } from 'nanoid';

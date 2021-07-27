@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import { View, ViewStyle } from 'react-native';
-import { CarlaTree } from '..';
+import { NawbTree } from '..';
 
-import { renderCarlaToReact } from '../renderer';
+import { renderNawbToReact } from '../renderer';
 
 export interface ListTileProps {
   containerStyle?: ViewStyle;
@@ -10,10 +10,10 @@ export interface ListTileProps {
   trailingStyle?: ViewStyle;
   titleStyle?: ViewStyle;
   subtitleStyle?: ViewStyle;
-  leading?: CarlaTree;
-  trailing?: CarlaTree;
-  title?: CarlaTree;
-  subtitle?: CarlaTree;
+  leading?: NawbTree;
+  trailing?: NawbTree;
+  title?: NawbTree;
+  subtitle?: NawbTree;
 }
 
 export const MiaoListTile: FC<ListTileProps> = function (props) {
@@ -28,19 +28,19 @@ export const MiaoListTile: FC<ListTileProps> = function (props) {
   let leading, title, subtitle, trailing;
 
   if (props.leading) {
-    leading = renderCarlaToReact(props.leading);
+    leading = renderNawbToReact(props.leading);
   }
 
   if (props.title) {
-    title = renderCarlaToReact(props.title);
+    title = renderNawbToReact(props.title);
   }
 
   if (props.subtitle) {
-    subtitle = renderCarlaToReact(props.subtitle);
+    subtitle = renderNawbToReact(props.subtitle);
   }
 
   if (props.trailing) {
-    trailing = renderCarlaToReact(props.trailing);
+    trailing = renderNawbToReact(props.trailing);
   }
 
   return (

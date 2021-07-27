@@ -1,7 +1,7 @@
-import { CarlaTree } from './carlaUI-type';
+import { NawbTree } from './nawbUI-type';
 
 export interface PluginRenderReceiver {
-  uiTree: CarlaTree;
+  uiTree: NawbTree;
   pageName: string;
   /**
    * 强制发给react native 虽然没用

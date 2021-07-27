@@ -1,5 +1,5 @@
 /*
- *   Copyright (c) 2021 
+ *   Copyright (c) 2021
  *   All rights reserved.
  */
 type DeviceInfoProps = {
@@ -141,17 +141,17 @@ type Platform =
   | PlatformWindowsOSStatic
   | PlatformMacOSStatic;
 
-interface CarlaEnv {
+interface NawbEnv {
   device: DeviceProps;
   IS_ENV: boolean;
   env: 'development' | 'production';
   platform: Platform;
 }
 
-declare var carla: CarlaEnv;
+declare var nawb: NawbEnv;
 
 declare module NodeJS {
   interface Global {
-    carla: CarlaEnv;
+    nawb: NawbEnv;
   }
 }

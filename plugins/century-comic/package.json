@@ -1,11 +1,11 @@
 {
-  "name": "carla-plugin-century-comic",
+  "name": "nawb-plugin-century-comic",
   "version": "0.0.1",
   "main": "./index.js",
   "keywords": [
     "deskbtm",
-    "carla-plugin",
-    "carlajs"
+    "nawb-plugin",
+    "nawbjs"
   ],
   "scripts": {
     "start": "cross-env NODE_ENV=development node ./esbuild.config.js",
@@ -19,7 +19,7 @@
     "@types/node": "^12.19.0",
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
-    "carla": "file:../../packages/carla",
+    "nawb": "file:../../packages/nawb",
     "chalk": "^4.1.0",
     "cross-env": "^7.0.3",
     "esbuild": "^0.9.0",

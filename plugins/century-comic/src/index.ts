@@ -1,15 +1,15 @@
 /*
- *   Copyright (c) 2021 
+ *   Copyright (c) 2021
  *   All rights reserved.
  */
 import { Home } from './page/Home';
 import { ComicInfo } from './page/ComicInfo';
 import { ComicContent } from './page/ComicContent';
 import { search as searchApi } from './search';
-import { Page, CarlaUI } from 'carla';
+import { Page, NawbUI } from 'nawb';
 
 export const uiEntry = function (context) {
-  return CarlaUI({
+  return NawbUI({
     namespace: 'century-comic',
     context,
     pages: {
@@ -39,7 +39,7 @@ export const searchEntry = function (ctx) {
 // export const scheduleEntry = function () {};
 
 // {
-//   tagName: 'CarlaUI';
+//   tagName: 'NawbUI';
 //   pages: {
 //     home: {
 //       pageName: 'home',

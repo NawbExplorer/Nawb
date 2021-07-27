@@ -54,13 +54,14 @@ export const RootNavigator: FC = function (props) {
       <RootStack.Screen
         name="PluginRuntimeScreen"
         component={PluginRuntimeScreen}
-        options={{
-          // headerLeft() {
-          //   // return;
-          // },
-          // headerShown: false,
-          ...TransitionPresets.SlideFromRightIOS,
-        }}
+        options={TransitionPresets.RevealFromBottomAndroid}
+        // options={{
+        //   // headerLeft() {
+        //   //   // return;
+        //   // },
+        //   // headerShown: false,
+        //   ...TransitionPresets.SlideFromRightIOS,
+        // }}
       />
       <RootStack.Screen
         name="DialogScreen"

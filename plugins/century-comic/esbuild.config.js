@@ -6,7 +6,7 @@ require('esbuild')
     bundle: true,
     target: 'node12',
     external: ['rn-bridge'],
-    outfile: './.carla/index.js',
+    outfile: './.nawb/index.js',
     platform: 'node',
     watch: !isProd,
     minify: isProd,

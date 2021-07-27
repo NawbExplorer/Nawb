@@ -10,7 +10,7 @@ const string = tree('./', {
     /gradle/,
     /dist/,
     /(?<=libnode)(.+)/,
-    /carla-video-player/,
+    /nawb-video-player/,
     /(?<=react-native-rn-videoplayer)(.+)/,
     /(?<=react-native-manage-wallpaper)(.+)/,
     /(?<=react-native-indicator)(.+)/,
