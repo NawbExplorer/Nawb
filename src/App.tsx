@@ -13,6 +13,8 @@ import {
   StyleSheet,
   StatusBar,
   Linking,
+  View,
+  Button,
 } from 'react-native';
 // import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 
@@ -77,19 +79,27 @@ export const App: FC = observer(() => {
   }, []);
 
   return (
-    <ThemeContext.Provider value={themeProvider}>
-      <PluginContext.Provider value={pluginProvider}>
-        <NavigationContainer>
-          <RootNavigator />
-        </NavigationContainer>
-        {/* <ExpoStatusBar
-          animated={true}
-          translucent={true}
-          backgroundColor="#fff"
-        />
-        <SafeAreaView style={appStyles.androidSafeArea}></SafeAreaView> */}
-      </PluginContext.Provider>
-    </ThemeContext.Provider>
+    <View>
+      <Button
+        title="flick"
+        onPress={() => {
+          console.log(11);
+        }}
+      />
+    </View>
+    // <ThemeContext.Provider value={themeProvider}>
+    //   <PluginContext.Provider value={pluginProvider}>
+    //     <NavigationContainer>
+    //       <RootNavigator />
+    //     </NavigationContainer>
+    //     {/* <ExpoStatusBar
+    //       animated={true}
+    //       translucent={true}
+    //       backgroundColor="#fff"
+    //     />
+    //     <SafeAreaView style={appStyles.androidSafeArea}></SafeAreaView> */}
+    //   </PluginContext.Provider>
+    // </ThemeContext.Provider>
   );
 });
 

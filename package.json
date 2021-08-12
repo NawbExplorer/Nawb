@@ -44,7 +44,7 @@
     "nawb-fs": "file:packages/fs",
     "react": "17.0.1",
     "react-i18next": "^11.8.13",
-    "react-native": "0.64.0",
+    "react-native": "0.64.2",
     "react-native-background-downloader": "^2.3.4",
     "react-native-fs": "^2.18.0",
     "react-native-gesture-handler": "^1.10.3",
@@ -102,9 +102,5 @@
       "json",
       "node"
     ]
-  },
-  "workspaces": [
-    "packages/fs",
-    "packages/path"
-  ]
+  }
 }

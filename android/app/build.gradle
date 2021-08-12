@@ -145,7 +145,6 @@ if (keystorePropertiesFile.exists()) {
 }
 
 
-
 android {
 
   compileSdkVersion rootProject.ext.compileSdkVersion
@@ -232,16 +231,14 @@ dependencies {
 //  implementation project(':react-native-linear-gradient')
 //  implementation project(':react-native-video')
 //  addUnimodulesDependencies()
-  
+
   implementation 'androidx.palette:palette:1.0.0'
   implementation 'androidx.work:work-runtime:2.3.4'
-  
+
   implementation("com.github.bumptech.glide:glide:${glideVersion}")
   implementation("com.github.bumptech.glide:annotations:${glideVersion}")
   annotationProcessor "com.github.bumptech.glide:compiler:${glideVersion}"
   implementation("com.github.bumptech.glide:okhttp3-integration:${glideVersion}")
-
-
 
 
   debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {

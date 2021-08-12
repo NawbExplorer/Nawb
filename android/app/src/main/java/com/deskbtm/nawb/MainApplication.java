@@ -34,22 +34,22 @@ public class MainApplication extends Application implements ReactApplication {
     new ReactNativeHost(this) {
       @Override
       public boolean getUseDeveloperSupport() {
-        return false;
+        return BuildConfig.DEBUG;
       }
 
       @Override
       protected List<ReactPackage> getPackages() {
-        @SuppressWarnings("UnnecessaryLocalVariable")
+//        @SuppressWarnings("UnnecessaryLocalVariable")
         List<ReactPackage> packages = new PackageList(this).getPackages();
 //        packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider));
 //        packages.add(new LinearGradientPackage());
 //        packages.add(new OrientationPackage());
 //        packages.add(new SystemSettingPackage());
 //        packages.add(new ReactVideoPackage());
-        packages.add(new WallpaperPackage());
-        packages.add(new SimulatePackage());
-        packages.add(new DevtoolsPackage(this));
-        packages.add(new JsThreadPackage(this));
+//        packages.add(new WallpaperPackage());
+//        packages.add(new SimulatePackage());
+//        packages.add(new DevtoolsPackage(this));
+//        packages.add(new JsThreadPackage(this));
         // packages.add(new ScheduleJobPackage(this));
 
         return packages;
