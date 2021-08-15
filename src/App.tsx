@@ -18,10 +18,10 @@ import {
 } from 'react-native';
 // import { StatusBar as ExpoStatusBar } from 'expo-status-bar';
 
-import {
-  NavigationContainer,
-  NavigationContainerRef,
-} from '@react-navigation/native';
+// import {
+//   NavigationContainer,
+//   NavigationContainerRef,
+// } from '@react-navigation/native';
 // import { PluginEnvBooter } from './plugin-core';
 // import './common/utils/i18n';
 
@@ -55,7 +55,7 @@ import {
 // });
 
 export const App: FC = observer(() => {
-  const navigationRef = React.createRef<NavigationContainerRef>();
+  // const navigationRef = React.createRef<NavigationContainerRef>();
 
   // Linking.addEventListener('url', () => {});
 
