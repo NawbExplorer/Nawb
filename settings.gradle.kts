@@ -1,0 +1,11 @@
+rootProject.name = "nawb"
+//include(':app')
+
+apply { 
+  from(file("./node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))
+    
+}
+
+
+//applyNativeModulesSettingsGradle(settings)
+

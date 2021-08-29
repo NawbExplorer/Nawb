@@ -33,7 +33,7 @@ public class DevtoolsPackage implements ReactPackage {
 //      String uri = "http://localhost:8081/index.bundle?platform=android&dev=true&minify=false&app=com.deskbtm.nawb&modulesOnly=false&runModule=true";
 //
 //      @Override
-//      public void onClick(View v) {//点击进入rn业务1
+//      public void onClick(View v) {
 //        new JsBundleUtils(reactNativeHost, reactApplicationContext).getJsBundleFromDevServer(uri);
 ////        startActivity(new Intent(MainActivity.this, Buz1Activity?.class));
 //      }

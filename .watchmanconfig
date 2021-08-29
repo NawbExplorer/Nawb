@@ -3,6 +3,8 @@
     "build",
     "plugins",
     "packages",
-    "nodejs-assets"
+    "nodejs-assets",
+    ".git",
+    "node_modules"
   ]
 }
