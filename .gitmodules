@@ -1,0 +1,3 @@
+[submodule "third_party/react-native"]
+	path = third_party/react-native
+	url = https://github.com/deskbtm-nawb/react-native.git
