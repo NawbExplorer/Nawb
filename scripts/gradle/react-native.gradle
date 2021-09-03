@@ -14,7 +14,7 @@ def detectEntryFile(config) {
         return System.getenv('ENTRY_FILE')
     } else if (config.entryFile) {
         return config.entryFile
-    } else if ((new File("${projectDir}/../index.android.js")).exists()) {
+    } else if ((new File("${rootDir}/index.android.js")).exists()) {
         return "index.android.js"
     }
 
@@ -28,8 +28,8 @@ def detectCliPath(config) {
     if (config.cliPath) {
         return config.cliPath
     }
-    if (new File("${projectDir}/../third_party/react-native/cli.js").exists()) {
-        return "${projectDir}/../third_party/react-native/cli.js"
+    if (new File("${rootDir}/third_party/react-native/cli.js").exists()) {
+        return "${rootDir}/third_party/react-native/cli.js"
     }
     throw new Exception("Couldn't determine CLI location. " +
              "Please set `project.ext.react.cliPath` to the path of the react-native cli.js");
@@ -39,11 +39,11 @@ def composeSourceMapsPath = config.composeSourceMapsPath ?: "third_party/react-n
 def bundleAssetName = config.bundleAssetName ?: "index.android.bundle"
 def entryFile = detectEntryFile(config)
 def bundleCommand = config.bundleCommand ?: "bundle"
-def reactRoot = file(config.root ?: "../")
+//def rootDir = file(config.root ?: "../../")
 def inputExcludes = config.inputExcludes ?: ["android/**", "ios/**"]
-def bundleConfig = config.bundleConfig ? "${reactRoot}/${config.bundleConfig}" : null ;
+def bundleConfig = config.bundleConfig ? "${rootDir}/${config.bundleConfig}" : null ;
 def enableVmCleanup = config.enableVmCleanup == null ? true : config.enableVmCleanup
-def hermesCommand = config.hermesCommand ?: "../node_modules/hermes-engine/%OS-BIN%/hermesc"
+def hermesCommand = config.hermesCommand ?: "${rootDir}/node_modules/hermes-engine/%OS-BIN%/hermesc"
 
 def reactNativeDevServerPort() {
     def value = project.getProperties().get("reactNativeDevServerPort")
@@ -142,12 +142,12 @@ afterEvaluate {
             }
 
             // Set up inputs and outputs so gradle can cache the result
-            inputs.files fileTree(dir: reactRoot, excludes: inputExcludes)
+            inputs.files fileTree(dir: rootDir, excludes: inputExcludes)
             outputs.dir(jsBundleDir)
             outputs.dir(resourcesDir)
 
             // Set up the call to the react-native cli
-            workingDir(reactRoot)
+            workingDir(rootDir)
 
             // Set up dev mode
             def devEnabled = !(config."devDisabledIn${targetName}"
@@ -209,7 +209,7 @@ afterEvaluate {
                             // TODO: set task dependencies for caching
 
                             // Set up the call to the compose-source-maps script
-                            workingDir(reactRoot)
+                            workingDir(rootDir)
                             if (Os.isFamily(Os.FAMILY_WINDOWS)) {
                                 commandLine("cmd", "/c", *nodeExecutableAndArgs, composeSourceMapsPath, jsPackagerSourceMapFile, jsCompilerSourceMapFile, "-o", jsOutputSourceMapFile)
                             } else {

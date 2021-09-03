@@ -14,8 +14,8 @@ buildscript {
 
 allprojects {
   repositories {
-    maven(url="$rootDir/third_party/react-native/android")
-    
+    maven(url = uri("$rootDir/third_party/react-native/android"))
+    maven(url = uri("$rootDir/node_modules/detox/Detox-android"))
     maven(url = "https://maven.aliyun.com/repository/google")
     maven(url = "https://maven.aliyun.com/repository/jcenter")
     maven(url = "http://maven.aliyun.com/nexus/content/groups/public")
