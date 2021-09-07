@@ -1,6 +1,7 @@
 import java.util.Properties
 import java.io.FileInputStream
 import com.android.build.OutputFile
+import groovy.lang.Closure
 
 plugins {
   id("com.android.application")
@@ -10,12 +11,15 @@ plugins {
 //import com.android.build.OutputFile
 //import ex
 
-var react: Any by ext
+var react: Map<String, Any> by ext
 
 react = mapOf(
   Pair("root", "../"),
   Pair("enableHermes", true)
 )
+
+val FLIPPER_VERSION:String by project;
+val GLIDE_VERSION:String by project;
 
 
 val abiCodes = mapOf<String, Int>(
@@ -110,16 +114,16 @@ dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   implementation("com.facebook.react:react-native:+")
   implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
-  debugImplementation("com.facebook.flipper:flipper:0.93.0") {
+  debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
     exclude(group = "com.facebook.fbjni")
   }
 
-  debugImplementation("com.facebook.flipper:flipper-network-plugin:0.93.0") {
+  debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
     exclude(group = "com.facebook.flipper")
     exclude(group = "com.squareup.okhttp3", module = "okhttp")
   }
 
-  debugImplementation("com.facebook.flipper:flipper-fresco-plugin:0.93.0") {
+  debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
     exclude(group = "com.facebook.flipper")
   }
 
@@ -128,6 +132,8 @@ dependencies {
 
   debugImplementation(files("$hermesPath/hermes-debug.aar"))
   releaseImplementation(files("$hermesPath/hermes-release.aar"))
-
-
 }
+
+apply(from = file("$rootDir/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))
+val applyNativeModulesAppBuildGradle: Closure<Any> by ext
+applyNativeModulesAppBuildGradle(project)
