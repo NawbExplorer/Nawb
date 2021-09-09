@@ -1,12 +1,29 @@
-import groovy.lang.Closure
 rootProject.name = "nawb"
 
-include("android")
+pluginManagement {
+  repositories {
+    gradlePluginPortal()
+    mavenCentral()
+    google()
+  }
+}
 
-apply(from = file("$rootDir/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))
+include("nawb-android")
+project(":nawb-android").projectDir = file("$rootDir/android")
 
-val applyNativeModulesSettingsGradle: Closure<Any> by extra
-applyNativeModulesSettingsGradle(settings)
+// reactnative for android
+include("ReactAndroid")
+project(":ReactAndroid").projectDir = file("$rootDir/third_party/react-native/ReactAndroid")
+
+val RNCodegenAndroidPath = "$rootDir/third_party/react-native/packages/react-native-codegen/android"
+include(":react-native-codegen:android")
+project(":react-native-codegen:android").projectDir = file(RNCodegenAndroidPath)
+includeBuild(RNCodegenAndroidPath)
+
+//apply(from = file("$rootDir/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))
+//
+//val applyNativeModulesSettingsGradle: Closure<Any> by extra
+//applyNativeModulesSettingsGradle(settings)
 
 //
 ////fun demo(vararg demo: Any): Unit{

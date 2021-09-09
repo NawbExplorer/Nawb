@@ -112,7 +112,7 @@ android {
 
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-  implementation("com.facebook.react:react-native:+")
+  implementation(":ReactAndroid")
   implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
   debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
     exclude(group = "com.facebook.fbjni")
