@@ -8,7 +8,7 @@ pluginManagement {
   }
 }
 
-include("nawb-android")
+include(":nawb-android")
 project(":nawb-android").projectDir = file("$rootDir/android")
 
 // reactnative for android

@@ -23,7 +23,7 @@ allprojects {
 
   repositories {
     maven(url = uri("$rootDir/third_party/react-native/android"))
-    maven(url = uri("$rootDir/node_modules/detox/Detox-android"))
+//    maven(url = uri("$rootDir/node_modules/detox/Detox-android"))
     mavenCentral()
     mavenLocal()
     google()

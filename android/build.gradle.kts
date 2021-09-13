@@ -7,7 +7,6 @@ plugins {
   id("com.android.application")
 }
 
-
 //import com.android.build.OutputFile
 //import ex
 
@@ -95,7 +94,8 @@ android {
       )
     }
   }
-
+  
+  // 打包不同abi
   androidComponents {
     onVariants { variant ->
       variant.outputs.forEach { output ->
@@ -117,7 +117,7 @@ dependencies {
   debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
     exclude(group = "com.facebook.fbjni")
   }
-
+  
   debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
     exclude(group = "com.facebook.flipper")
     exclude(group = "com.squareup.okhttp3", module = "okhttp")
