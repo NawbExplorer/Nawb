@@ -21,7 +21,7 @@ val FLIPPER_VERSION:String by project;
 val GLIDE_VERSION:String by project;
 
 
-val abiCodes = mapOf<String, Int>(
+val abiCodes = mapOf(
   "armeabi-v7a" to 1,
   "x86" to 2,
   "arm64-v8a" to 3,
