@@ -11,7 +11,7 @@ pluginManagement {
 include(":nawb-android")
 project(":nawb-android").projectDir = file("$rootDir/android")
 
-// reactnative for android
+// react native for android
 include("ReactAndroid")
 project(":ReactAndroid").projectDir = file("$rootDir/third_party/react-native/ReactAndroid")
 
