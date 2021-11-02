@@ -1,5 +1,0 @@
-packages:
-  - 'packages/**'
-  # - 'libs/**'
-  # - 'third_party/react-native'
-  - '!**/test/**'
