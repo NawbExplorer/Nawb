@@ -10,6 +10,8 @@
 !.yarn/versions
 
 
+
+
 # OSX
 #
 .DS_Store
@@ -50,6 +52,7 @@ DerivedData
 local.properties
 *.iml
 **/plugins/**/node_modules
+*.hprof
 # android/app/build
 
 # Visual Studio Code
