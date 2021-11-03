@@ -1,30 +1,10 @@
-
-*-lock.*
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
-
-
-
-
 # OSX
 #
 .DS_Store
 
-*.binlog
-temp
-.cxx
-external/nodejs-mobile-react-native
-packages/**/node_modules/*
-**/*.keystore
-
 # Xcode
 #
-
+build/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -40,29 +20,26 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+# exclude project.xcworkspace except for xcshareddata/WorkspaceSettings.xcsettings
+project.xcworkspace/*
+**/project.xcworkspace/contents.xcworkspacedata
+**/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 
-# Android/IntelliJ  
+# Android/IntelliJ
 #
-# build/
-.gradle
+build/
 .idea
-*.hprof
-**/.gradle
+.gradle
 local.properties
 *.iml
-**/plugins/**/node_modules
-*.hprof
-# android/app/build
 
 # Visual Studio Code
 #
-
+.vscode/
 
 # node.js
 #
-**/node_modules/*
-**/dist/*
-**/build/*
+node_modules/
 npm-debug.log
 yarn-error.log
 

@@ -1,0 +1,5 @@
+<resources>
+  <string name="app_name">nawb</string>
+  <string name="accessibility_service_label">多多喵点击服务</string>
+  <string name="accessibility_service_description">多多喵点击模式</string>
+</resources>

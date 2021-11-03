@@ -1,0 +1,4 @@
+[submodule "third_party/react-native"]
+	path = third_party/react-native
+	url = https://github.com/facebook/react-native.git
+	branch = 0.66-stable

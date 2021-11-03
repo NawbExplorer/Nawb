@@ -1,0 +1,71 @@
+{
+  "name": "nawb",
+  "version": "0.0.1-alpha1",
+  "private": true,
+  "scripts": {
+    "android": "react-native run-android",
+    "windows": "react-native run-windows",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "release": "standard-version",
+    "bundle:android": "react-native bundle --platform android --dev true --entry-file index.js --bundle-output ./dist/android/index.android.bundle --assets-dest ./dist/android",
+    "tree": "node ./doc/tree"
+  },
+  "engines": {
+    "node": ">=14.16.1 <15",
+    "pnpm": "use yarn",
+    "npm": "use yarn",
+    "yarn": ">=2.0.0"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "mobx": "^6.2.0",
+    "mobx-react-lite": "^3.2.0",
+    "react": "17.0.2",
+    "react-native": "0.66.1",
+    "semver": "^7.3.5",
+    "yarn": "^1.22.17"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/jest": "^25.2.3",
+    "@types/react": "17.0.2",
+    "@types/react-native": "^0.66.1",
+    "@types/react-native-background-downloader": "^2.3.3",
+    "@types/react-test-renderer": "^16.9.2",
+    "babel-jest": "^26.6.3",
+    "eslint": "7.14.0",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-test-renderer": "17.0.2",
+    "standard-version": "^9.1.1",
+    "tree-node-cli": "^1.4.0",
+    "typescript": "^3.8.3"
+  },
+  "jest": {
+    "preset": "react-native",
+    "roots": [
+      "src"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/packages",
+      "<rootDir>/android"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>[/\\\\](packages)[/\\\\]",
+      "<rootDir>[/\\\\](android)[/\\\\]"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "packageManager": "yarn@3.1.0"
+}
