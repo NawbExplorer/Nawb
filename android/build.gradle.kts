@@ -125,8 +125,7 @@ dependencies {
   debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
     exclude(group = "com.facebook.flipper")
   }
-
-
+  
   val hermesPath = "${rootDir}/node_modules/hermes-engine/android"
 
   debugImplementation(files("$hermesPath/hermes-debug.aar"))
