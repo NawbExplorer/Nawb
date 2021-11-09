@@ -16,7 +16,7 @@ allprojects {
   configurations.all {
     resolutionStrategy {
       dependencySubstitution {
-        substitute(module("com.facebook.react:react-native:+")).with(project(":ReactAndroid"))
+        substitute(module("com.facebook.react:react-native:+")).using(project(":ReactAndroid"))
       }
     }
   }

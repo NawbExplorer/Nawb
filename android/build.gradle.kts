@@ -39,7 +39,7 @@ android {
     applicationId("com.deskbtm.nawb")
     minSdkVersion(21)
     compileSdkVersion(30)
-    targetSdkVersion(targetSdkVersion = 30)
+    targetSdkVersion(targetSdkVersion = 26)
     versionCode(1)
     versionName("1.0")
   }

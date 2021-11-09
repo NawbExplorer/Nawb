@@ -16,11 +16,5 @@
   },
   "license": "MIT",
   "licenseFilename": "LICENSE",
-  "readmeFilename": "README.md",
-  "peerDependencies": {
-    "react": ">=16.8.1"
-  },
-  "devDependencies": {
-    "react": "^16.9.0"
-  }
+  "readmeFilename": "README.md"
 }

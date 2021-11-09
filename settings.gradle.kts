@@ -8,13 +8,12 @@ pluginManagement {
   }
 }
 
-include(":nawb-android")
+include("nawb-android")
 project(":nawb-android").projectDir = file("$rootDir/android")
 
 // react native for android
 include("ReactAndroid")
 project(":ReactAndroid").projectDir = file("$rootDir/third_party/react-native/ReactAndroid")
-
 
 //val RNCodegenAndroidPath = "$rootDir/third_party/react-native/packages/react-native-codegen/android"
 //include(":react-native-codegen:android")
