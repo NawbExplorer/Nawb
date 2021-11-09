@@ -8,18 +8,25 @@ pluginManagement {
   }
 }
 
-include("nawb-android")
-project(":nawb-android").projectDir = file("$rootDir/android")
+
+
+
+
+include("NawbAndroid")
+project(":NawbAndroid").projectDir = file("$rootDir/android")
+
+
 
 // react native for android
-include("ReactAndroid")
-project(":ReactAndroid").projectDir = file("$rootDir/third_party/react-native/ReactAndroid")
+//include(":ReactAndroid")
+//project(":ReactAndroid").projectDir = file("$rootDir/third_party/react-native/ReactAndroid")
+
 
 //val RNCodegenAndroidPath = "$rootDir/third_party/react-native/packages/react-native-codegen/android"
 //include(":react-native-codegen:android")
 //project(":react-native-codegen:android").projectDir = file(RNCodegenAndroidPath)
 
-includeBuild("$rootDir/third_party/react-native/packages/react-native-gradle-plugin")
+//includeBuild("$rootDir/third_party/react-native/packages/react-native-gradle-plugin")
 
 //apply(from = file("$rootDir/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))
 //

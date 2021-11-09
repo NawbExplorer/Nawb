@@ -7,15 +7,13 @@ plugins {
   id("com.android.application")
 }
 
-//import com.android.build.OutputFile
-//import ex
 
-var react: Map<String, Any> by ext
-
-react = mapOf(
-  Pair("root", "../"),
-  Pair("enableHermes", true)
-)
+//var react: Map<String, Any> by ext
+//
+//react = mapOf(
+//  Pair("root", "../"),
+//  Pair("enableHermes", true)
+//)
 
 val FLIPPER_VERSION:String by project;
 val GLIDE_VERSION:String by project;
@@ -28,10 +26,10 @@ val abiCodes = mapOf(
   "x86_64" to 4
 )
 
-apply {
-  //  config react-native
-  from(file("$rootDir/scripts/gradle/react-native.gradle"))
-}
+//apply {
+//  //  config react-native
+////  from(file("$rootDir/scripts/gradle/react-native.gradle"))
+//}
 
 android {
   defaultConfig {
@@ -39,7 +37,7 @@ android {
     applicationId("com.deskbtm.nawb")
     minSdkVersion(21)
     compileSdkVersion(30)
-    targetSdkVersion(targetSdkVersion = 26)
+    targetSdkVersion(targetSdkVersion = 29)
     versionCode(1)
     versionName("1.0")
   }
@@ -111,7 +109,7 @@ android {
 
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-  implementation(":ReactAndroid")
+//  implementation(":ReactAndroid")
   implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
   debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
     exclude(group = "com.facebook.fbjni")
@@ -126,7 +124,7 @@ dependencies {
     exclude(group = "com.facebook.flipper")
   }
   
-  val hermesPath = "${rootDir}/node_modules/hermes-engine/android"
+  val hermesPath = "${rootDir}/third_party/react-native/node_modules/hermes-engine/android"
 
   debugImplementation(files("$hermesPath/hermes-debug.aar"))
   releaseImplementation(files("$hermesPath/hermes-release.aar"))
