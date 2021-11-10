@@ -9,11 +9,12 @@ pluginManagement {
 }
 
 
-
-
-
 include("NawbAndroid")
 project(":NawbAndroid").projectDir = file("$rootDir/android")
+
+
+include("ReactNative")
+project(":ReactNative").projectDir = file("$rootDir/third_party/react-native")
 
 
 
@@ -26,7 +27,7 @@ project(":NawbAndroid").projectDir = file("$rootDir/android")
 //include(":react-native-codegen:android")
 //project(":react-native-codegen:android").projectDir = file(RNCodegenAndroidPath)
 
-//includeBuild("$rootDir/third_party/react-native/packages/react-native-gradle-plugin")
+includeBuild("$rootDir/third_party/react-native/packages/react-native-gradle-plugin")
 
 //apply(from = file("$rootDir/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))
 //
