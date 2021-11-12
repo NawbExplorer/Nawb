@@ -16,7 +16,7 @@ plugins {
 //)
 
 val FLIPPER_VERSION:String by project;
-val GLIDE_VERSION:String by project;
+//val GLIDE_VERSION:String by project;
 
 
 val abiCodes = mapOf(
@@ -28,7 +28,7 @@ val abiCodes = mapOf(
 
 //apply {
 //  //  config react-native
-////  from(file("$rootDir/scripts/gradle/react-native.gradle"))
+//  from(file("$rootDir/scripts/gradle/react.gradle"))
 //}
 
 android {
