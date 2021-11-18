@@ -109,7 +109,7 @@ android {
 
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-  implementation(":ReactAndroid")
+//  implementation(":ReactAndroid")
   
   implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
   debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
@@ -125,7 +125,7 @@ dependencies {
     exclude(group = "com.facebook.flipper")
   }
   
-  val hermesPath = "${rootDir}/third_party/react-native/node_modules/hermes-engine/android"
+  val hermesPath = "${rootDir}/node_modules/react-native/node_modules/hermes-engine/android"
 
   debugImplementation(files("$hermesPath/hermes-debug.aar"))
   releaseImplementation(files("$hermesPath/hermes-release.aar"))

@@ -1,4 +1,4 @@
-rootProject.name = "nawb"
+rootProject.name = "Nawb"
 
 pluginManagement {
   repositories {
@@ -8,18 +8,23 @@ pluginManagement {
   }
 }
 
-include("NawbAndroid")
+val REACT_NATIVE_DIR = "$rootDir/node_modules/react-native"
+val RNCodegenAndroidPath = "$REACT_NATIVE_DIR/packages/react-native-codegen/android"
+var RNGradlePlugin =  "$REACT_NATIVE_DIR/packages/react-native-gradle-plugin"
+
+include(":NawbAndroid")
 project(":NawbAndroid").projectDir = file("$rootDir/android")
 
 // react native for android
-include("ReactAndroid")
-project(":ReactAndroid").projectDir = file("$rootDir/third_party/react-native/ReactAndroid")
+include(":ReactAndroid")
+project(":ReactAndroid").projectDir = file("$REACT_NATIVE_DIR/ReactAndroid")
 
+includeBuild(RNGradlePlugin)
 
+include(":react-native-codegen:android")
+project(":react-native-codegen:android").projectDir = file(RNCodegenAndroidPath)
 
-//val RNCodegenAndroidPath = "$rootDir/third_party/react-native/packages/react-native-codegen/android"
-//include(":react-native-codegen:android")
-//project(":react-native-codegen:android").projectDir = file(RNCodegenAndroidPath)
+includeBuild(RNCodegenAndroidPath)
 
 //apply(from = file("$rootDir/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))
 //

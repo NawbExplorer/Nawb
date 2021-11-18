@@ -22,14 +22,14 @@ allprojects {
   }
 
   repositories {
-    maven(url = uri("$rootDir/third_party/react-native/android"))
+//    maven(url = uri("$rootDir/node_modules/react-native/android"))
 //    maven(url = uri("$rootDir/node_modules/detox/Detox-android"))
     mavenCentral {
       content {
         excludeGroup("com.facebook.react")
       }
     }
-    
+    maven { url 'https://www.jitpack.io' }
     mavenLocal()
     google()
   }
