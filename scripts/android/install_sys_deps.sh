@@ -1,0 +1,53 @@
+apt update -qq && apt install -qq -y --no-install-recommends \
+ant \
+git \
+watchman \
+openjdk-11-jdk-headless \
+python-setuptools \
+python3-setuptools \
+apt-transport-https \
+curl \
+file \
+gcc \
+git \
+g++ \
+gnupg2 \
+libc++1-10 \
+libgl1 \
+libtcmalloc-minimal4 \
+make \
+openjdk-11-jdk-headless \
+openssh-client \
+patch \
+python3 \
+python3-distutils \
+rsync \
+ruby \
+ruby-dev \
+tzdata \
+unzip \
+sudo \
+ninja-build \
+zip \
+# Emulator & video bridge dependencies
+libc6 \
+libdbus-1-3 \
+libfontconfig1 \
+libgcc1 \
+libpulse0 \
+libtinfo5 \
+libx11-6 \
+libxcb1 \
+libxdamage1 \
+libnss3 \
+libxcomposite1 \
+libxcursor1 \
+libxi6 \
+libxext6 \
+libxfixes3 \
+zlib1g \
+libgl1 \
+pulseaudio \
+socat \
+&& gem install bundler \
+&& rm -rf /var/lib/apt/lists/*;
