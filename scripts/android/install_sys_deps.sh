@@ -29,7 +29,6 @@ unzip \
 sudo \
 ninja-build \
 zip \
-# Emulator & video bridge dependencies
 libc6 \
 libdbus-1-3 \
 libfontconfig1 \
@@ -50,4 +49,4 @@ libgl1 \
 pulseaudio \
 socat \
 && gem install bundler \
-&& rm -rf /var/lib/apt/lists/*;
+&& rm -rf /var/lib/apt/lists/*
