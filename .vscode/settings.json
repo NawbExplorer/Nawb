@@ -45,10 +45,6 @@
     "*.gyp": "python",
     "mutex": "cpp"
   },
-  "i18n-ally.localesPaths": [
-    "src/i18n"
-  ],
-  "workspace.isHidden": true,
   "files.exclude": {
     "bazel-bin": true,
     "bazel-nawb/bazel-out": true,
