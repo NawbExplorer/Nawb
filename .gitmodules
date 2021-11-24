@@ -1,4 +1,4 @@
 [submodule "third_party/react-native"]
 	path = third_party/react-native
-	url = https://github.com/deskbtm-nawb/react-native.git
-  branch = main
+	url = https://github.com/NawbBrowser/react-native.git
+	branch = nawb-main
