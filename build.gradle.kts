@@ -1,8 +1,22 @@
 buildscript {
   repositories {
-    mavenCentral()
+    maven(url = uri("https://maven.aliyun.com/repository/central"))
+    maven(url = uri("https://maven.aliyun.com/repository/google"))
+//    mavenCentral()
+//    google()
     mavenLocal()
-    google()
+    if (System.getenv("GOOGLE_REPO_URI") != null) {
+      maven(url = uri(System.getenv("GOOGLE_REPO_URI")))
+    }else {
+      google()
+    }
+    
+    if (System.getenv("CENTRAL_REPO_URI") != null) {
+      maven(url = uri(System.getenv("CENTRAL_REPO_URI")))
+    }else {
+      google()
+    }
+
   }
   dependencies {
     classpath("com.android.tools.build:gradle:4.2.2")
@@ -30,8 +44,9 @@ allprojects {
       }
     }
     maven(url = uri("https://www.jitpack.io"))
-    mavenLocal()
-    google()
+    maven(url = uri("https://maven.aliyun.com/repository/google"))
+//    mavenLocal()
+//    google()
   }
 }
 

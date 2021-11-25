@@ -1,6 +1,6 @@
-NODE_VERSION=14.x
+NDK_VERSION=21.4.7075529
 
-export ANDROID_HOME=/opt/android
+export ANDROID_HOME=~/Android/Sdk
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 export ANDROID_NDK=$ANDROID_HOME/ndk/$NDK_VERSION
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
