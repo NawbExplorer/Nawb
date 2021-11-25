@@ -9,7 +9,7 @@ pluginManagement {
 }
 
 val REACT_NATIVE_DIR = "$rootDir/node_modules/react-native"
-val RNCodegenAndroidPath = "$REACT_NATIVE_DIR/packages/react-native-codegen/android"
+//val RNCodegenAndroidPath = "$REACT_NATIVE_DIR/packages/react-native-codegen/android"
 var RNGradlePlugin =  "$REACT_NATIVE_DIR/packages/react-native-gradle-plugin"
 
 include(":NawbAndroid")
@@ -21,10 +21,10 @@ project(":ReactAndroid").projectDir = file("$REACT_NATIVE_DIR/ReactAndroid")
 
 includeBuild(RNGradlePlugin)
 
-include(":react-native-codegen:android")
-project(":react-native-codegen:android").projectDir = file(RNCodegenAndroidPath)
-
-includeBuild(RNCodegenAndroidPath)
+//include(":react-native-codegen:android")
+//project(":react-native-codegen:android").projectDir = file(RNCodegenAndroidPath)
+//
+//includeBuild(RNCodegenAndroidPath)
 
 //apply(from = file("$rootDir/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))
 //

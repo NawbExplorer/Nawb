@@ -29,7 +29,7 @@ allprojects {
         excludeGroup("com.facebook.react")
       }
     }
-    maven { url 'https://www.jitpack.io' }
+    maven(url = uri("https://www.jitpack.io"))
     mavenLocal()
     google()
   }
