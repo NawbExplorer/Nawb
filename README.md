@@ -1,1 +1,1 @@
-Nawb (pronounced /næb/ not /nɔb/), the chinese name is 奈布
+Nawb (pronounced /næb/ not /nɔb/), the chinese name is 奈布.
