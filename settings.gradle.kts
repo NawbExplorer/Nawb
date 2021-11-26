@@ -8,16 +8,16 @@ pluginManagement {
   }
 }
 
-val REACT_NATIVE_DIR = "$rootDir/node_modules/react-native"
+val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
 //val RNCodegenAndroidPath = "$REACT_NATIVE_DIR/packages/react-native-codegen/android"
 var RNGradlePlugin =  "$REACT_NATIVE_DIR/packages/react-native-gradle-plugin"
 
 include(":NawbAndroid")
-project(":NawbAndroid").projectDir = file("$rootDir/android")
+project(":NawbAndroid").projectDir = File("$rootDir/android")
 
 // react native for android
 include(":ReactAndroid")
-project(":ReactAndroid").projectDir = file("$REACT_NATIVE_DIR/ReactAndroid")
+project(":ReactAndroid").projectDir = File("$REACT_NATIVE_DIR/ReactAndroid")
 
 includeBuild(RNGradlePlugin)
 

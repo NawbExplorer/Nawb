@@ -1,6 +1,6 @@
 import java.util.Properties
 import java.io.FileInputStream
-import com.android.build.OutputFile
+import com.android.build.api.variant.FilterConfiguration.FilterType;
 import groovy.lang.Closure
 
 plugins {
@@ -34,12 +34,12 @@ val abiCodes = mapOf(
 android {
   defaultConfig {
     buildToolsVersion = "30.0.2"
-    applicationId("com.deskbtm.nawb")
-    minSdkVersion(21)
-    compileSdkVersion(30)
-    targetSdkVersion(targetSdkVersion = 29)
-    versionCode(1)
-    versionName("1.0")
+    minSdk = 21
+    targetSdk = 29
+    versionCode = 1
+    versionName = "1.0"
+    compileSdk = 30
+    applicationId = "com.deskbtm.nawb"
   }
 
   splits {
@@ -79,15 +79,15 @@ android {
 
   buildTypes {
     getByName("debug") {
-      signingConfig = signingConfigs.getByName("debug")
+      signingConfig = signingConfigs.findByName("debug")
     }
 
     getByName("release") {
-      minifyEnabled(true)
-      signingConfig = signingConfigs.getByName("release")
-      proguardFiles = mutableListOf(
-        file(getDefaultProguardFile("proguard-android.txt")),
-        file("proguard-rules.pro")
+      isMinifyEnabled = true
+      signingConfig = signingConfigs.findByName("release")
+      proguardFiles(
+          getDefaultProguardFile("proguard-android.txt"),          
+          "proguard-rules.pro"
       )
     }
   }
@@ -96,7 +96,7 @@ android {
   androidComponents {
     onVariants { variant ->
       variant.outputs.forEach { output ->
-        val name = output.filters.find { it.identifier == OutputFile.ABI }?.identifier
+        val name = output.filters.find { it.identifier == FilterType.ABI.name }?.identifier
         val baseAbiCode = abiCodes[name]
         if (baseAbiCode != null) {
           output.versionCode.set(baseAbiCode * 1000 + (output.versionCode.get() ?: 0))
@@ -109,7 +109,7 @@ android {
 
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-//  implementation(":ReactAndroid")
+  implementation(project(":ReactAndroid"))
   
   implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
   debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
