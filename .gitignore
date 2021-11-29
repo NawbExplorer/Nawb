@@ -13,7 +13,7 @@
 .DS_Store
 
 *.binlog
-temp
+# temp
 .cxx
 external/nodejs-mobile-react-native
 packages/**/node_modules/*

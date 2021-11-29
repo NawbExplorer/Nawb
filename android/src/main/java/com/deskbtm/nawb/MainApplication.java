@@ -4,14 +4,15 @@ import android.app.Application;
 import android.content.Context;
 
 //import com.facebook.react.PackageList;
-//import com.facebook.react.ReactApplication;
-//import com.facebook.react.ReactInstanceManager;
-//import com.facebook.react.ReactNativeHost;
-//import com.facebook.react.ReactPackage;
+import com.facebook.react.ReactApplication;
+import com.facebook.react.ReactInstanceManager;
+import com.facebook.react.ReactNativeHost;
+import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
-import com.facebook.react.ReactPlugin;
+//import com.facebook.react.ReactPlugin;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Collections;
 import java.util.List;
 
 //import com.BV.LinearGradient.LinearGradientPackage;
@@ -37,7 +38,7 @@ public class MainApplication extends Application implements ReactApplication {
       @Override
       protected List<ReactPackage> getPackages() {
 //        @SuppressWarnings("UnnecessaryLocalVariable")
-        List<ReactPackage> packages = new PackageList(this).getPackages();
+//        List<ReactPackage> packages = new PackageList(this).getPackages();
 //        packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider));
 //        packages.add(new LinearGradientPackage());
 //        packages.add(new OrientationPackage());
@@ -49,7 +50,8 @@ public class MainApplication extends Application implements ReactApplication {
 //        packages.add(new JsThreadPackage(this));
         // packages.add(new ScheduleJobPackage(this));
 
-        return packages;
+//        return packages;
+        return Collections.emptyList();
       }
 
       @Override

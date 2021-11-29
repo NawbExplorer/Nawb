@@ -1,23 +1,46 @@
 import java.util.Properties
 import java.io.FileInputStream
-import com.android.build.api.variant.FilterConfiguration.FilterType;
-import groovy.lang.Closure
+//import com.android.build.api.variant.FilterConfiguration.FilterType.*;
+//import groovy.lang.Closure
 
 plugins {
   id("com.android.application")
+//  id("com.facebook.react")
 }
 
+ext.set("reactNativeDir", "$rootDir/third_party/react-native")
 
-//var react: Map<String, Any> by ext
+//react {
+//  applyAppPlugin = true
+////  cliPath = "../../../../cli.js"
+//  bundleAssetName = "Nawb.android.bundle"
+//  entryFile = file("$rootDir/index.js")
+//  reactRoot = file("$rootDir/third_party/react_native")
+//  enableHermes = true
+//  //  composeSourceMapsPath = "$rootDir/scripts/compose-source-maps.js"
+//  hermesCommand = "$rootDir/third_party/react-native/node_modules/hermes-engine/%OS-BIN%/hermesc"
+//  //  enableHermesForVariant { v -> v.name.contains("hermes") }
 //
-//react = mapOf(
-//  Pair("root", "../"),
-//  Pair("enableHermes", true)
-//)
+//    // Codegen Configs
+//  jsRootDir = file("$rootDir")
+//  useJavaGenerator = System.getenv("USE_CODEGEN_JAVAPOET")?.toBoolean() ?: false
+//}
 
-val FLIPPER_VERSION:String by project;
-//val GLIDE_VERSION:String by project;
+var react: Map<String, Any> by project.ext
 
+react = mapOf(
+  Pair("root", file("$rootDir")),
+  Pair("applyAppPlugin", true),
+//  Pair("bundleAssetName", "nawb.android.bundle"),
+  Pair("entryFile", file("$rootDir/index.js")),
+  Pair("enableHermes", true),
+  Pair("hermesCommand", "${ext.get("reactNativeDir")}/node_modules/hermes-engine/%OS-BIN%/hermesc"),
+//  Pair("reactRoot", file("$rootDir")),
+  Pair("cliPath", file("${ext.get("reactNativeDir")}/cli.js")),
+)
+
+
+val FLIPPER_VERSION: String by project;
 
 val abiCodes = mapOf(
   "armeabi-v7a" to 1,
@@ -26,12 +49,19 @@ val abiCodes = mapOf(
   "x86_64" to 4
 )
 
-//apply {
-//  //  config react-native
-//  from(file("$rootDir/scripts/gradle/react.gradle"))
-//}
+fun getArchitectures(): List<String> {
+    val value= project.getProperties().get("NAWB_FAVOUR_ARCHITECTURES") as String?
+    return value?.split(",") ?: listOf("armeabi-v7a", "x86", "x86_64", "arm64-v8a")
+}
+
+
+apply {
+  from(file("$rootDir/third_party/react-native/react.gradle"))
+}
+
 
 android {
+  
   defaultConfig {
     buildToolsVersion = "30.0.2"
     minSdk = 21
@@ -47,7 +77,7 @@ android {
       reset()
       isEnable = true
       isUniversalApk = false
-      include("armeabi-v7a", "x86", "arm64-v8a", "x86_64")
+      include(*getArchitectures().toTypedArray())
     }
   }
 
@@ -59,8 +89,7 @@ android {
       keyAlias = "androiddebugkey"
       keyPassword = "android"
     }
-
-
+    
     create("release") {
       val props = Properties()
       val keyFile = file("${projectDir}/key.properties")
@@ -86,36 +115,36 @@ android {
       isMinifyEnabled = true
       signingConfig = signingConfigs.findByName("release")
       proguardFiles(
-          getDefaultProguardFile("proguard-android.txt"),          
-          "proguard-rules.pro"
+        getDefaultProguardFile("proguard-android.txt"),
+        "proguard-rules.pro"
       )
-    }
-  }
-  
-  // 打包不同abi
-  androidComponents {
-    onVariants { variant ->
-      variant.outputs.forEach { output ->
-        val name = output.filters.find { it.identifier == FilterType.ABI.name }?.identifier
-        val baseAbiCode = abiCodes[name]
-        if (baseAbiCode != null) {
-          output.versionCode.set(baseAbiCode * 1000 + (output.versionCode.get() ?: 0))
-        }
-      }
     }
   }
 }
 
+// For each APK output variant, override versionCode with a combination of
+// abiCodes * 1000 + variant.versionCode
+//androidComponents {
+//  onVariants { variant ->
+//    variant.outputs.forEach { output ->
+//      val name = output.filters.find { it.filterType == ABI }?.identifier
+//      val baseAbiCode = abiCodes[name]
+//      if (baseAbiCode != null) {
+//        output.versionCode.set(baseAbiCode * 1000 + (output.versionCode.get() ?: 0))
+//      }
+//    }
+//  }
+//}
 
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   implementation(project(":ReactAndroid"))
-  
+
   implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
   debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
     exclude(group = "com.facebook.fbjni")
   }
-  
+
   debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
     exclude(group = "com.facebook.flipper")
     exclude(group = "com.squareup.okhttp3", module = "okhttp")
@@ -124,7 +153,7 @@ dependencies {
   debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
     exclude(group = "com.facebook.flipper")
   }
-  
+
   val hermesPath = "${rootDir}/node_modules/react-native/node_modules/hermes-engine/android"
 
   debugImplementation(files("$hermesPath/hermes-debug.aar"))

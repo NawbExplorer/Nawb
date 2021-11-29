@@ -14,7 +14,7 @@ buildscript {
     if (System.getenv("CENTRAL_REPO_URI") != null) {
       maven(url = uri(System.getenv("CENTRAL_REPO_URI")))
     }else {
-      google()
+      mavenCentral()
     }
 
   }
