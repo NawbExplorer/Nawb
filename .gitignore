@@ -17,7 +17,7 @@
 .cxx
 external/nodejs-mobile-react-native
 packages/**/node_modules/*
-**/*.keystore
+#**/*.keystore
 
 # Xcode
 #
