@@ -19,6 +19,10 @@ project(":NawbAndroid").projectDir = File("$rootDir/android")
 include(":ReactAndroid")
 project(":ReactAndroid").projectDir = File("$REACT_NATIVE_DIR/ReactAndroid")
 
+
+include(":rn-tester")
+project(":rn-tester").projectDir = File("$REACT_NATIVE_DIR/packages/rn-tester/android/app")
+
 includeBuild(RNGradlePlugin)
 
 //include(":react-native-codegen:android")

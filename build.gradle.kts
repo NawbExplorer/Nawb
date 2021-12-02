@@ -1,15 +1,26 @@
+
+
+
+
 buildscript {
   repositories {
     maven(url = uri("https://maven.aliyun.com/repository/central"))
     maven(url = uri("https://maven.aliyun.com/repository/google"))
-//    mavenCentral()
-//    google()
-    mavenLocal()
-    if (System.getenv("GOOGLE_REPO_URI") != null) {
-      maven(url = uri(System.getenv("GOOGLE_REPO_URI")))
-    }else {
-      google()
+    
+    val repoMap = mapOf(
+      "GOOGLE_REPO_URI" to google(),
+      "CENTRAL_REPO_URI" to mavenCentral()
+    )
+    
+    repoMap.forEach{m -> 
+       if (System.getenv(m.key) != null) {
+         maven(url = uri(System.getenv(m.key)))
+       } else {
+         m.value
+       }   
     }
+    
+    mavenLocal()
     
     if (System.getenv("CENTRAL_REPO_URI") != null) {
       maven(url = uri(System.getenv("CENTRAL_REPO_URI")))
@@ -19,8 +30,11 @@ buildscript {
 
   }
   dependencies {
-    classpath("com.android.tools.build:gradle:7.0.3")
+    val KOTLIN_VERSION: String by project
+    val AGP_VERSION: String by project
+    classpath("com.android.tools.build:gradle:$AGP_VERSION")
     classpath("de.undercouch:gradle-download-task:4.1.1")
+    classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION")
   }
 }
 

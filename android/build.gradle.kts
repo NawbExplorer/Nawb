@@ -15,57 +15,63 @@ import com.android.build.api.variant.FilterConfiguration.FilterType.*;
 
 plugins {
   id("com.android.application")
-//  id("com.facebook.react")
+  id("com.facebook.react")
 }
 
 ext.set("reactNativeDir", "$rootDir/third_party/react-native")
 
+react {
+  applyAppPlugin.set(true)
+  entryFile.set(file("$rootDir/index.js"))
+  reactRoot.set(file("$rootDir"))
+  enableHermes.set(true)
+  hermesCommand.set("${ext.get("reactNativeDir")}/node_modules/hermes-engine/%OS-BIN%/hermesc")
+  cliPath.set("${ext.get("reactNativeDir")}/cli.js")
+}
+
 //react {
 //  applyAppPlugin = true
 ////  cliPath = "../../../../cli.js"
-//  bundleAssetName = "Nawb.android.bundle"
 //  entryFile = file("$rootDir/index.js")
-//  reactRoot = file("$rootDir/third_party/react_native")
+//  reactRoot = file("$rootDir")
 //  enableHermes = true
+//  cliPath = file("${ext.get("reactNativeDir")}/cli.js")
 //  //  composeSourceMapsPath = "$rootDir/scripts/compose-source-maps.js"
 //  hermesCommand = "$rootDir/third_party/react-native/node_modules/hermes-engine/%OS-BIN%/hermesc"
 //  //  enableHermesForVariant { v -> v.name.contains("hermes") }
 //
 //    // Codegen Configs
-//  jsRootDir = file("$rootDir")
 //  useJavaGenerator = System.getenv("USE_CODEGEN_JAVAPOET")?.toBoolean() ?: false
 //}
 
-var react: Map<String, Any> by project.ext
+//var react: Map<String, Any> by project.ext
+//
+//react = mapOf(
+//  "root" to file("$rootDir"),
+//  "applyAppPlugin" to true,
+//  "entryFile" to file("$rootDir/index.js"),
+//  "enableHermes" to true,
+//  "hermesCommand" to "${ext.get("reactNativeDir")}/node_modules/hermes-engine/%OS-BIN%/hermesc",
+//  "cliPath" to file("${ext.get("reactNativeDir")}/cli.js"),
+//)
 
-react = mapOf(
-  Pair("root", file("$rootDir")),
-  Pair("applyAppPlugin", true),
-  Pair("entryFile", file("$rootDir/index.js")),
-  Pair("enableHermes", true),
-  Pair("hermesCommand", "${ext.get("reactNativeDir")}/node_modules/hermes-engine/%OS-BIN%/hermesc"),
-  Pair("cliPath", file("${ext.get("reactNativeDir")}/cli.js")),
-)
+//apply {
+//  from(file("$rootDir/third_party/react-native/react.gradle"))
+//}
 
 val FLIPPER_VERSION: String by project;
 
-val abiCodes = mapOf(
-  "armeabi-v7a" to 1,
-  "x86" to 2,
-  "arm64-v8a" to 3,
-  "x86_64" to 4
+val abiCodesMap = mapOf(
+  "arm64-v8a" to 1,
+  "x86_64" to 2,
+  "armeabi-v7a" to 3,
+  "x86" to 4
 )
 
 fun getArchitectures(): List<String> {
   val value = project.getProperties().get("NAWB_FAVOUR_ARCHITECTURES") as String?
   return value?.split(",") ?: listOf("armeabi-v7a", "x86", "x86_64", "arm64-v8a")
 }
-
-
-apply {
-  from(file("$rootDir/third_party/react-native/react.gradle"))
-}
-
 
 android {
 
@@ -134,18 +140,18 @@ android {
 }
 
 // For each APK output variant, override versionCode with a combination of
-// abiCodes * 1000 + variant.versionCode
-androidComponents {
-  onVariants { variant ->
-    variant.outputs.forEach { output ->
-      val name = output.filters.find { it.filterType == ABI }?.identifier
-      val baseAbiCode = abiCodes[name]
-      if (baseAbiCode != null) {
-        output.versionCode.set(baseAbiCode * 1000 + (output.versionCode.get() ?: 0))
-      }
-    }
-  }
-}
+// abiCodesMap * 1000 + variant.versionCode
+//androidComponents {
+//  onVariants { variant ->
+//    variant.outputs.forEach { output ->
+//      val name = output.filters.find { it.filterType == ABI }?.identifier
+//      val baseAbiCode = abiCodesMap[name]
+//      if (baseAbiCode != null) {
+//        output.versionCode.set(baseAbiCode * 1000 + (output.versionCode.get() ?: 0))
+//      }
+//    }
+//  }
+//}
 
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
