@@ -1,30 +1,36 @@
-
-
-
+/**
+ * Nawb (c) by Nawbc
+ *
+ * Nawb is licensed under a
+ * Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
+ *
+ * You should have received a copy of the license along with this
+ * work. If not, see <http://creativecommons.org/licenses/by-nc-nd/4.0/>.
+ */
 
 buildscript {
   repositories {
-    maven(url = uri("https://maven.aliyun.com/repository/central"))
-    maven(url = uri("https://maven.aliyun.com/repository/google"))
-    
+//    maven(url = uri("https://maven.aliyun.com/repository/central"))
+//    maven(url = uri("https://maven.aliyun.com/repository/google"))
+//    
     val repoMap = mapOf(
       "GOOGLE_REPO_URI" to google(),
       "CENTRAL_REPO_URI" to mavenCentral()
     )
-    
-    repoMap.forEach{m -> 
-       if (System.getenv(m.key) != null) {
-         maven(url = uri(System.getenv(m.key)))
-       } else {
-         m.value
-       }   
+
+    repoMap.forEach { m ->
+      if (System.getenv(m.key) != null) {
+        maven(url = uri(System.getenv(m.key)))
+      } else {
+        m.value
+      }
     }
-    
+//    
     mavenLocal()
-    
+
     if (System.getenv("CENTRAL_REPO_URI") != null) {
       maven(url = uri(System.getenv("CENTRAL_REPO_URI")))
-    }else {
+    } else {
       mavenCentral()
     }
 
@@ -64,3 +70,9 @@ allprojects {
   }
 }
 
+ext["REACT_NATIVE_DIR"] = "$rootDir/third_party/react-native"
+
+//{
+//  REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
+//  HERMES_DIR = "${rootDir}/node_modules/hermes-engine/android"
+//}

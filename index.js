@@ -2,7 +2,7 @@
  * @format
  */
 
-import { AppRegistry, Text, LogBox } from 'react-native';
+import { AppRegistry, LogBox } from 'react-native';
 // import { enableScreens } from 'react-native-screens';
 // import { Asset } from 'react-native-unimodules';
 // import { Assets as StackAssets } from '@react-navigation/stack';

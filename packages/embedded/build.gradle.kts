@@ -19,7 +19,6 @@ plugins {
 }
 
 val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
-val HERMES_DIR = "$rootDir/third_party/react-native/node_modules/hermes-engine"
 val FLIPPER_VERSION: String by project;
 
 val abiCodesMap = mapOf(
@@ -35,13 +34,12 @@ fun getArchitectures(): List<String> {
 }
 
 react {
-//  println
   applyAppPlugin.set(true)
   entryFile.set(file("$rootDir/index.js"))
   reactRoot.set(file(REACT_NATIVE_DIR))
   jsRootDir.set(file(rootDir))
   enableHermes.set(true)
-  hermesCommand.set("$HERMES_DIR/%OS-BIN%/hermesc")
+  hermesCommand.set("$REACT_NATIVE_DIR/node_modules/hermes-engine/%OS-BIN%/hermesc")
   cliPath.set("$REACT_NATIVE_DIR/cli.js")
 }
 
@@ -142,11 +140,9 @@ dependencies {
   debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
     exclude(group = "com.facebook.flipper")
   }
-  
-  debugImplementation(files("$HERMES_DIR/android/hermes-debug.aar"))
-  releaseImplementation(files("$HERMES_DIR/android/hermes-release.aar"))
-}
 
-//apply(from = file("$rootDir/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))
-//val applyNativeModulesAppBuildGradle: Closure<Any> by ext
-//applyNativeModulesAppBuildGradle(project)
+  val hermesPath = "${rootDir}/third_party/react-native/node_modules/hermes-engine/android"
+
+  debugImplementation(files("$hermesPath/hermes-debug.aar"))
+  releaseImplementation(files("$hermesPath/hermes-release.aar"))
+}

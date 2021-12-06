@@ -5,7 +5,7 @@ import android.content.res.Configuration;
 
 import com.facebook.react.ReactActivity;
 //import com.facebook.react.ReactActivityDelegate;
-import com.facebook.react.ReactRootView;
+import com.facebook.react.viewmanagers.ActivityIndicatorViewManagerDelegate;
 //import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 
 public class MainActivity extends ReactActivity {
@@ -19,8 +19,7 @@ public class MainActivity extends ReactActivity {
     return "NawbBrowser";
   }
   
-  
-//    @Override
+//  @Override
 //  protected ReactActivityDelegate createReactActivityDelegate() {
 //    return new ReactActivityDelegate(this, getMainComponentName()) {
 //      @Override
@@ -30,7 +29,7 @@ public class MainActivity extends ReactActivity {
 //    };
 //  }
 
-//  @Override
+//    @Override
 //  public void onConfigurationChanged(Configuration newConfig) {
 //    super.onConfigurationChanged(newConfig);
 //    Intent intent = new Intent("onConfigurationChanged");

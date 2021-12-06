@@ -1,5 +1,5 @@
 {
-  "name": "nawb-path",
+  "name": "@nawb/path",
   "title": "Nawb Path",
   "version": "1.0.0",
   "description": "TODO",
@@ -11,6 +11,10 @@
     "ios",
     "nawb-path.podspec"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

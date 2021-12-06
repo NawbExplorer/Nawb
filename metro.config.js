@@ -8,6 +8,7 @@ const path = require('path');
 const exclusionList = require('metro-config/src/defaults/exclusionList');
 
 module.exports = {
+  projectRoot: __dirname,
   transformer: {
     getTransformOptions: async () => ({
       transform: {
@@ -18,12 +19,13 @@ module.exports = {
   },
   resolver: {
     sourceExts: ['jsx', 'js', 'ts', 'tsx'],
+    extraNodeModules: [path.resolve(__dirname, 'third_party')],
     blockList: exclusionList([
       /packages\/.*/,
       /android\/.*/,
       /ios\/.*/,
       /temp\/.*/,
-      /third_party\/.*/,
+      // /third_party\/.*/,
       /libs\/.*/,
       /\.yarn\/.*/,
       // This stops "react-native run-windows" from causing the metro server to crash if its already running

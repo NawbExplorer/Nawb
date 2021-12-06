@@ -1,9 +1,13 @@
 {
-  "name": "nawb-fs",
+  "name": "@nawb/fs",
   "title": "Nawb Fs",
   "version": "0.0.1",
   "description": "TODO",
   "main": "index.js",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

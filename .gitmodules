@@ -2,3 +2,7 @@
 	path = third_party/react-native
 	url = https://github.com/NawbBrowser/react-native.git
 	branch = nawb-main
+[submodule "third_party/webview"]
+	path = third_party/webview
+	url = https://github.com/NawbBrowser/webview.git
+	branch = nawb-main
