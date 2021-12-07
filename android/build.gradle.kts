@@ -108,6 +108,11 @@ android {
   packagingOptions {
     jniLibs.pickFirsts.add("**/libhermes.so")
   }
+  
+  compileOptions {
+    sourceCompatibility(JavaVersion.VERSION_11)
+    targetCompatibility(JavaVersion.VERSION_11)
+  }
 
 }
 

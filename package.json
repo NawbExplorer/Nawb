@@ -44,6 +44,12 @@
       "third_party/*"
     ]
   },
+  "engines": {
+    "node": ">= 14.16.0",
+    "npm": "please-use-yarn",
+    "yarn": ">1.0.0 <2.0.0",
+    "pnpm": "please-use-yarn"
+  },
   "jest": {
     "preset": "react-native",
     "roots": [

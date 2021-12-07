@@ -10,7 +10,6 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 //import com.facebook.react.ReactPlugin;
-
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
 import java.util.List;
