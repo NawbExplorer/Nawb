@@ -19,7 +19,7 @@ plugins {
 }
 
 val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
-val HERMES_DIR = "$rootDir/third_party/react-native/node_modules/hermes-engine"
+val HERMES_DIR = "$rootDir/node_modules/hermes-engine"
 val FLIPPER_VERSION: String by project;
 
 val abiCodesMap = mapOf(

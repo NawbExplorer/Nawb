@@ -18,7 +18,7 @@ pluginManagement {
   }
 }
 
-val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
+val REACT_NATIVE_DIR = "$rootDir/node_modules/react-native"
 
 include(":NawbAndroid")
 project(":NawbAndroid").projectDir = File("$rootDir/android")
