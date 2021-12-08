@@ -38,6 +38,11 @@
     "tree-node-cli": "^1.4.0",
     "typescript": "^3.8.3"
   },
+  "resolutions": {
+    "react-native": "*",
+    "react": "*",
+    "metro": "*"
+  },
   "workspaces": {
     "packages": [
       "libs/*",
