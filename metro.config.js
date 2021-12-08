@@ -19,7 +19,6 @@ module.exports = {
   },
   resolver: {
     sourceExts: ['jsx', 'js', 'ts', 'tsx'],
-    extraNodeModules: [path.resolve(__dirname, 'third_party')],
     blockList: exclusionList([
       /packages\/.*/,
       /android\/.*/,
