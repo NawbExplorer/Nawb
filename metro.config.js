@@ -20,11 +20,10 @@ module.exports = {
   resolver: {
     sourceExts: ['jsx', 'js', 'ts', 'tsx'],
     blockList: exclusionList([
-      /packages\/.*/,
+      /\.\/packages\/.*/,
       /android\/.*/,
       /ios\/.*/,
       /temp\/.*/,
-      // /third_party\/.*/,
       /libs\/.*/,
       /\.yarn\/.*/,
       // This stops "react-native run-windows" from causing the metro server to crash if its already running

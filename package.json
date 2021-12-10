@@ -11,8 +11,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "release": "standard-version",
     "bundle:android": "react-native bundle --platform android --dev true --entry-file index.js --bundle-output ./dist/android/index.android.bundle --assets-dest ./dist/android",
-    "tree": "node ./doc/tree",
-    "postinstall": "node ./scripts/tools/clean-rn-symbolic.js"
+    "tree": "node ./doc/tree"
   },
   "dependencies": {
     "@react-native/assets": "file:third_party/react-native/packages/assets",
@@ -22,7 +21,7 @@
     "mobx": "^6.2.0",
     "mobx-react-lite": "^3.2.0",
     "react": "17.0.2",
-    "react-native": "portal:third_party/react-native",
+    "react-native": "link:third_party/react-native",
     "semver": "^7.3.5"
   },
   "devDependencies": {
