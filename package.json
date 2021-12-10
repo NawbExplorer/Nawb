@@ -11,18 +11,25 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "release": "standard-version",
     "bundle:android": "react-native bundle --platform android --dev true --entry-file index.js --bundle-output ./dist/android/index.android.bundle --assets-dest ./dist/android",
-    "tree": "node ./doc/tree"
+    "tree": "node ./doc/tree",
+    "postinstall": "node ./scripts/tools/clean-rn-symbolic.js"
   },
   "dependencies": {
+    "@react-native/assets": "file:third_party/react-native/packages/assets",
+    "@react-native/normalize-color": "file:third_party/react-native/packages/normalize-color",
+    "@react-native/polyfills": "file:third_party/react-native/packages/polyfills",
     "axios": "^0.24.0",
     "mobx": "^6.2.0",
     "mobx-react-lite": "^3.2.0",
     "react": "17.0.2",
-    "semver": "^7.3.5",
-    "react-native": "portal:third_party/react-native"
+    "react-native": "portal:third_party/react-native",
+    "semver": "^7.3.5"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@react-native-community/cli": "^6.0.0",
+    "@react-native-community/cli-platform-android": "^6.0.0",
+    "@react-native-community/cli-platform-ios": "^6.0.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/jest": "^25.2.3",
     "@types/react": "17.0.2",
@@ -33,20 +40,14 @@
     "eslint": "7.14.0",
     "fs-extra": "^10.0.0",
     "jest": "^26.6.3",
-    "metro": "^0.66.2",
-    "metro-config": "^0.66.2",
-    "metro-core": "^0.66.2",
     "metro-react-native-babel-preset": "^0.66.2",
-    "metro-resolver": "^0.66.2",
-    "metro-runtime": "^0.66.2",
-    "metro-source-map": "^0.66.2",
     "react-test-renderer": "17.0.2",
     "standard-version": "^9.1.1",
     "tree-node-cli": "^1.4.0",
     "typescript": "^3.8.3"
   },
   "resolutions": {
-    "metro": "*"
+    "metro": "> 0.60.0"
   },
   "workspaces": {
     "packages": [

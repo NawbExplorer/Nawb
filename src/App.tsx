@@ -64,7 +64,7 @@ export const App: FC = () => {
   }, []);
 
   return (
-    <View>
+    <View onTouchStart={() => {}}>
       <Button
         title="flick"
         onPress={() => {

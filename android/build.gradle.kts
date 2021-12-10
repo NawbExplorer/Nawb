@@ -20,6 +20,7 @@ plugins {
 
 val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
 val HERMES_DIR = "$rootDir/node_modules/hermes-engine"
+val CODEGEN_DIR = "$REACT_NATIVE_DIR/packages/react-native-codegen"
 val FLIPPER_VERSION: String by project;
 
 val abiCodesMap = mapOf(
@@ -41,6 +42,7 @@ react {
   reactRoot.set(file(REACT_NATIVE_DIR))
   jsRootDir.set(file(rootDir))
   enableHermes.set(true)
+  codegenDir.set(file(CODEGEN_DIR))
   hermesCommand.set("$HERMES_DIR/%OS-BIN%/hermesc")
   cliPath.set("$REACT_NATIVE_DIR/cli.js")
 }
@@ -108,7 +110,7 @@ android {
   packagingOptions {
     jniLibs.pickFirsts.add("**/libhermes.so")
   }
-  
+
   compileOptions {
     sourceCompatibility(JavaVersion.VERSION_11)
     targetCompatibility(JavaVersion.VERSION_11)
@@ -147,7 +149,7 @@ dependencies {
   debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
     exclude(group = "com.facebook.flipper")
   }
-  
+
   debugImplementation(files("$HERMES_DIR/android/hermes-debug.aar"))
   releaseImplementation(files("$HERMES_DIR/android/hermes-release.aar"))
 }
