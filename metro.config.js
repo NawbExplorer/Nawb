@@ -21,6 +21,7 @@ module.exports = {
     sourceExts: ['jsx', 'js', 'ts', 'tsx'],
     blockList: exclusionList([
       /\.\/packages\/.*/,
+      /third_party\/node_modules\/.*/,
       /android\/.*/,
       /ios\/.*/,
       /temp\/.*/,

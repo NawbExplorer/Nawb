@@ -8,10 +8,9 @@
  * work. If not, see <http://creativecommons.org/licenses/by-nc-nd/4.0/>.
  */
 
-import java.util.Properties
+import com.android.build.api.variant.FilterConfiguration.FilterType.ABI
 import java.io.FileInputStream
-import com.android.build.api.variant.FilterConfiguration.FilterType.*;
-import groovy.lang.Closure
+import java.util.*
 
 plugins {
   id("com.android.application")
@@ -32,7 +31,7 @@ val abiCodesMap = mapOf(
 
 fun getArchitectures(): List<String> {
   val value = project.getProperties().get("NAWB_FAVOUR_ARCHITECTURES") as String?
-  return value?.split(",") ?: listOf("armeabi-v7a", "x86", "x86_64", "arm64-v8a")
+  return value?.split(",") ?: abiCodesMap.keys.toList()
 }
 
 react {
@@ -43,6 +42,7 @@ react {
   jsRootDir.set(file(rootDir))
   enableHermes.set(true)
   codegenDir.set(file(CODEGEN_DIR))
+  useJavaGenerator.set(false)
   hermesCommand.set("$HERMES_DIR/%OS-BIN%/hermesc")
   cliPath.set("$REACT_NATIVE_DIR/cli.js")
 }
