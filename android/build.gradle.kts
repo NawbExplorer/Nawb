@@ -19,7 +19,7 @@ plugins {
 }
 
 val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
-val HERMES_DIR = "$rootDir/node_modules/hermes-engine"
+val HERMES_DIR = "$REACT_NATIVE_DIR/node_modules/hermes-engine"
 val CODEGEN_DIR = "$REACT_NATIVE_DIR/packages/react-native-codegen"
 val FLIPPER_VERSION: String by project;
 

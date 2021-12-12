@@ -43,25 +43,26 @@ export const App: FC = () => {
   // const navigationRef = React.createRef<NavigationContainerRef>();
 
   // Linking.addEventListener('url', () => {});
+  useEffect(() => {}, []);
 
-  useEffect(() => {
-    // const unsubscribe = NetInfo.addEventListener(state => {
-    //   console.log('Connection type', state.type);
-    //   console.log('Is connected?', state.isConnected);
-    //   if (!state.isConnected) {
-    //     // Toast;T
-    //   }
-    // });
-    // routingInstrumentation.registerNavigationContainer(navigationRef as any);
-    // const booter = PluginEnvBooter.start({
-    //   mainEntryDevParams: ['/data/local/tmp/nodejs-project/boot.js'],
-    //   mainEntry: 'boot.js',
-    // });
-    // booter.startMsgListener();
-    // return () => {
-    //   booter.removeMsgListener();
-    // };
-  }, []);
+  // useEffect(() => {
+  // const unsubscribe = NetInfo.addEventListener(state => {
+  //   console.log('Connection type', state.type);
+  //   console.log('Is connected?', state.isConnected);
+  //   if (!state.isConnected) {
+  //     // Toast;T
+  //   }
+  // });
+  // routingInstrumentation.registerNavigationContainer(navigationRef as any);
+  // const booter = PluginEnvBooter.start({
+  //   mainEntryDevParams: ['/data/local/tmp/nodejs-project/boot.js'],
+  //   mainEntry: 'boot.js',
+  // });
+  // booter.startMsgListener();
+  // return () => {
+  //   booter.removeMsgListener();
+  // };
+  // }, []);
 
   return (
     <View onTouchStart={() => {}}>
