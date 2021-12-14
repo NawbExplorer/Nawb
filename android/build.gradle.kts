@@ -47,6 +47,9 @@ react {
   cliPath.set("$REACT_NATIVE_DIR/cli.js")
 }
 
+//project.extensions.create("nawb", )
+
+
 android {
 
   defaultConfig {
@@ -134,7 +137,7 @@ androidComponents {
 
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-  api(project(":ReactAndroid"))
+  api(project(":NawbEmbedded"))
 
   implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
   debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {

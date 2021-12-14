@@ -1,0 +1,29 @@
+{
+  "name": "@nawb/embedded",
+  "title": "Nawb embedded framework",
+  "version": "1.0.0",
+  "description": "TODO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/github_account/nawb-net.git",
+    "baseUrl": "https://github.com/github_account/nawb-net"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": {
+    "name": "Your Name",
+    "email": "yourname@email.com"
+  },
+  "license": "CC BY-NC-ND 4.0",
+  "licenseFilename": "LICENSE",
+  "readmeFilename": "README.md"
+}

@@ -27,8 +27,7 @@ project(":NawbAndroid").projectDir = File("$rootDir/android")
 include(":ReactAndroid")
 project(":ReactAndroid").projectDir = File("$REACT_NATIVE_DIR/ReactAndroid")
 
-
-//include(":rn-tester")
-//project(":rn-tester").projectDir = File("$REACT_NATIVE_DIR/packages/rn-tester/android/app")
+include(":NawbEmbedded")
+project(":NawbEmbedded").projectDir = File("$rootDir/packages/embedded/android")
 
 includeBuild("$REACT_NATIVE_DIR/packages/react-native-gradle-plugin")
