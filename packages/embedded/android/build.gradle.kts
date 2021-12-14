@@ -21,8 +21,14 @@ plugins {
 val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
 val HERMES_DIR = "$REACT_NATIVE_DIR/node_modules/hermes-engine"
 val CODEGEN_DIR = "$REACT_NATIVE_DIR/packages/react-native-codegen"
-val FLIPPER_VERSION: String by project;
 
+react {
+  libraryName.set("nawb-embedded")
+  reactRoot.set(file(REACT_NATIVE_DIR))
+  jsRootDir.set(file(rootDir))
+  codegenDir.set(file(CODEGEN_DIR))
+  useJavaGenerator.set(false)
+}
 android {
 
   defaultConfig {
@@ -41,19 +47,30 @@ android {
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   api(project(":ReactAndroid"))
-
+  
   debugImplementation(files("$HERMES_DIR/android/hermes-debug.aar"))
   releaseImplementation(files("$HERMES_DIR/android/hermes-release.aar"))
 }
 
+
+
+
 publishing {
   publications {
+//    android.libraryVariants.all {  libraryVariant ->
+//      println(libraryVariant)
+//      println("===============================")
+//      return@publications
+//    }
+//    
     create<MavenPublication>("release") {
+      val react = project(":ReactAndroid")
       from(components.findByName("release"))
 
       artifactId = "nawb-embedded"
       groupId = "com.deskbtm.nawb"
       version = "10000"
+//      artifact("${react.buildDir}/outputs/aar/${react.name}")
 
       pom {
         name.set("NawbEmbedded")
@@ -75,7 +92,7 @@ publishing {
           }
         }
       }
-      
+
       repositories {
         maven {
           url = uri("$rootDir/repo")
