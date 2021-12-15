@@ -29,8 +29,8 @@ react {
   codegenDir.set(file(CODEGEN_DIR))
   useJavaGenerator.set(false)
 }
-android {
 
+android {
   defaultConfig {
     buildToolsVersion = "30.0.2"
     compileSdk = 30
@@ -47,57 +47,59 @@ android {
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   api(project(":ReactAndroid"))
-  
+
   debugImplementation(files("$HERMES_DIR/android/hermes-debug.aar"))
   releaseImplementation(files("$HERMES_DIR/android/hermes-release.aar"))
 }
 
-
-
+android.libraryVariants.all { libraryVariant ->
+  println(libraryVariant.name)
+  return@all false
+}
 
 publishing {
   publications {
-//    android.libraryVariants.all {  libraryVariant ->
-//      println(libraryVariant)
-//      println("===============================")
-//      return@publications
-//    }
-//    
-    create<MavenPublication>("release") {
-      val react = project(":ReactAndroid")
-      from(components.findByName("release"))
-
-      artifactId = "nawb-embedded"
-      groupId = "com.deskbtm.nawb"
-      version = "10000"
-//      artifact("${react.buildDir}/outputs/aar/${react.name}")
-
-      pom {
-        name.set("NawbEmbedded")
-        description.set("Nawb Embedded Framework")
-        url.set("")
-
-        developers {
-          developer {
-            id.set("Nawbc")
-            name.set("HanWang")
-          }
-        }
-
-        licenses {
-          license {
-            name.set("CC-BY-NC-ND-4.0")
-            url.set("https://github.com/facebook/react-native/blob/HEAD/LICENSE")
-            distribution.set("repo")
-          }
-        }
-      }
-
-      repositories {
-        maven {
-          url = uri("$rootDir/repo")
-        }
-      }
+    android.libraryVariants.all { libraryVariant ->
+      println(libraryVariant)
+      println("===============================")
+      return@publications
     }
+//    
+//    create<MavenPublication>("release") {
+//      val react = project(":ReactAndroid")
+//      from(components.findByName("release"))
+//
+//      artifactId = "nawb-embedded"
+//      groupId = "com.deskbtm.nawb"
+//      version = "10000"
+////      artifact("${react.buildDir}/outputs/aar/${react.name}")
+//
+//      pom {
+//        name.set("NawbEmbedded")
+//        description.set("Nawb Embedded Framework")
+//        url.set("")
+//
+//        developers {
+//          developer {
+//            id.set("Nawbc")
+//            name.set("HanWang")
+//          }
+//        }
+//
+//        licenses {
+//          license {
+//            name.set("CC-BY-NC-ND-4.0")
+//            url.set("https://github.com/facebook/react-native/blob/HEAD/LICENSE")
+//            distribution.set("repo")
+//          }
+//        }
+//      }
+//
+//      repositories {
+//        maven {
+//          url = uri("$rootDir/repo")
+//        }
+//      }
+//    }
   }
 }

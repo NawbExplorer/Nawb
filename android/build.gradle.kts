@@ -118,7 +118,6 @@ android {
     sourceCompatibility(JavaVersion.VERSION_11)
     targetCompatibility(JavaVersion.VERSION_11)
   }
-
 }
 
 // For each APK output variant, override versionCode with a combination of
