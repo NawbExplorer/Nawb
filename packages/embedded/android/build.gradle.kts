@@ -52,54 +52,57 @@ dependencies {
   releaseImplementation(files("$HERMES_DIR/android/hermes-release.aar"))
 }
 
-android.libraryVariants.all { libraryVariant ->
-  println(libraryVariant.name)
-  return@all false
-}
-
 publishing {
   publications {
-    android.libraryVariants.all { libraryVariant ->
-      println(libraryVariant)
-      println("===============================")
-      return@publications
+    val GROUP_ID = "com.deskbtm.nawb"
+    val ARTIFACT_ID = "embedded"
+    val react = project(":ReactAndroid")
+    
+    repositories {
+      maven {
+        url = uri("$projectDir/repo")
+      }
     }
-//    
-//    create<MavenPublication>("release") {
-//      val react = project(":ReactAndroid")
-//      from(components.findByName("release"))
-//
-//      artifactId = "nawb-embedded"
-//      groupId = "com.deskbtm.nawb"
-//      version = "10000"
-////      artifact("${react.buildDir}/outputs/aar/${react.name}")
-//
-//      pom {
-//        name.set("NawbEmbedded")
-//        description.set("Nawb Embedded Framework")
-//        url.set("")
-//
-//        developers {
-//          developer {
-//            id.set("Nawbc")
-//            name.set("HanWang")
-//          }
-//        }
-//
-//        licenses {
-//          license {
-//            name.set("CC-BY-NC-ND-4.0")
-//            url.set("https://github.com/facebook/react-native/blob/HEAD/LICENSE")
-//            distribution.set("repo")
-//          }
-//        }
-//      }
-//
-//      repositories {
-//        maven {
-//          url = uri("$rootDir/repo")
-//        }
-//      }
-//    }
+
+    create<MavenPublication>("debugNawbEmbedded") {
+      // Applies the component for the debug build .
+      from(components.findByName("debug"))
+      artifact("${react.buildDir}/outputs/aar/${react.name}-debug.aar")
+
+      artifactId = "$ARTIFACT_ID"
+      groupId = "$GROUP_ID-debug"
+      version = "10000"
+    }
+
+    create<MavenPublication>("releaseNawbEmbedded") {
+      // Applies the component for the release build variant.
+      from(components.findByName("release"))
+      artifact("${react.buildDir}/outputs/aar/${react.name}-release.aar")
+
+      artifactId = ARTIFACT_ID
+      groupId = GROUP_ID
+      version = "10000"
+
+      pom {
+        name.set("NawbEmbedded")
+        description.set("Nawb Embedded Framework")
+        url.set("")
+
+        developers {
+          developer {
+            id.set("Nawbc")
+            name.set("HanWang")
+          }
+        }
+
+        licenses {
+          license {
+            name.set("CC-BY-NC-ND-4.0")
+            url.set("https://github.com/facebook/react-native/blob/HEAD/LICENSE")
+            distribution.set("repo")
+          }
+        }
+      }
+    }
   }
 }
