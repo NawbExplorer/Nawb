@@ -14,21 +14,21 @@ import java.util.*
 
 plugins {
   id("com.android.library")
-  id("com.facebook.react")
+//  id("com.facebook.react")
   id("maven-publish")
 }
 
-val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
-val HERMES_DIR = "$REACT_NATIVE_DIR/node_modules/hermes-engine"
-val CODEGEN_DIR = "$REACT_NATIVE_DIR/packages/react-native-codegen"
-
-react {
-  libraryName.set("nawb-embedded")
-  reactRoot.set(file(REACT_NATIVE_DIR))
-  jsRootDir.set(file(rootDir))
-  codegenDir.set(file(CODEGEN_DIR))
-  useJavaGenerator.set(false)
-}
+//val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
+//val HERMES_DIR = "$REACT_NATIVE_DIR/node_modules/hermes-engine"
+//val CODEGEN_DIR = "$REACT_NATIVE_DIR/packages/react-native-codegen"
+  
+//react {
+//  libraryName.set("nawb-embedded")
+//  reactRoot.set(file(REACT_NATIVE_DIR))
+//  jsRootDir.set(file(rootDir))
+//  codegenDir.set(file(CODEGEN_DIR))
+//  useJavaGenerator.set(false)
+//}
 
 android {
   defaultConfig {
@@ -47,9 +47,6 @@ android {
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   api(project(":ReactAndroid"))
-
-  debugImplementation(files("$HERMES_DIR/android/hermes-debug.aar"))
-  releaseImplementation(files("$HERMES_DIR/android/hermes-release.aar"))
 }
 
 publishing {

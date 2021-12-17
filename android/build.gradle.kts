@@ -35,7 +35,6 @@ fun getArchitectures(): List<String> {
 }
 
 react {
-//  println
   applyAppPlugin.set(true)
   entryFile.set(file("$rootDir/index.js"))
   reactRoot.set(file(REACT_NATIVE_DIR))
@@ -46,9 +45,6 @@ react {
   hermesCommand.set("$HERMES_DIR/%OS-BIN%/hermesc")
   cliPath.set("$REACT_NATIVE_DIR/cli.js")
 }
-
-//project.extensions.create("nawb", )
-
 
 android {
 
