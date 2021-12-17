@@ -49,7 +49,7 @@ react {
 android {
 
   defaultConfig {
-    buildToolsVersion = "30.0.2"
+    buildToolsVersion = "30.0.2"  
     minSdk = 21
     targetSdk = 29
     compileSdk = 30
