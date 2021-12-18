@@ -12,29 +12,22 @@ buildscript {
   repositories {
 //    maven(url = uri("https://maven.aliyun.com/repository/central"))
 //    maven(url = uri("https://maven.aliyun.com/repository/google"))
-//    
     val repoMap = mapOf(
       "GOOGLE_REPO_URI" to google(),
       "CENTRAL_REPO_URI" to mavenCentral()
     )
 
-    repoMap.forEach { m ->
-      if (System.getenv(m.key) != null) {
-        maven(url = uri(System.getenv(m.key)))
+    repoMap.forEach { repo ->
+      if (System.getenv(repo.key) != null) {
+        maven(url = uri(System.getenv(repo.key)))
       } else {
-        m.value
+        repo.value
       }
     }
-//    
+    
     mavenLocal()
-
-    if (System.getenv("CENTRAL_REPO_URI") != null) {
-      maven(url = uri(System.getenv("CENTRAL_REPO_URI")))
-    } else {
-      mavenCentral()
-    }
-
   }
+
   dependencies {
     val KOTLIN_VERSION: String by project
     val AGP_VERSION: String by project
@@ -45,7 +38,8 @@ buildscript {
 }
 
 allprojects {
-
+  ext.set("REACT_NATIVE_DIR", "$rootDir/third_party/react-native")
+  
   // Making 3rd-party modules use fork
   configurations.all {
     resolutionStrategy {
@@ -56,23 +50,26 @@ allprojects {
   }
 
   repositories {
-//    maven(url = uri("$rootDir/node_modules/react-native/android"))
-//    maven(url = uri("$rootDir/node_modules/detox/Detox-android"))
-    mavenCentral {
-      content {
-        excludeGroup("com.facebook.react")
+    maven(url = uri("https://www.jitpack.io"))
+
+    val repoMap = mapOf(
+      "GOOGLE_REPO_URI" to google(),
+      "CENTRAL_REPO_URI" to mavenCentral {
+        content {
+          excludeGroup("com.facebook.react")
+        }
+      }
+    )
+
+    repoMap.forEach { repo ->
+      if (System.getenv(repo.key) != null) {
+        maven(url = uri(System.getenv(repo.key)))
+      } else {
+        repo.value
       }
     }
-    maven(url = uri("https://www.jitpack.io"))
-    maven(url = uri("https://maven.aliyun.com/repository/google"))
-//    mavenLocal()
-//    google()
+    
+    mavenLocal()
   }
 }
 
-ext["REACT_NATIVE_DIR"] = "$rootDir/third_party/react-native"
-
-//{
-//  REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
-//  HERMES_DIR = "${rootDir}/node_modules/hermes-engine/android"
-//}

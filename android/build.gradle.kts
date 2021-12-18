@@ -20,7 +20,7 @@ plugins {
 val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
 val HERMES_DIR = "$REACT_NATIVE_DIR/node_modules/hermes-engine"
 val CODEGEN_DIR = "$REACT_NATIVE_DIR/packages/react-native-codegen"
-val FLIPPER_VERSION: String by project;
+val FLIPPER_VERSION: String by project
 
 val abiCodesMap = mapOf(
   "arm64-v8a" to 1,
@@ -49,7 +49,7 @@ react {
 android {
 
   defaultConfig {
-    buildToolsVersion = "30.0.2"  
+    buildToolsVersion = "30.0.2"
     minSdk = 21
     targetSdk = 29
     compileSdk = 30
