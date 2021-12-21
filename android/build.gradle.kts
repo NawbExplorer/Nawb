@@ -9,10 +9,8 @@
  */
 
 import com.android.build.api.variant.FilterConfiguration.FilterType.ABI
-import org.jetbrains.kotlin.cli.jvm.main
 import java.io.FileInputStream
 import java.util.*
-import kotlin.collections.*
 
 plugins {
   id("com.android.application")
@@ -42,7 +40,6 @@ react {
   reactRoot.set(file(REACT_NATIVE_DIR))
   jsRootDir.set(file(rootDir))
   enableHermes.set(true)
-//  codegenDir.set(file(CODEGEN_DIR))
   useJavaGenerator.set(false)
   hermesCommand.set("$HERMES_DIR/%OS-BIN%/hermesc")
   cliPath.set("$REACT_NATIVE_DIR/cli.js")

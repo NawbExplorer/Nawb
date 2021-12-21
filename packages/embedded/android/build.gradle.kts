@@ -21,7 +21,7 @@ plugins {
 //val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
 //val HERMES_DIR = "$REACT_NATIVE_DIR/node_modules/hermes-engine"
 //val CODEGEN_DIR = "$REACT_NATIVE_DIR/packages/react-native-codegen"
-  
+
 //react {
 //  libraryName.set("nawb-embedded")
 //  reactRoot.set(file(REACT_NATIVE_DIR))
@@ -54,7 +54,7 @@ publishing {
     val GROUP_ID = "com.deskbtm.nawb"
     val ARTIFACT_ID = "embedded"
     val react = project(":ReactAndroid")
-    
+
     repositories {
       maven {
         url = uri("$projectDir/repo")

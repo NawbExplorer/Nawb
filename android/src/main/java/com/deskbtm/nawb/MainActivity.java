@@ -1,11 +1,8 @@
 package com.deskbtm.nawb;
 
-import android.content.Intent;
-import android.content.res.Configuration;
+import com.facebook.react.ReactActivity;
 
-//import com.facebook.react;
 //import com.facebook.react.ReactActivityDelegate;
-import com.facebook.react.viewmanagers.ActivityIndicatorViewManagerDelegate;
 //import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 
 public class MainActivity extends ReactActivity {
@@ -15,7 +12,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "NawbBrowser";
+    return "NawbExplorer";
   }
   
 //  @Override

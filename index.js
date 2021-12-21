@@ -9,8 +9,6 @@ import { AppRegistry, LogBox } from 'react-native';
 
 import { App } from './src/App';
 
-import { name as appName } from './app.json';
-
 // enableScreens();
 
 LogBox.ignoreLogs([
@@ -23,4 +21,4 @@ LogBox.ignoreLogs([
 
 // Asset.loadAsync(StackAssets);
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent('NawbExplorer', () => App);
