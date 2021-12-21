@@ -3,7 +3,7 @@ package com.deskbtm.nawb;
 import android.content.Intent;
 import android.content.res.Configuration;
 
-import com.facebook.react.ReactActivity;
+//import com.facebook.react;
 //import com.facebook.react.ReactActivityDelegate;
 import com.facebook.react.viewmanagers.ActivityIndicatorViewManagerDelegate;
 //import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;

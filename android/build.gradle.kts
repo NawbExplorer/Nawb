@@ -9,8 +9,10 @@
  */
 
 import com.android.build.api.variant.FilterConfiguration.FilterType.ABI
+import org.jetbrains.kotlin.cli.jvm.main
 import java.io.FileInputStream
 import java.util.*
+import kotlin.collections.*
 
 plugins {
   id("com.android.application")
@@ -40,7 +42,7 @@ react {
   reactRoot.set(file(REACT_NATIVE_DIR))
   jsRootDir.set(file(rootDir))
   enableHermes.set(true)
-  codegenDir.set(file(CODEGEN_DIR))
+//  codegenDir.set(file(CODEGEN_DIR))
   useJavaGenerator.set(false)
   hermesCommand.set("$HERMES_DIR/%OS-BIN%/hermesc")
   cliPath.set("$REACT_NATIVE_DIR/cli.js")
@@ -66,9 +68,16 @@ android {
       include(*getArchitectures().toTypedArray())
     }
   }
-
+  
+//  sourceSets {
+//    getByName("main"){
+//      java.setSrcDirs(listOf("src/main/java"))
+//      res.setSrcDirs(listOf("src/res"))
+//    }
+//  }
+  
+  
   signingConfigs {
-
     getByName("debug") {
       storeFile = file("debug.keystore")
       storePassword = "android"
@@ -152,6 +161,7 @@ dependencies {
   releaseImplementation(files("$HERMES_DIR/android/hermes-release.aar"))
 }
 
+// Don't use react-native-cli for now
 //apply(from = file("$rootDir/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))
 //val applyNativeModulesAppBuildGradle: Closure<Any> by ext
 //applyNativeModulesAppBuildGradle(project)
