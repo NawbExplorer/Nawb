@@ -39,6 +39,8 @@ import { Platform, StyleSheet, StatusBar, View, Button } from 'react-native';
 //   dist: `${pkg.version}.0`,
 // });
 
+Platform.select({});
+
 export const App: FC = () => {
   // const navigationRef = React.createRef<NavigationContainerRef>();
 

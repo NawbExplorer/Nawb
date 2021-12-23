@@ -66,14 +66,6 @@ android {
     }
   }
   
-//  sourceSets {
-//    getByName("main"){
-//      java.setSrcDirs(listOf("src/main/java"))
-//      res.setSrcDirs(listOf("src/res"))
-//    }
-//  }
-  
-  
   signingConfigs {
     getByName("debug") {
       storeFile = file("debug.keystore")
@@ -157,8 +149,3 @@ dependencies {
   debugImplementation(files("$HERMES_DIR/android/hermes-debug.aar"))
   releaseImplementation(files("$HERMES_DIR/android/hermes-release.aar"))
 }
-
-// Don't use react-native-cli for now
-//apply(from = file("$rootDir/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))
-//val applyNativeModulesAppBuildGradle: Closure<Any> by ext
-//applyNativeModulesAppBuildGradle(project)
