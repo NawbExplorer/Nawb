@@ -65,7 +65,7 @@ android {
       include(*getArchitectures().toTypedArray())
     }
   }
-  
+
   signingConfigs {
     getByName("debug") {
       storeFile = file("debug.keystore")
@@ -148,4 +148,6 @@ dependencies {
 
   debugImplementation(files("$HERMES_DIR/android/hermes-debug.aar"))
   releaseImplementation(files("$HERMES_DIR/android/hermes-release.aar"))
+
+  implementation("androidx.wear:wear:1.1.0")
 }

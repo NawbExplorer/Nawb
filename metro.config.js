@@ -21,7 +21,7 @@ module.exports = {
     sourceExts: ['jsx', 'js', 'ts', 'tsx'],
     blockList: exclusionList([
       /\.\/packages\/.*/,
-      // Duplicate react package makes metro crash
+      // Duplicate react package will make metro crash
       /third_party\/react-native\/node_modules\/react\/.*/,
       /\.\/node_modules\/.*/,
       /android\/.*/,
