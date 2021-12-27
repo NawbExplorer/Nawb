@@ -19,10 +19,11 @@ pluginManagement {
 }
 
 val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
-
+// Android
 include(":NawbAndroid")
 project(":NawbAndroid").projectDir = File("$rootDir/android/mobile")
 
+// Android Wear
 include(":NawbAndroidWear")
 project(":NawbAndroidWear").projectDir = File("$rootDir/android/wear")
 
