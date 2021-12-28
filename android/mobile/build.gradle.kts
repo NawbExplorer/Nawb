@@ -15,11 +15,13 @@ import java.util.*
 plugins {
   id("com.android.application")
   id("com.facebook.react")
+  kotlin("android")
 }
 
 val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
 val HERMES_DIR = "$REACT_NATIVE_DIR/node_modules/hermes-engine"
 val FLIPPER_VERSION: String by project
+val KTX_VERSION: String by project
 
 val abiCodesMap = mapOf(
   "arm64-v8a" to 1,
@@ -75,7 +77,7 @@ android {
 
     create("release") {
       val props = Properties()
-      val keyFile = file("${projectDir}/key.properties")
+      val keyFile = file("$projectDir/key.properties")
 
       if (keyFile.exists()) {
         props.load(FileInputStream(keyFile))
@@ -128,20 +130,21 @@ androidComponents {
 }
 
 dependencies {
+  implementation("androidx.core:core-ktx:$KTX_VERSION")
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
   api(project(":NawbEmbedded"))
 
   implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
-  debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
+  debugImplementation("com.facebook.flipper:flipper:$FLIPPER_VERSION") {
     exclude(group = "com.facebook.fbjni")
   }
 
-  debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
+  debugImplementation("com.facebook.flipper:flipper-network-plugin:$FLIPPER_VERSION") {
     exclude(group = "com.facebook.flipper")
     exclude(group = "com.squareup.okhttp3", module = "okhttp")
   }
 
-  debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
+  debugImplementation("com.facebook.flipper:flipper-fresco-plugin:$FLIPPER_VERSION") {
     exclude(group = "com.facebook.flipper")
   }
 
