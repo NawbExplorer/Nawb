@@ -16,6 +16,7 @@ plugins {
   id("com.android.library")
 //  id("com.facebook.react")
   id("maven-publish")
+  kotlin("android")
 }
 
 //val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"

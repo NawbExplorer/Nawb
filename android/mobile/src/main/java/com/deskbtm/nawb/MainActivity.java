@@ -1,6 +1,8 @@
 package com.deskbtm.nawb;
 
 import com.facebook.react.ReactActivity;
+import com.facebook.react.ReactActivityDelegate;
+import com.facebook.react.ReactRootView;
 
 //import com.facebook.react.ReactActivityDelegate;
 //import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
@@ -14,12 +16,24 @@ public class MainActivity extends ReactActivity {
   protected String getMainComponentName() {
     return "NawbExplorer";
   }
-  
-//  @Override
+
+  @Override
+  protected ReactActivityDelegate createReactActivityDelegate() {
+    return new ReactActivityDelegate(this, getMainComponentName()){
+      @Override
+      protected ReactRootView createRootView() {
+        ReactRootView reactRootView = new ReactRootView(getContext());
+        reactRootView.setIsFabric(true);
+        return reactRootView;
+      }
+    };
+  }
+
+  //  @Override
 //  protected ReactActivityDelegate createReactActivityDelegate() {
 //    return new ReactActivityDelegate(this, getMainComponentName()) {
 //      @Override
-//      protected ReactRootView createRootVRNGestureHandlerEnabledRootViewiew() {
+//      protected ReactRootView createRootVRNGestureHandlerEnabledRootView() {
 //        return new RNGestureHandlerEnabledRootView(MainActivity.this);
 //      }
 //    };
@@ -32,5 +46,4 @@ public class MainActivity extends ReactActivity {
 //    intent.putExtra("newConfig", newConfig);
 //    this.sendBroadcast(intent);
 //  }
-
 }
