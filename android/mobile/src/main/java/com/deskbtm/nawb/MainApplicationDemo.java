@@ -26,7 +26,7 @@ import java.util.List;
 //import org.wonday.orientation.OrientationPackage;
 
 
-public class MainApplication extends Application implements ReactApplication {
+public class MainApplicationDemo extends Application implements ReactApplication {
 //  private final ReactModuleRegistryProvider mModuleRegistryProvider = new ReactModuleRegistryProvider(new BasePackageList().getPackageList(), null);
 
   private final ReactNativeHost mReactNativeHost =

@@ -48,6 +48,7 @@ DerivedData
 .idea
 *.hprof
 **/.gradle
+**/META-INF
 local.properties
 *.iml
 **/plugins/**/node_modules
