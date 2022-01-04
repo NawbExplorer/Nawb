@@ -156,3 +156,5 @@ dependencies {
 //apply(from = file("$rootDir/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))
 //val applyNativeModulesAppBuildGradle: Closure<Any> by ext
 //applyNativeModulesAppBuildGradle(project)
+
+
