@@ -14,7 +14,6 @@ import java.util.*
 
 plugins {
   id("com.android.library")
-//  id("com.facebook.react")
   id("maven-publish")
   kotlin("android")
 }
@@ -83,7 +82,7 @@ publishing {
 
       pom {
         name.set("NawbEmbedded")
-        description.set("Nawb Embedded Framework")
+        description.set("Nawb Embedded Framework for Android ")
         url.set("")
 
         developers {
