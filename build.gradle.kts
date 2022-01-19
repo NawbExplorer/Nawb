@@ -53,7 +53,7 @@ allprojects {
 
   repositories {
     maven(url = uri("https://www.jitpack.io"))
-
+    // 自定义仓库镜像链接
     val repoMap = mapOf(
       "GOOGLE_REPO_URI" to google(),
       "CENTRAL_REPO_URI" to mavenCentral {

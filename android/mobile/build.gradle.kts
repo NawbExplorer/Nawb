@@ -35,6 +35,7 @@ fun getArchitectures(): List<String> {
   return value?.split(",") ?: abiCodesMap.keys.toList()
 }
 
+// 设置codegendir会导致module路径错误
 react {
   applyAppPlugin.set(true)
   entryFile.set(file("$rootDir/index.js"))
