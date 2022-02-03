@@ -3,7 +3,6 @@ do
     ln -s "$(which $e)" /usr/bin/$e
 done
 
-
 echo "
 NDK_VERSION=21.4.7075529
 export ANDROID_HOME=~/Android/Sdk
