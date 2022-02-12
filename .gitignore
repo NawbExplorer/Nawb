@@ -1,12 +1,11 @@
-
 *-lock.*
 .pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/sdks
-!.yarn/versions
+**/.yarn/*
+!**/.yarn/patches
+!**/.yarn/plugins
+!**/.yarn/releases
+!**/.yarn/sdks
+!**/.yarn/versions
 
 temp
 repo
@@ -41,7 +40,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 
-# Android/IntelliJ  
+# Android/IntelliJ
 #
 # build/
 .gradle
@@ -57,7 +56,6 @@ local.properties
 
 # Visual Studio Code
 #
-
 
 # node.js
 #
