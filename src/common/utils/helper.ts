@@ -1,4 +1,4 @@
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
 // const checkPackageName = function (name: string): boolean {
 //   var keyword = 'miao-plugin';
@@ -44,9 +44,23 @@ export const is = {
  * @param {string} name - 事件名  name中不可包含 "-"
  * @param {string} [uid] - 如果不填此参数会生成一个唯一id
  */
-export const makeUniqueName = (name: string, uid?: string) => {
-  if (name.includes('-')) {
-    throw new Error("unique name can not include '-'");
-  }
-  return uid ? name + '-' + uid : name + '-' + nanoid(16);
+// export const makeUniqueName = (name: string, uid?: string) => {
+//   if (name.includes('-')) {
+//     throw new Error("unique name can not include '-'");
+//   }
+//   return uid ? name + '-' + uid : name + '-' + nanoid(16);
+// };
+
+/**
+ * Includes function parameters checksum
+ *
+ */
+export const ParameterGuardUtils = {
+  /**
+   *
+   * @param params
+   * @memberof
+   */
+  noNull(params: any) {},
+  noNullProps() {},
 };
