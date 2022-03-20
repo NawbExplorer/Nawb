@@ -46,19 +46,19 @@
     "mutex": "cpp"
   },
   "files.exclude": {
-    "bazel-bin": true,
-    "bazel-nawb/bazel-out": true,
-    "bazel-out": true,
-    "bazel-testlogs": true,
-    "bazel-nawb": true,
-    ".aswb": true,
-    ".git": true,
-    ".github": true,
-    ".gradle": true,
-    ".idea": true,
-    ".vscode": true,
-    ".yarn": true,
-    "META-INF": true
+    "bazel-bin": false,
+    "bazel-nawb/bazel-out": false,
+    "bazel-out": false,
+    "bazel-testlogs": false,
+    "bazel-nawb": false,
+    ".aswb": false,
+    ".git": false,
+    ".github": false,
+    ".gradle": false,
+    ".idea": false,
+    ".vscode": false,
+    ".yarn": false,
+    "META-INF": false
   },
-  "workspace.isHidden": true
+  "workspace.isHidden": false
 }

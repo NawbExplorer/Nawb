@@ -40,6 +40,7 @@ buildscript {
 }
 
 allprojects {
+  // Set global variant
   ext.set("REACT_NATIVE_DIR", "$rootDir/third_party/react-native")
   
   // Making 3rd-party modules use fork
