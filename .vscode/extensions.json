@@ -1,5 +1,7 @@
 {
   "recommendations": [
-    "knisterpeter.vscode-commitizen"
+    "knisterpeter.vscode-commitizen",
+    "wiggin77.codedox",
+    "Gruntfuggly.todo-tree"
   ]
 }
