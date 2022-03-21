@@ -1545,6 +1545,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native/assets@file:third_party/react-native/packages/assets::locator=com.deskbtm.nawb%40workspace%3A.":
+  version: 1.0.0
+  resolution: "@react-native/assets@file:third_party/react-native/packages/assets#third_party/react-native/packages/assets::hash=2865e0&locator=com.deskbtm.nawb%40workspace%3A."
+  checksum: b34b978d4d926aa3fefda8080f19c90654ac273adc260da6395380d21622042f9c7ada6861a1a485f7fa42ae10ceb65c9f4e4d2e62314df683548c277c7747ba
+  languageName: node
+  linkType: hard
+
+"@react-native/normalize-color@file:third_party/react-native/packages/normalize-color::locator=com.deskbtm.nawb%40workspace%3A.":
+  version: 2.0.0
+  resolution: "@react-native/normalize-color@file:third_party/react-native/packages/normalize-color#third_party/react-native/packages/normalize-color::hash=50c525&locator=com.deskbtm.nawb%40workspace%3A."
+  checksum: 2e17c0c89be37dc0f34a7b18d317c88cd856a75121e7d4aa8a4f48e004a507f1ab7a8e5c86033d949bf08f1dfc5390948f62f45a020d7a3643919a8ab8357818
+  languageName: node
+  linkType: hard
+
+"@react-native/polyfills@file:third_party/react-native/packages/polyfills::locator=com.deskbtm.nawb%40workspace%3A.":
+  version: 2.0.0
+  resolution: "@react-native/polyfills@file:third_party/react-native/packages/polyfills#third_party/react-native/packages/polyfills::hash=90759d&locator=com.deskbtm.nawb%40workspace%3A."
+  checksum: c380ed384ca755b71e42fc61f83ca264ccd249214f66c858a16f2e75f8e3e1edf58382b014807ba323f1034408ff260e25f95859360c6a0c3d710273c67446df
+  languageName: node
+  linkType: hard
+
 "@sideway/address@npm:^4.1.3":
   version: 4.1.3
   resolution: "@sideway/address@npm:4.1.3"
@@ -2954,6 +2975,9 @@ __metadata:
     "@react-native-community/cli-platform-android": ^6.0.0
     "@react-native-community/cli-platform-ios": ^6.0.0
     "@react-native-community/eslint-config": ^2.0.0
+    "@react-native/assets": "file:third_party/react-native/packages/assets"
+    "@react-native/normalize-color": "file:third_party/react-native/packages/normalize-color"
+    "@react-native/polyfills": "file:third_party/react-native/packages/polyfills"
     "@types/jest": ^25.2.3
     "@types/react": 17.0.2
     "@types/react-native": ^0.66.3
