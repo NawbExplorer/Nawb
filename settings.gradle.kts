@@ -41,19 +41,6 @@ val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
 //include(":NawbEmbedded")
 //project(":NawbEmbedded").projectDir = File("$rootDir/packages/embedded/android")
 
-
-// // react native for android
- include(":ReactAndroid")
- project(":ReactAndroid").projectDir = File("$REACT_NATIVE_DIR/ReactAndroid")
-
-// react native for android
-include(":ReactAndroid:hermes-engine")
-project(":ReactAndroid:hermes-engine").projectDir = File("$REACT_NATIVE_DIR/ReactAndroid/hermes-engine")
-
-
- include(":packages:react-native-codegen:android")
- project(":packages:react-native-codegen:android").projectDir = File("$REACT_NATIVE_DIR/packages/react-native-codegen/android")
-
 // React Native
-// includeBuild(REACT_NATIVE_DIR)
-includeBuild("$REACT_NATIVE_DIR/packages/react-native-gradle-plugin")
+includeBuild(REACT_NATIVE_DIR)
+//includeBuild("$REACT_NATIVE_DIR/packages/react-native-gradle-plugin")
