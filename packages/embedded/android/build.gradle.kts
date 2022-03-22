@@ -13,9 +13,9 @@ import java.io.FileInputStream
 import java.util.*
 
 plugins {
-  id("com.android.library")
-  id("maven-publish")
-  kotlin("android")
+//  id("com.android.library")
+//  id("maven-publish")
+//  kotlin("android")
 }
 
 //val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
@@ -46,7 +46,7 @@ android {
 
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-  api(project(":ReactAndroid"))
+//  api(project(":ReactAndroid"))
 }
 
 publishing {

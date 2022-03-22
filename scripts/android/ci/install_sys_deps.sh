@@ -48,5 +48,8 @@ zlib1g \
 libgl1 \
 pulseaudio \
 socat \
+build-essential \
+libreadline-dev \
+libicu-dev \
 && gem install bundler \
 && rm -rf /var/lib/apt/lists/*
