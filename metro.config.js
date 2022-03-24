@@ -7,6 +7,9 @@
 const path = require('path');
 const exclusionList = require('metro-config/src/defaults/exclusionList');
 
+/**
+ * @type import('@types/metro-config').ConfigT
+ */
 module.exports = {
   projectRoot: __dirname,
   transformer: {
