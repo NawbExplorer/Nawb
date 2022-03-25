@@ -1,11 +1,5 @@
 /**
- * Nawb (c) by Nawbc
- *
- * Nawb is licensed under a
- * Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
- *
- * You should have received a copy of the license along with this
- * work. If not, see <http://creativecommons.org/licenses/by-nc-nd/4.0/>.
+ * Nawb (c) by WangHan
  */
 
 import com.android.build.api.variant.FilterConfiguration.FilterType.ABI
@@ -13,22 +7,37 @@ import java.io.FileInputStream
 import java.util.*
 
 plugins {
-//  id("com.android.library")
-//  id("maven-publish")
-//  kotlin("android")
+  id("com.android.library")
+  id("maven-publish")
+  id("com.facebook.react")
+  kotlin("android")
 }
 
-//val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
+val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
 //val HERMES_DIR = "$REACT_NATIVE_DIR/node_modules/hermes-engine"
-//val CODEGEN_DIR = "$REACT_NATIVE_DIR/packages/react-native-codegen"
+val CODEGEN_DIR = "$REACT_NATIVE_DIR/packages/react-native-codegen"
 
 //react {
 //  libraryName.set("nawb-embedded")
-//  reactRoot.set(file(REACT_NATIVE_DIR))
 //  jsRootDir.set(file(rootDir))
-//  codegenDir.set(file(CODEGEN_DIR))
+////  codegenDir.set(file(CODEGEN_DIR))
 //  useJavaGenerator.set(false)
 //}
+
+react {
+  libraryName.set("nawb-embedded")
+  root.set(file(rootDir))
+  reactNativeDir.set(file(REACT_NATIVE_DIR))
+  codegenDir.set(file("$REACT_NATIVE_DIR/packages/react-native-codegen"))
+  applyAppPlugin.set(true)
+  enableHermes.set(true)
+//  entryFile.set(file("$rootDir/index.js"))
+//  jsRootDir.set(file(rootDir))
+//  enableHermes.set(true)
+//  useJavaGenerator.set(false)
+//  hermesCommand.set("$HERMES_DIR/%OS-BIN%/hermesc")
+//  cliPath.set("$REACT_NATIVE_DIR/cli.js")
+}
 
 android {
   defaultConfig {
@@ -46,7 +55,7 @@ android {
 
 dependencies {
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-//  api(project(":ReactAndroid"))
+  api(project(":ReactAndroid"))
 }
 
 publishing {

@@ -30,11 +30,13 @@ fun getArchitectures(): List<String> {
   return value?.split(",") ?: abiCodesMap.keys.toList()
 }
 
-// 设置codegendir会导致module路径错误
+//设置codegendir会导致module路径错误
 react {
+  root.set(file(rootDir))
+  reactNativeDir.set(file(REACT_NATIVE_DIR))
+  codegenDir.set(file("$REACT_NATIVE_DIR/packages/react-native-codegen"))
   applyAppPlugin.set(true)
   entryFile.set(file("$rootDir/index.js"))
-  reactRoot.set(file(REACT_NATIVE_DIR))
   jsRootDir.set(file(rootDir))
   enableHermes.set(true)
   useJavaGenerator.set(false)
@@ -48,10 +50,11 @@ android {
     buildToolsVersion = "30.0.2"
     minSdk = 21
     targetSdk = 29
-    compileSdk = 30
+    compileSdk = 31
     versionCode = 1
     versionName = "1.0"
     applicationId = "com.deskbtm.nawb"
+    multiDexEnabled = true
   }
 
   splits {
@@ -62,7 +65,7 @@ android {
       include(*getArchitectures().toTypedArray())
     }
   }
-  
+
   signingConfigs {
     getByName("debug") {
       storeFile = file("debug.keystore")
@@ -102,7 +105,7 @@ android {
   }
 
   packagingOptions {
-    jniLibs.pickFirsts.add("**/libhermes.so")
+//    jniLibs.pickFirsts.addAll(listOf("**/libhermes.so", "**/libc++_shared.so"))
   }
 
   compileOptions {
@@ -129,8 +132,11 @@ androidComponents {
 dependencies {
   implementation("androidx.core:core-ktx:$KTX_VERSION")
   implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-  api(project(":NawbEmbedded"))
-
+//  implementation(project(":NawbEmbedded"))
+  implementation(project(":ReactAndroid")) {
+    exclude(group = "com.facebook.fbjni")
+  }
+  
   implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
   debugImplementation("com.facebook.flipper:flipper:$FLIPPER_VERSION") {
     exclude(group = "com.facebook.fbjni")
@@ -145,13 +151,12 @@ dependencies {
     exclude(group = "com.facebook.flipper")
   }
 
-  debugImplementation(files("$HERMES_DIR/android/hermes-debug.aar"))
-  releaseImplementation(files("$HERMES_DIR/android/hermes-release.aar"))
+//  debugImplementation(files("$HERMES_DIR/android/hermes-debug.aar"))
+//  releaseImplementation(files("$HERMES_DIR/android/hermes-release.aar"))
 }
 
 // Don't use react-native-cli for now
 //apply(from = file("$rootDir/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"))
 //val applyNativeModulesAppBuildGradle: Closure<Any> by ext
 //applyNativeModulesAppBuildGradle(project)
-
 

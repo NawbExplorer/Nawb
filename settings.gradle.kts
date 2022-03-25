@@ -15,8 +15,8 @@ pluginManagement {
 val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
 
 // Android
-//include(":NawbAndroid")
-//project(":NawbAndroid").projectDir = File("$rootDir/android/mobile")
+include(":NawbAndroid")
+project(":NawbAndroid").projectDir = File("$rootDir/android/mobile")
 
 // Android Wear
 //include(":NawbAndroidWear")
@@ -26,21 +26,13 @@ val REACT_NATIVE_DIR = "$rootDir/third_party/react-native"
 //include(":NawbEmbedded")
 //project(":NawbEmbedded").projectDir = File("$rootDir/packages/embedded/android")
 
-// React Native
-// includeBuild(REACT_NATIVE_DIR)
+include(":ReactAndroid")
+project(":ReactAndroid").projectDir = file("$REACT_NATIVE_DIR/ReactAndroid")
 
-// Android
-//include(":NawbAndroid")
-//project(":NawbAndroid").projectDir = File("$rootDir/android/mobile")
+include(":ReactAndroid:hermes-engine")
+project(":ReactAndroid:hermes-engine").projectDir = file("$REACT_NATIVE_DIR/ReactAndroid/hermes-engine")
 
-// // Android Wear
-// include(":NawbAndroidWear")
-// project(":NawbAndroidWear").projectDir = File("$rootDir/android/wear")
+include(":packages:react-native-codegen:android")
+project(":packages:react-native-codegen:android").projectDir = File("$REACT_NATIVE_DIR/packages/react-native-codegen/android")
 
-// Embedded Framework
-//include(":NawbEmbedded")
-//project(":NawbEmbedded").projectDir = File("$rootDir/packages/embedded/android")
-
-// React Native
-includeBuild(REACT_NATIVE_DIR)
-//includeBuild("$REACT_NATIVE_DIR/packages/react-native-gradle-plugin")
+includeBuild("$REACT_NATIVE_DIR/packages/react-native-gradle-plugin")
