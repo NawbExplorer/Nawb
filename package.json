@@ -55,9 +55,8 @@
   },
   "engines": {
     "node": ">= 14.16.0",
-    "npm": "Please use yarn-3.1.1",
-    "yarn": ">2.0.0 <4.0.0",
-    "pnpm": "Please use yarn-3.1.1"
+    "npm": "Please use yarn",
+    "pnpm": "Please use yarn"
   },
   "jest": {
     "preset": "react-native",
