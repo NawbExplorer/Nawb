@@ -59,6 +59,5 @@
     ".vscode": false,
     ".yarn": false,
     "META-INF": false
-  },
-  "workspace.isHidden": false
+  }
 }
