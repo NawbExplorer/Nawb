@@ -45,19 +45,15 @@
     "*.gyp": "python",
     "mutex": "cpp"
   },
-  "files.exclude": {
-    "bazel-bin": false,
-    "bazel-nawb/bazel-out": false,
-    "bazel-out": false,
-    "bazel-testlogs": false,
-    "bazel-nawb": false,
-    ".aswb": false,
-    ".git": false,
-    ".github": false,
-    ".gradle": false,
-    ".idea": false,
-    ".vscode": false,
-    ".yarn": false,
-    "META-INF": false
-  }
+  "files.exclude": {},
+  "ColorfulMonorepo.workspaces.collection": [
+    {
+      "path": "/home/nawbc/NawbProject/Nawb",
+      "packageName": "com.deskbtm.nawb",
+      "label": "🌱  com.deskbtm.nawb",
+      "foreground": "#ffffff",
+      "background": "#75338a"
+    }
+  ],
+  "ColorfulMonorepo.drawer.init": true
 }
