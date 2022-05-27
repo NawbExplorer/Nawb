@@ -23,13 +23,11 @@ buildscript {
   }
 
   dependencies {
-    val KOTLIN_VERSION: String by project
     val AGP_VERSION: String by project
     val GDT_VERSION: String by project
     
     classpath("com.android.tools.build:gradle:$AGP_VERSION")
     classpath("de.undercouch:gradle-download-task:$GDT_VERSION")
-    classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION")
   }
 }
 

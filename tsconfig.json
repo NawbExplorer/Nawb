@@ -23,11 +23,12 @@
     "rootDir": "."
   },
   "exclude": [
-    "node_modules",
+    "**/node_modules/**/*",
     "babel.config.js",
     "metro.config.js",
     "jest.config.js",
-    "./temp",
-    "./packages"
+    "temp",
+    "packages/**/*",
+    "third_party/react-native",
   ]
 }

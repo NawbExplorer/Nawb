@@ -10,6 +10,7 @@ import java.util.*
 plugins {
   id("com.android.application")
   id("com.facebook.react")
+  id("org.jetbrains.kotlin.android") version "1.6.10"
   kotlin("android")
 }
 
@@ -39,7 +40,7 @@ react {
   entryFile.set(file("$rootDir/index.js"))
   jsRootDir.set(file(rootDir))
   enableHermes.set(true)
-  useJavaGenerator.set(false)
+//  useJavaGenerator.set(false)
   hermesCommand.set("$HERMES_DIR/%OS-BIN%/hermesc")
   cliPath.set("$REACT_NATIVE_DIR/cli.js")
 }
