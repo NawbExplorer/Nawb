@@ -22,6 +22,9 @@
     "baseUrl": ".",
     "rootDir": "."
   },
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
     "**/node_modules/**/*",
     "babel.config.js",
@@ -29,6 +32,8 @@
     "jest.config.js",
     "temp",
     "packages/**/*",
-    "third_party/react-native",
+    "**/__tests__/**/*",
+    "**/build/**/*",
+    "**/dist/**/*",
   ]
 }

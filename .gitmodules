@@ -2,3 +2,6 @@
 	path = third_party/react-native
 	url = https://github.com/NawbBrowser/react-native.git
 	branch = nawb-main
+[submodule "third_party/react-native-windows"]
+	path = third_party/react-native-windows
+	url = https://github.com/microsoft/react-native-windows.git

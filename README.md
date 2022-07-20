@@ -8,12 +8,11 @@
 </p>
 Nawb (Not a Web Browser) is an Application Browser, it uses React Native⚛️ to play the role of Blink or Gecko and runs the native look and feel dynamic apps. Nawb pronounced /næb/ (not /nɔb/), the Chinese name is '奈布'.
 
-
-
-
 ## Pricing
+
 xx
-## Credits and references
+
+## Credits
 
 See [CREDITS.md](./doc/CREDITS.md). Thanks for the projects used in Nawb.
 

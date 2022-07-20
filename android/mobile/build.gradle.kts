@@ -116,7 +116,7 @@ android {
 }
 
 // For each APK output variant, override versionCode with a combination of
-// abiCodesMap * 1000 + variant.versionCode 
+// abiCodesMap * 1000 + variant.versionCode
 // versionCode details see https://developer.android.com/studio/publish/versioning#appversioning
 androidComponents {
   onVariants { variant ->
@@ -137,7 +137,7 @@ dependencies {
   implementation(project(":ReactAndroid")) {
     exclude(group = "com.facebook.fbjni")
   }
-  
+
   implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
   debugImplementation("com.facebook.flipper:flipper:$FLIPPER_VERSION") {
     exclude(group = "com.facebook.fbjni")

@@ -4,8 +4,7 @@
 
 buildscript {
   repositories {
-//    maven(url = uri("https://maven.aliyun.com/repository/central"))
-//    maven(url = uri("https://maven.aliyun.com/repository/google"))
+
     val repoMap = mapOf(
       "GOOGLE_REPO_URI" to google(),
       "CENTRAL_REPO_URI" to mavenCentral()
@@ -18,14 +17,14 @@ buildscript {
         repo.value
       }
     }
-    
+
     mavenLocal()
   }
 
   dependencies {
     val AGP_VERSION: String by project
     val GDT_VERSION: String by project
-    
+
     classpath("com.android.tools.build:gradle:$AGP_VERSION")
     classpath("de.undercouch:gradle-download-task:$GDT_VERSION")
   }
@@ -34,7 +33,7 @@ buildscript {
 allprojects {
   // Set global variant
   ext.set("REACT_NATIVE_DIR", "$rootDir/third_party/react-native")
-  
+
   // Making 3rd-party modules use fork
   configurations.all {
     resolutionStrategy {
@@ -46,7 +45,7 @@ allprojects {
 
   repositories {
     maven(url = uri("https://www.jitpack.io"))
-    // 自定义仓库镜像链接
+    // custom repo
     val repoMap = mapOf(
       "GOOGLE_REPO_URI" to google(),
       "CENTRAL_REPO_URI" to mavenCentral {
@@ -63,7 +62,7 @@ allprojects {
         repo.value
       }
     }
-    
+
     mavenLocal()
   }
 }
