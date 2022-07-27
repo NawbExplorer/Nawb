@@ -19,6 +19,8 @@ val HERMES_DIR = "$REACT_NATIVE_DIR/node_modules/hermes-engine"
 val FLIPPER_VERSION: String by project
 val KTX_VERSION: String by project
 
+print("$rootDir =========================")
+
 val abiCodesMap = mapOf(
   "arm64-v8a" to 1,
   "x86_64" to 2,
