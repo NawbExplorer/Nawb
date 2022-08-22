@@ -13,7 +13,7 @@ Nawb (Not a Web Browser) is an Application Browser, it uses React Native ⚛️ 
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ## Credits and references
 
-See [CREDITS.md](./doc/CREDITS.md). Thanks for the projects used in Nawb.
+See [CREDITS.md](./doc/CREDITS.md). Thanks to all the projects used in Nawb.
 
 ## Contribution
 
