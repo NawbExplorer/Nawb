@@ -1547,22 +1547,22 @@ __metadata:
 
 "@react-native/assets@file:third_party/react-native/packages/assets::locator=com.deskbtm.nawb%40workspace%3A.":
   version: 1.0.0
-  resolution: "@react-native/assets@file:third_party/react-native/packages/assets#third_party/react-native/packages/assets::hash=469d85&locator=com.deskbtm.nawb%40workspace%3A."
-  checksum: ecaada41ea10ca90fa6d40c94c595fda113b4a7cea6243992b2ace80730187b58e2013b32a3a91f2d0be0cb3b9a89df3851276989115c98c714e5dcab7dba8bb
+  resolution: "@react-native/assets@file:third_party/react-native/packages/assets#third_party/react-native/packages/assets::hash=e6e7da&locator=com.deskbtm.nawb%40workspace%3A."
+  checksum: f327610123cd79481ec2f97afd89bb05aa486d9900e4fb7c738afe1ba10b91506273725781a5fa017228fc7b041e5c4749a78aa5dc7dfa83c51e4e49fa5c8fe6
   languageName: node
   linkType: hard
 
 "@react-native/normalize-color@file:third_party/react-native/packages/normalize-color::locator=com.deskbtm.nawb%40workspace%3A.":
   version: 2.0.0
-  resolution: "@react-native/normalize-color@file:third_party/react-native/packages/normalize-color#third_party/react-native/packages/normalize-color::hash=97c44e&locator=com.deskbtm.nawb%40workspace%3A."
-  checksum: 364081148261296f60c15b27f137ecaa1a7f9b26e1369ed0c56fc428770a3bba8923bad808bc45656b36fe492b8a0f2677d4f94ce5bdbda698115f470ac8abfd
+  resolution: "@react-native/normalize-color@file:third_party/react-native/packages/normalize-color#third_party/react-native/packages/normalize-color::hash=4f45d3&locator=com.deskbtm.nawb%40workspace%3A."
+  checksum: 64f4d0a4a1b9f669a9982ab33aeeb525ef2c5c83c8d8fc320da3ca33a00949f72f525200b8fa75f7254f2293a5cf77e191a2fdef477accc39ba6f935bf5d2eee
   languageName: node
   linkType: hard
 
 "@react-native/polyfills@file:third_party/react-native/packages/polyfills::locator=com.deskbtm.nawb%40workspace%3A.":
   version: 2.0.0
-  resolution: "@react-native/polyfills@file:third_party/react-native/packages/polyfills#third_party/react-native/packages/polyfills::hash=9a5fbe&locator=com.deskbtm.nawb%40workspace%3A."
-  checksum: b7933ef1cee64b28361044d09f3b878ebd5430ca9ba6706dcec4a7541d369b4678ade9137efdf9607bd9e17b0739a3f9c2fbaf2e867eab0b83eb044ebf861b70
+  resolution: "@react-native/polyfills@file:third_party/react-native/packages/polyfills#third_party/react-native/packages/polyfills::hash=84e41d&locator=com.deskbtm.nawb%40workspace%3A."
+  checksum: 7f0c236ba31ec71f1e55cfd67134bdde447819ad44350bf7b00e483201825d9657922375994efe1f3802094add1de47e3cd84ad90ab83e3e9666b6db8de85de8
   languageName: node
   linkType: hard
 
@@ -1576,9 +1576,9 @@ __metadata:
   linkType: hard
 
 "@sideway/formula@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@sideway/formula@npm:3.0.0"
-  checksum: 8ae26a0ed6bc84f7310be6aae6eb9d81e97f382619fc69025d346871a707eaab0fa38b8c857e3f0c35a19923de129f42d35c50b8010c928d64aab41578580ec4
+  version: 3.0.1
+  resolution: "@sideway/formula@npm:3.0.1"
+  checksum: e4beeebc9dbe2ff4ef0def15cec0165e00d1612e3d7cea0bc9ce5175c3263fc2c818b679bd558957f49400ee7be9d4e5ac90487e1625b4932e15c4aa7919c57a
   languageName: node
   linkType: hard
 
